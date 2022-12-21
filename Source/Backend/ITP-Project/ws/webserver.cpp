@@ -49,12 +49,10 @@ void HttpServer::incomingConnection(qintptr socketDescriptor)
             QString httpVersion = requestLineTokens[2];
 
             QMap<QString, QString> headers;
-            for (int i = 1; i < requestLines.size(); ++i)
-            {
+            for (int i = 1; i < requestLines.size(); ++i) {
                 QString line = requestLines[i];
                 int index = line.indexOf(":");
-                if (index != -1)
-                {
+                if (index != -1) {
                     QString key = line.left(index).trimmed();
                     QString value = line.mid(index + 1).trimmed();
                     headers[key] = value;
@@ -65,24 +63,18 @@ void HttpServer::incomingConnection(qintptr socketDescriptor)
 
             // Handle the request
             auto it = m_routes.find(path);
-            if (it != m_routes.end())
-            {
+            if (it != m_routes.end()) {
                 Route route = it.value();
-                std::cout << route.method.toStdString() << std::endl;
 
                 if (route.method == method)
                 {
                     route.callback(socket, headers);
-                }
-                else
-                {
+                } else {
                     std::string response = WSUtils::createJSONResponse("{\"Code\": \"405\", \"Message\": \"Method Not Allowed\"}");
                     socket->write(response.c_str());
                     socket->close();
                 }
-            }
-            else
-            {
+            } else {
                 std::string response = WSUtils::createJSONResponse("{\"Code\": \"404\", \"Message\": \"Not Found\"}");
                 socket->write(response.c_str());
                 socket->close();
@@ -90,9 +82,7 @@ void HttpServer::incomingConnection(qintptr socketDescriptor)
         });
 
         connect(socket, &QTcpSocket::disconnected, socket, &QTcpSocket::deleteLater);
-    }
-    else
-    {
+    } else {
         delete socket;
     }
 }
