@@ -9,6 +9,7 @@
 #include <QString>
 
 #include <string>
+#include "../utils/ws_utils.h"
 
 class HttpServer : public QTcpServer {
     Q_OBJECT
@@ -17,13 +18,18 @@ public:
     ~HttpServer();
     bool start(quint16 port);
     QString errorString() const;
-    void addRoute(const QString& path, std::function<void(QTcpSocket*, const QMap<QString, QString>&)> callback);
+    void addRoute(const QString& path, const QString& method, std::function<void(QTcpSocket*, const QMap<QString, QString>&)> callback);
 
 protected:
     void incomingConnection(qintptr socketDescriptor);
 
 private:
-    QMap<QString, std::function<void(QTcpSocket*, const QMap<QString, QString>&)>> m_routes;
+    struct Route
+        {
+            QString method;
+            std::function<void(QTcpSocket*, const QMap<QString, QString>&)> callback;
+        };
+    QMap<QString, Route> m_routes;
 };
 
 #endif // WEBSERVER_H

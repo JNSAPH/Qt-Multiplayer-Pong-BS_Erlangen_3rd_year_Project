@@ -8,9 +8,9 @@ HttpServer::~HttpServer()
 {
 }
 
-void HttpServer::addRoute(const QString& path, std::function<void(QTcpSocket*, const QMap<QString, QString>&)> callback)
+void HttpServer::addRoute(const QString& path, const QString& method, std::function<void(QTcpSocket*, const QMap<QString, QString>&)> callback)
 {
-    m_routes[path] = callback;
+    m_routes[path] = {method, callback};
 }
 
 
@@ -61,15 +61,30 @@ void HttpServer::incomingConnection(qintptr socketDescriptor)
                 }
             }
 
+
+
             // Handle the request
             auto it = m_routes.find(path);
             if (it != m_routes.end())
-                it.value()(socket, headers);
+            {
+                Route route = it.value();
+                std::cout << route.method.toStdString() << std::endl;
+
+                if (route.method == method)
+                {
+                    route.callback(socket, headers);
+                }
+                else
+                {
+                    std::string response = WSUtils::createJSONResponse("{\"Code\": \"405\", \"Message\": \"Method Not Allowed\"}");
+                    socket->write(response.c_str());
+                    socket->close();
+                }
+            }
             else
             {
-                // Return a 404 response
-                QString response = "HTTP/1.1 404 Not Found\r\n\r\n";
-                socket->write(response.toUtf8());
+                std::string response = WSUtils::createJSONResponse("{\"Code\": \"404\", \"Message\": \"Not Found\"}");
+                socket->write(response.c_str());
                 socket->close();
             }
         });
