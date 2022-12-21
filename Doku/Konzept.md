@@ -7,17 +7,14 @@
 - shooten, moven  
 - evtl gegeneinander spaceinvaden? idk
   
-
-
 ### Game wird per Server gehostet
 - httpServer via qt
 - Effektiv als MVC realisiert
 - Server hostet allen code
 
-
-### in Browser spielbar
-- browser als PlayerInput
-- basically View 
+### Per App spielbar
+- PlayerInput
+- basically interaktive View 
 
 ### Datenbank zur Datenverwaltung nutzen
 - model
@@ -32,6 +29,12 @@
  - simpel enough, um nicht alles zu killen
  - 1 Eintrag per Tick
  - Snapshots/KeyStrokes 
+
+
+## Unsere Idee:
+
+![SpaceInvaders1v1](Konzept.png)
+
 
 
 ## Weiterführende Dokus
