@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
     HttpServer server;
 
-    server.addRoute("/json", GET, [](QTcpSocket* socket, const QMap<QString, QString>& headers)
+    server.addRoute("/json", [](QTcpSocket* socket, const QMap<QString, QString>& headers)
     {
         // Itterate through the headers
         for (auto it = headers.begin(); it != headers.end(); ++it) {
