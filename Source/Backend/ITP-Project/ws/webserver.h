@@ -11,24 +11,25 @@
 #include <string>
 #include "../utils/ws_utils.h"
 
-class HttpServer : public QTcpServer {
+class HttpServer : public QTcpServer
+{
     Q_OBJECT
 public:
-    HttpServer(QObject* parent = 0);
+    HttpServer(QObject *parent = 0);
     ~HttpServer();
     bool start(quint16 port);
     QString errorString() const;
-    void addRoute(const QString& path, const QString& method, std::function<void(QTcpSocket*, const QMap<QString, QString>&)> callback);
+    void addRoute(const QString &path, const QString &method, std::function<void(QTcpSocket *, const QMap<QString, QString> &)> callback);
 
 protected:
     void incomingConnection(qintptr socketDescriptor);
 
 private:
     struct Route
-        {
-            QString method;
-            std::function<void(QTcpSocket*, const QMap<QString, QString>&)> callback;
-        };
+    {
+        QString method;
+        std::function<void(QTcpSocket *, const QMap<QString, QString> &)> callback;
+    };
     QMap<QString, Route> m_routes;
 };
 

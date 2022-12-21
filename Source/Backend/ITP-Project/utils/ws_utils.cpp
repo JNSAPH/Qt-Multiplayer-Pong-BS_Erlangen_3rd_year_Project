@@ -2,8 +2,9 @@
 
 WSUtils::WSUtils()
 {
-
 }
+
+QStringList WSUtils::m_allowedMethods = {"GET", "POST", "PUT", "DELETE"};
 
 std::string WSUtils::createJSONResponse(QString input) {
     int contentLength = input.length();
@@ -16,4 +17,8 @@ std::string WSUtils::createJSONResponse(QString input) {
     oss << input.toStdString();
 
     return oss.str();
+}
+
+bool WSUtils::isAllowedMethod(const QString &method) {
+    return m_allowedMethods.contains(method, Qt::CaseInsensitive);
 }
