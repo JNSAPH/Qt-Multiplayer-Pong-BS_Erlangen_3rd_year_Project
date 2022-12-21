@@ -1,8 +1,8 @@
 #include <QCoreApplication>
-
-#include <iostream>
 #include <QFile>
 
+#include <iostream>     // std::cout
+#include <sstream>      // std::ostringstream
 #include <fstream>
 
 #include "ws/webserver.h"
@@ -18,7 +18,9 @@ int main(int argc, char *argv[])
     {
         std::string content;
 
-        std::ifstream f("C:/Users/JNSAP/Documents/GitHub/ITP-Project-1/Backend/ITP-Project/index.html");
+        std::cout << "Main Route" << std::endl;
+
+        std::ifstream f("/Users/jonas/Documents/GitHub/ITP-Project-1/Backend/ITP-Project/index.html ");
 
         if(f.good()) {
             std::string str((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
@@ -33,12 +35,29 @@ int main(int argc, char *argv[])
         oss << "Cache-Control: no-cache, private\r\n";
         oss << "Content-Type: text/html\r\n";
         oss << "Content-Length: " << content.length() << "\r\n";
-        oss << "\r\n";
         oss << content;
 
         socket->write(oss.str().c_str());
         f.close();
+        socket->close();
     });
+
+    server.addRoute("/json", [](QTcpSocket* socket, const QMap<QString, QString>& headers)
+    {
+        // write a valid http json response and send, then close the socket
+        std::ostringstream oss;
+        oss << "HTTP/1.1 200 OK\r\n";
+        oss << "Content-Type: application/json\r\n";
+        oss << "Content-Length: 12\r\n";
+        oss << "\r\n";
+        oss << "{\"ab\": \"12\"}";
+
+        std::cout << oss.str() << std::endl;
+
+        socket->write(oss.str().c_str());
+        socket->close();
+    });
+
 
     // Start the server
     if (!server.start(8080))
