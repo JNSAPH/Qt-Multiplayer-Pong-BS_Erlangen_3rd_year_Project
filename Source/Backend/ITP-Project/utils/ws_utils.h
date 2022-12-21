@@ -12,7 +12,7 @@ class WSUtils : public QObject
     Q_OBJECT
 public:
     WSUtils();
-    static std::string createJSONResponse(QString input);
+    static std::string createJSONResponse(std::string input);
     static bool isAllowedMethod(const QString &method);
 
 private:

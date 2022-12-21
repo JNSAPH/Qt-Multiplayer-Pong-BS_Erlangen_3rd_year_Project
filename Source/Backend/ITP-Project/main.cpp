@@ -6,6 +6,7 @@
 
 #include "ws/webserver.h"
 #include "utils/ws_utils.h"
+#include "utils/jsonutils.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,12 +15,16 @@ int main(int argc, char *argv[])
     HttpServer server;
 
     server.addRoute("/json", "GET", [](QTcpSocket *socket, const QMap<QString, QString> &headers) {
-        // Itterate through the headers
-        for (auto it = headers.begin(); it != headers.end(); ++it) {
-            //std::cout << it.key().toStdString() << ": " << it.value().toStdString() << std::endl;
-        }
 
-        std::string response = WSUtils::createJSONResponse("{\"Code\": \"200\", \"Message\": \"JSON Responses work!\"}");
+        std::map<std::string, JSONUtils::Value> data{
+          {"key1", 42},
+          {"key2", true},
+          {"key3", "hello"}
+        };
+        std::string json = JSONUtils::generateJSON(data);
+
+
+        std::string response = WSUtils::createJSONResponse(json);
 
         socket->write(response.c_str());
         socket->close(); });

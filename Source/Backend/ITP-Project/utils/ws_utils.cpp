@@ -6,7 +6,7 @@ WSUtils::WSUtils()
 
 QStringList WSUtils::m_allowedMethods = {"GET", "POST", "PUT", "DELETE"};
 
-std::string WSUtils::createJSONResponse(QString input) {
+std::string WSUtils::createJSONResponse(std::string input) {
     int contentLength = input.length();
 
     std::ostringstream oss;
@@ -14,7 +14,7 @@ std::string WSUtils::createJSONResponse(QString input) {
     oss << "Content-Type: application/json\r\n";
     oss << "Content-Length: " << contentLength << "\r\n";
     oss << "\r\n";
-    oss << input.toStdString();
+    oss << input;
 
     return oss.str();
 }
