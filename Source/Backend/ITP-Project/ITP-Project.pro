@@ -2,6 +2,7 @@ QT -= gui
 
 CONFIG += c++17 console
 QT += network
+QT += sql
 CONFIG -= app_bundle
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -11,6 +12,7 @@ CONFIG -= app_bundle
 SOURCES += \
         main.cpp \
         utils/jsonutils.cpp \
+        utils/mariadb.cpp \
         utils/ws_utils.cpp \
         ws/webserver.cpp
 
@@ -21,5 +23,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     utils/jsonutils.h \
+    utils/mariadb.h \
     utils/ws_utils.h \
     ws/webserver.h
