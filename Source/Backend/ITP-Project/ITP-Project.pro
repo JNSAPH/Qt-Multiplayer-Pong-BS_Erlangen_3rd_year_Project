@@ -10,6 +10,7 @@ CONFIG -= app_bundle
 
 SOURCES += \
         main.cpp \
+        utils/jsonutils.cpp \
         utils/ws_utils.cpp \
         ws/webserver.cpp
 
@@ -19,5 +20,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    utils/jsonutils.h \
     utils/ws_utils.h \
     ws/webserver.h

@@ -5,14 +5,19 @@
 #include <QObject>
 
 #include <iostream>
-#include <sstream>      // std::ostringstream
+#include <sstream> // std::ostringstream
 
-class WSUtils: public QObject
+class WSUtils : public QObject
 {
     Q_OBJECT
 public:
     WSUtils();
-    static std::string createJSONResponse(QString input);
+    static std::string createJSONResponse(std::string p_content);
+    static std::string createHTMLResponse(std::string p_content);
+    static bool isAllowedMethod(const QString &method);
+
+private:
+    static QStringList m_allowedMethods;
 };
 
 #endif // WS_UTILS_H
