@@ -27,7 +27,16 @@ int main(int argc, char *argv[])
         std::string response = WSUtils::createJSONResponse(json);
 
         socket->write(response.c_str());
-        socket->close(); });
+        socket->close();
+    });
+
+    server.addRoute("/html", "GET", [](QTcpSocket *socket, const QMap<QString, QString> &headers) {
+        std::string response = WSUtils::createHTMLResponse("<h1>Sex ... mit männern </h1>");
+
+        socket->write(response.c_str());
+        socket->close();
+    });
+
 
     // Start the server
     if (!server.start(8080)) {
