@@ -10,7 +10,8 @@
   - 3 Leben
   - Move nur nach rechts/links möglich
   - Schutz "steine"
-- Aiens fliegen hoch und runter
+- Aliens fliegen hoch und runter
+
 
 
 
