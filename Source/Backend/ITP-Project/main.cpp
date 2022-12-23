@@ -18,10 +18,27 @@ int main(int argc, char *argv[])
     if (!db.open()) {
         qCritical() << "Error opening database:" << db.getM_DB().lastError().text();
         return 1;
+    } else {
+        std::cout << "Connected to DB" << std::endl;
     }
 
+    // Test
+    QSqlQuery query = db.exec("SELECT DATABASE();");
+    qDebug() << db.getM_DB().lastError().text();
+    while (query.next()) {
+        QString tableName = query.value(0).toString();
+        qDebug() << "Table:" << tableName;
+    }
 
+    db.close();
+
+
+
+
+    // Create Server instance
     HttpServer server;
+
+    // JSON Test Route
     server.addRoute("/json", "GET", [](QTcpSocket *socket, const QMap<QString, QString> &headers) {
 
         std::map<std::string, JSONUtils::Value> data{

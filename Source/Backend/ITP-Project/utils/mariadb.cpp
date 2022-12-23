@@ -7,7 +7,7 @@ MariaDB::MariaDB(const QString& hostname, const QString& username, const QString
     , m_database(database)
     , m_port(port)
 {
-    m_db = QSqlDatabase::addDatabase("QMYSQL");
+    m_db = QSqlDatabase::addDatabase("QSQLITE");
 }
 
 MariaDB::~MariaDB()

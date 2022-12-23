@@ -25,3 +25,6 @@ sudo apt-get install libmysqlcppconn7
 This will install the MySQL Connector/C++ library and its dependencies. You may also need to install the **libqt5-mysql** package to use the QMYSQL driver with Qt's SQL module.
 
 Once the MySQL Connector/C++ library is installed, you should be able to use the MariaDB class to connect to a MariaDB database.
+
+This article may help too:
+https://doc.qt.io/qt-6/sql-driver.html#qmysql
