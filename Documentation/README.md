@@ -28,3 +28,7 @@ Once the MySQL Connector/C++ library is installed, you should be able to use the
 
 This article may help too:
 https://doc.qt.io/qt-6/sql-driver.html#qmysql
+
+```bash
+cmake -G Ninja C:\Qt\6.4.1\Src\qtbase\src\plugins\sqldrivers -DCMAKE_INSTALL_PREFIX=C:\Qt\6.4.1\mingw_64 -DMySQL_INCLUDE_DIR="C:\mysql-8.0.31-winx64\include" -DMySQL_LIBRARY="C:\mysql-8.0.31-winx64\lib\libmysql.lib"
+```
