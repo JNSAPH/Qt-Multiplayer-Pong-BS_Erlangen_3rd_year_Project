@@ -1,0 +1,10 @@
+In diesem Ordner werden alle benutzerdefinierten Datentypen abelegt. 
+
+Benutzerdefinierte Datentypen sind bis auf zwei Fälle zu vermeiden. 
+Fall 1: Wenn eine Regel an einen Datentyp gebunden werden soll.
+Fall 2: Wenn man eine Tabelle als Inputparameter benötigt. 
+
+ACHTUNG: Das Binden von Defaults an UDTs mit sp_bindefault wird abgestellt. 
+         Das bedeutet sie SP ist nicht mehr zu verwenden! 
+         Das hat zur Folge, dass man Defaults nun an der Tabelle selbst zuweisen muss.
+

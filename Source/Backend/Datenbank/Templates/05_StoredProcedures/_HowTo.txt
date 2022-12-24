@@ -1,0 +1,9 @@
+In diesem Ordner werden alle Prozeduren abgelegt.
+
+Wichtig: 
+Als Vorlage für SPs mit Transaktion kann die spBsp_Tabelle_Delete oder spBsp_Tabelle_InsertUpdate benutzt werden. 
+Als Vorlage für SPs ohne Transaktion kann die spBsp_Tabelle_Select verwendet werden.
+
+Die Vorlage spBsp_MaintenancePlan wird dafür benötigt, wenn ein externer (nicht der SQL-Agent) sich um die Ausführung von regelmäsigen Jobs kümmert.
+Die Vorlage spBsp_Recompile wird in allen Projekten benötigt und sollte über einen ZeitJob regelmäsig ausgeführt werden. 
+  Sie erzeugt die SPs regelmäsig neu. 

@@ -1,0 +1,2 @@
+In diesem Ordner werden alle Tasks abgelegt.
+Der SQL-Agent ist zur Ausfürhung nochwendig.
