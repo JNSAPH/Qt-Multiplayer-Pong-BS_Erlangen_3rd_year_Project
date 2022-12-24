@@ -7,9 +7,12 @@ Fungiert als Model
 - Player + eigenschaften
 - Zellen
 - idk irgendnen sht halt so noch
-- 
+  
 
-## wiep
+## Wie sieht die Tabellenstruktur aus?
+
+![DesignInit](DesignInit.png)
+
 ### asdasdasdadadasdasdasdasd
 #### asdasdasdasd
 ##### asdasdasdasdasd
