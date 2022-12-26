@@ -27,13 +27,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Install Doxygen
         run: sudo apt-get install -y doxygen
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v2
-
       - name: Build with Doxygen
         run: doxygen Documentation/Doxyfile
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
