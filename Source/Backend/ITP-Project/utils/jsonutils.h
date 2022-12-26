@@ -4,15 +4,39 @@
 #include <string>
 #include <sstream>
 #include <map>
-#include <variant> # std::get
-#include <tuple> # std::get
-#include <iostream> # std::cout
+#include <variant> // std::get
+#include <tuple> // std::get
+#include <iostream> // std::cout
 
+/**
+ * @brief A class for generating JSON strings from a map of key-value pairs.
+ */
 class JSONUtils
 {
 public:
+    /**
+     * @brief Constructs a new JSONUtils object.
+     */
     JSONUtils();
+
+    /**
+     * @brief A variant type that can hold int, bool, or std::string values.
+     */
     using Value = std::variant<int, bool, std::string>;
+
+    /**
+     * @brief Generates a JSON string from the given data.
+     * @param data A map of key-value pairs to include in the JSON string.
+     * @return The generated JSON string.
+     * @example
+     * std::map<std::string, JSONUtils::Value> data{
+        {"code", 200},
+        {"message", "JSON Generator works!"},
+        {"bool test", true}
+       };
+
+        std::string json = JSONUtils::generateJSON(data);
+     */
     static std::string generateJSON(const std::map<std::string, Value>& data);
 };
 
