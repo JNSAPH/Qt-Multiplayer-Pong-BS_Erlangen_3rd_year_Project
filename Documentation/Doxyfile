@@ -1,0 +1,40 @@
+# Doxygen configuration file
+
+# Project information
+PROJECT_NAME           = Space Invaders Backend
+PROJECT_NUMBER         = 1.0
+PROJECT_BRIEF          = My project description
+
+# Output formats
+GENERATE_HTML = YES
+GENERATE_MARKDOWN = YES
+GENERATE_LATEX = NO
+
+# Input
+RECURSIVE = YES
+INPUT = ../Source/Backend/ITP-Project/
+
+# Output directories
+OUTPUT_DIRECTORY = .
+HTML_OUTPUT            = html
+MARKDOWN_OUTPUT        = markdown
+
+# File patterns
+FILE_PATTERNS          = *.cpp \
+                         *.h
+
+# Exclude directories
+EXCLUDE_PATTERNS       = */build/* \
+                         */vendor/*
+
+# Source code browsing
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+# Markdown options
+MARKDOWN_SUPPORT       = YES
+MARKDOWN_AUTOLINKS     = YES
+MARKDOWN_USE_ROFF      = NO
+
+# Use the Qt help generator for Qt-based source code
+USE_QTHELP = YES

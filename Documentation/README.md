@@ -1,18 +1,37 @@
-# ITP-Project1 Documentation
-Notice that this is a rough draft and for now will only be note and store things for the final, actuall Documentation.
+# Doxygen Documentation Instructions
+To generate documentation using Doxygen, you need to have Doxygen installed on your system. Here's how you can install Doxygen on your system:
 
-## MariaDB Class
-You might encounter the Error:
+## Installing Doxygen
+1. Download the latest version of Doxygen from the official website: https://www.doxygen.nl/download.html
+2. Extract the downloaded archive to a location of your choice.
+3. Open a terminal and navigate to the extracted folder.
+4. Run the following command to install Doxygen:
 ```
-QSqlDatabase: QMYSQL driver not loaded
-QSqlDatabase: available drivers: QSQLITE QODBC QPSQL
-Error opening database: "Driver not loaded Driver not loaded"
+make install
 ```
 
-The QMYSQL Drivers are a plugin for the Qt framework that allow you to connect to MySQL databases using the QtSql module. The QMYSQL Drivers are implemented as a shared library and can be built from source or installed as precompiled binaries.
+This will install Doxygen on your system.
 
-To build the Dlls yourself follow the Steps at https://doc.qt.io/qt-6/sql-driver.html
+## Generating documentation
+Once Doxygen is installed, you can generate documentation by following these steps:
 
-**OR**
+1. Open a terminal and navigate to the directory where you have your source code and the Doxyfile configuration file.
+2. Run the following command to generate the documentation:
+```
+doxygen Doxyfile
+```
+This will generate the documentation in the format specified in the Doxyfile configuration file. By default, the documentation will be generated in the html folder.
 
-just use my precompiled Dlls located in **/Backend/Dlls/sqldrivers/**. Move everything in the sqldrivers folder to C:\Qt\6.4.1\mingw_64\plugins\sqldrivers and pray it works.
+You can also specify the path to the Doxyfile using the -c flag:
+```
+doxygen -c /path/to/doxyfile
+```
+This will generate the documentation using the specified Doxyfile configuration file.
+
+You can also generate the documentation in multiple formats by specifying the desired formats in the Doxyfile. For example, to generate both HTML and Markdown documentation, you can set the GENERATE_HTML and GENERATE_MARKDOWN options to YES in the Doxyfile.
+
+```
+GENERATE_HTML = YES
+GENERATE_MARKDOWN = YES
+```
+This will generate the documentation in both HTML and Markdown formats. The documentation will be generated in the html and markdown folders, respectively.
