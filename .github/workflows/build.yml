@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install QT dependencies
         run: |
+          sudo add-apt-repository universe
           sudo apt-get update
           sudo apt-get install -y qt5-default qtbase5-dev qtbase5-dev-tools
       - name: Build project
