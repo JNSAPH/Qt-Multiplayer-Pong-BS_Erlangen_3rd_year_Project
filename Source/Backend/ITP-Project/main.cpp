@@ -30,6 +30,8 @@ int main(int argc, char *argv[])
         qDebug() << tableName;
     }
 
+    db.printDebugTable("test_table");
+
     db.close();
 
 

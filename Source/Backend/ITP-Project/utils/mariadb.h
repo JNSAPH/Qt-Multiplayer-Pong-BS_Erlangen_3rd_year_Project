@@ -17,6 +17,8 @@ public:
     bool commit();
     bool rollback();
 
+    void printDebugTable(const QString& tableName);
+
     QSqlDatabase getM_DB();
 
 private:
