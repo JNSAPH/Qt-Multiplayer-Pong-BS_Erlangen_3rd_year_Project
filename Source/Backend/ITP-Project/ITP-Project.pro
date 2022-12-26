@@ -11,6 +11,8 @@ CONFIG -= app_bundle
 
 SOURCES += \
         main.cpp \
+        routes/httptestroute.cpp \
+        routes/jsontestroute.cpp \
         utils/jsonutils.cpp \
         utils/mariadb.cpp \
         utils/ws_utils.cpp \
@@ -22,6 +24,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    routes/httptestroute.h \
+    routes/iroutehandler.h \
+    routes/jsontestroute.h \
     utils/jsonutils.h \
     utils/mariadb.h \
     utils/ws_utils.h \

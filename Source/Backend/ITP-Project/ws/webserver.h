@@ -10,6 +10,7 @@
 
 #include <string>
 #include "../utils/ws_utils.h"
+#include "../routes/iroutehandler.h"
 
 /**
  * @class HttpServer
@@ -48,14 +49,16 @@ public:
     QString errorString() const;
 
     /**
-     * @brief Adds a new route to the server.
-     * @param path The path for the route.
-     * @param method The HTTP method for the route.
-     * @param callback The callback function to be called when a request for the route is received.
-     * @note The callback function should take a QTcpSocket and a QMap<QString, QString> as parameters.
-     * The QTcpSocket can be used to send a response to the client, and the QMap contains the request headers.
+     * @brief Adds a route to the server.
+     * @param path The path of the route to add.
+     * @param method The HTTP method to handle for the route.
+     * @param handler The IRouteHandler object that will handle the route.
+     * This method adds a route to the server and associates it with the given
+     * IRouteHandler object. When a request is received by the server with the
+     * specified path and method, the handleRoute method of the handler object
+     * will be called.
      */
-    void addRoute(const QString &path, const QString &method, std::function<void(QTcpSocket *, const QMap<QString, QString> &)> callback);
+    void addRoute(const QString &path, const QString &method, IRouteHandler *handler);
 
 protected:
 

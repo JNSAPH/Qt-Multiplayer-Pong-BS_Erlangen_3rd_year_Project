@@ -8,9 +8,11 @@ HttpServer::~HttpServer()
 {
 }
 
-void HttpServer::addRoute(const QString &path, const QString &method, std::function<void(QTcpSocket *, const QMap<QString, QString> &)> callback)
+void HttpServer::addRoute(const QString &path, const QString &method, IRouteHandler *handler)
 {
-    m_routes[path] = {method, callback};
+    m_routes[path] = {method, [handler](QTcpSocket *socket, const QMap<QString, QString> &parameters) {
+        handler->handleRoute(socket, parameters);
+    }};
 }
 
 bool HttpServer::start(quint16 port)

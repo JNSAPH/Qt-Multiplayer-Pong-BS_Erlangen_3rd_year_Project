@@ -5,9 +5,11 @@
 #include <fstream>
 
 #include "ws/webserver.h"
-#include "utils/ws_utils.h"
-#include "utils/jsonutils.h"
 #include "utils/mariadb.h"
+
+// Routes
+#include "routes/jsontestroute.h"
+#include "routes/httptestroute.h"
 
 int main(int argc, char *argv[])
 {
@@ -40,27 +42,9 @@ int main(int argc, char *argv[])
     // Create Server instance
     HttpServer server;
 
-    // JSON Test Route
-    server.addRoute("/json", "GET", [](QTcpSocket *socket, const QMap<QString, QString> &headers) {
-
-        std::map<std::string, JSONUtils::Value> data{
-          {"code", 200},
-          {"message", "JSON Generator works!"},
-          {"bool test", true}
-        };
-        std::string json = JSONUtils::generateJSON(data);
-        std::string response = WSUtils::createJSONResponse(json);
-
-        socket->write(response.c_str());
-        socket->close();
-    });
-
-    server.addRoute("/html", "GET", [](QTcpSocket *socket, const QMap<QString, QString> &headers) {
-        std::string response = WSUtils::createHTMLResponse("<h1>Sex ... mit männern </h1>");
-
-        socket->write(response.c_str());
-        socket->close();
-    });
+    // Routes
+    server.addRoute("/json", "GET", new JSONTestRoute());
+    server.addRoute("/http", "GET", new HTTPTestRoute());
 
 
     // Start the server
