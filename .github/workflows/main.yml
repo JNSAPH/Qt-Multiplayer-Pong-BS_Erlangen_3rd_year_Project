@@ -10,14 +10,14 @@ jobs:
         run: sudo apt-get install -y doxygen
       - name: Generate Doxygen documentation
         run: doxygen ./Documentation/Doxyfile
+      - name: Configure User Name
+        run: git config --global user.name "Actions"
+      - name: Configure Email
+        run: git config --global user.email "you@example.com"
       - name: Create documentation branch
         run: git branch documentation
       - name: Checkout documentation branch
         run: git checkout documentation
-      - name: Configure stuff
-        run: |
-        git config --global user.name "Actions"
-        git config --global user.email "you@example.com"
       - name: Add changes
         run: git add -A
       - name: Commit changes
