@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wsutils_0',['WSUtils',['../class_w_s_utils.html',1,'']]]
+  ['mariadb_0',['MariaDB',['../class_maria_d_b.html',1,'']]]
 ];

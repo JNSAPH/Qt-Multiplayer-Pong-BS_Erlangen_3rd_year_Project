@@ -105,9 +105,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aabcce95434dd04a301ddf5ca4e9c8a1f"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_http_server.html#aabcce95434dd04a301ddf5ca4e9c8a1f">errorString</a> () const</td></tr>
 <tr class="memdesc:aabcce95434dd04a301ddf5ca4e9c8a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a human-readable description of the last error that occurred.  <a href="class_http_server.html#aabcce95434dd04a301ddf5ca4e9c8a1f">More...</a><br /></td></tr>
 <tr class="separator:aabcce95434dd04a301ddf5ca4e9c8a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03e6115e3c889e58392d70f3f79c6013"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_http_server.html#a03e6115e3c889e58392d70f3f79c6013">addRoute</a> (const QString &amp;path, const QString &amp;method, std::function&lt; void(QTcpSocket *, const QMap&lt; QString, QString &gt; &amp;)&gt; callback)</td></tr>
-<tr class="memdesc:a03e6115e3c889e58392d70f3f79c6013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new route to the server.  <a href="class_http_server.html#a03e6115e3c889e58392d70f3f79c6013">More...</a><br /></td></tr>
-<tr class="separator:a03e6115e3c889e58392d70f3f79c6013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ad26699ab707c0a02c26caa58deb463"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_http_server.html#a6ad26699ab707c0a02c26caa58deb463">addRoute</a> (const QString &amp;path, const QString &amp;method, <a class="el" href="class_i_route_handler.html">IRouteHandler</a> *handler)</td></tr>
+<tr class="memdesc:a6ad26699ab707c0a02c26caa58deb463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a route to the server.  <a href="class_http_server.html#a6ad26699ab707c0a02c26caa58deb463">More...</a><br /></td></tr>
+<tr class="separator:a6ad26699ab707c0a02c26caa58deb463"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -146,8 +146,8 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a03e6115e3c889e58392d70f3f79c6013" name="a03e6115e3c889e58392d70f3f79c6013"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03e6115e3c889e58392d70f3f79c6013">&#9670;&#160;</a></span>addRoute()</h2>
+<a id="a6ad26699ab707c0a02c26caa58deb463" name="a6ad26699ab707c0a02c26caa58deb463"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ad26699ab707c0a02c26caa58deb463">&#9670;&#160;</a></span>addRoute()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,8 +167,8 @@ Protected Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::function&lt; void(QTcpSocket *, const QMap&lt; QString, QString &gt; &amp;)&gt;&#160;</td>
-          <td class="paramname"><em>callback</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_i_route_handler.html">IRouteHandler</a> *&#160;</td>
+          <td class="paramname"><em>handler</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -178,16 +178,17 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Adds a new route to the server. </p>
+<p>Adds a route to the server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>The path for the route. </td></tr>
-    <tr><td class="paramname">method</td><td>The HTTP method for the route. </td></tr>
-    <tr><td class="paramname">callback</td><td>The callback function to be called when a request for the route is received. </td></tr>
+    <tr><td class="paramname">path</td><td>The path of the route to add. </td></tr>
+    <tr><td class="paramname">method</td><td>The HTTP method to handle for the route. </td></tr>
+    <tr><td class="paramname">handler</td><td>The <a class="el" href="class_i_route_handler.html" title="An interface for handling HTTP route requests. This interface defines a method for handling HTTP rout...">IRouteHandler</a> object that will handle the route. This method adds a route to the server and associates it with the given <a class="el" href="class_i_route_handler.html" title="An interface for handling HTTP route requests. This interface defines a method for handling HTTP rout...">IRouteHandler</a> object. When a request is received by the server with the specified path and method, the handleRoute method of the handler object will be called. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>The callback function should take a QTcpSocket and a QMap&lt;QString, QString&gt; as parameters. The QTcpSocket can be used to send a response to the client, and the QMap contains the request headers. </dd></dl>
+
+<p class="reference">References <a class="el" href="class_i_route_handler.html#a1bea515342d5d0e43b6a004722cebd2e">IRouteHandler::handleRoute()</a>.</p>
 
 </div>
 </div>
