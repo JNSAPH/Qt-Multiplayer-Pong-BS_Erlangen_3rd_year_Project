@@ -14,9 +14,13 @@ jobs:
         run: git branch documentation
       - name: Checkout documentation branch
         run: git checkout documentation
+      - name: Configure stuff?
+        run: |
+        git config --global user.name "Actions"
+        git config --global user.email "you@example.com"
       - name: Add changes
         run: git add -A
       - name: Commit changes
-        run: git commit -m "Updated Doxygen documentation" --author="Actions <actions@email.com>"
+        run: git commit -m "Updated Doxygen documentation"
       - name: Push changes
         run: git push origin documentation
