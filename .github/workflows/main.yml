@@ -1,6 +1,8 @@
 name: Generate Doxygen documentation
-on: [push]
+#on: [push]
 
+
+# This doesn'work. I'll figure it out later
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,17 +12,7 @@ jobs:
         run: sudo apt-get install -y doxygen
       - name: Generate Doxygen documentation
         run: doxygen ./Documentation/Doxyfile
-      - name: Configure User Name
-        run: git config --global user.name "Actions"
-      - name: Configure Email
-        run: git config --global user.email "you@example.com"
-      - name: Create documentation branch
-        run: git branch documentation
-      - name: Checkout documentation branch
-        run: git checkout documentation
-      - name: Add changes
-        run: git add -A
-      - name: Commit changes
-        run: git commit -m "Updated Doxygen documentation"
-      - name: Push changes
-        run: git push origin documentation
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: '.'
