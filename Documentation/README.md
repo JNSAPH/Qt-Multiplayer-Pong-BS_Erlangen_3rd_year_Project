@@ -8,27 +8,11 @@ QSqlDatabase: QMYSQL driver not loaded
 QSqlDatabase: available drivers: QSQLITE QODBC QPSQL
 Error opening database: "Driver not loaded Driver not loaded"
 ```
-The QT Sql Library requires for you to install "MySQL Connector/C++". 
 
-To install the MySQL Connector/C++ library on Windows, you can follow these steps:
+The QMYSQL Drivers are a plugin for the Qt framework that allow you to connect to MySQL databases using the QtSql module. The QMYSQL Drivers are implemented as a shared library and can be built from source or installed as precompiled binaries.
 
-1. Download the MySQL Connector/C++ installer from the MySQL website.
-2. Run the installer and follow the prompts to complete the installation.
-3. Add the path to the MySQL Connector/C++ library to your system's PATH environment variable. This is usually C:\Program Files\MySQL\MySQL Connector C++ 8.0\lib.
-Once the MySQL Connector/C++ library is installed, you should be able to use the MariaDB class to connect to a MariaDB database.
+To build the Dlls yourself follow the Steps at https://doc.qt.io/qt-6/sql-driver.html
 
-On Linux, you can install the MySQL Connector/C++ library using the package manager of your distribution. For example, on Ubuntu, you can use the following command:
+**OR**
 
-```bash
-sudo apt-get install libmysqlcppconn7
-```
-This will install the MySQL Connector/C++ library and its dependencies. You may also need to install the **libqt5-mysql** package to use the QMYSQL driver with Qt's SQL module.
-
-Once the MySQL Connector/C++ library is installed, you should be able to use the MariaDB class to connect to a MariaDB database.
-
-This article may help too:
-https://doc.qt.io/qt-6/sql-driver.html#qmysql
-
-```bash
-cmake -G Ninja C:\Qt\6.4.1\Src\qtbase\src\plugins\sqldrivers -DCMAKE_INSTALL_PREFIX=C:\Qt\6.4.1\mingw_64 -DMySQL_INCLUDE_DIR="C:\mysql-8.0.31-winx64\include" -DMySQL_LIBRARY="C:\mysql-8.0.31-winx64\lib\libmysql.lib"
-```
+just use my precompiled Dlls located in **/Backend/Dlls/sqldrivers/**. Move everything in the sqldrivers folder to C:\Qt\6.4.1\mingw_64\plugins\sqldrivers and pray it works.

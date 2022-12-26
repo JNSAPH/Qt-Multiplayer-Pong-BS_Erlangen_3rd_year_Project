@@ -23,11 +23,11 @@ int main(int argc, char *argv[])
     }
 
     // Test
-    QSqlQuery query = db.exec("SELECT DATABASE();");
+    QSqlQuery query = db.exec("SELECT * FROM test_table;");
     qDebug() << db.getM_DB().lastError().text();
     while (query.next()) {
         QString tableName = query.value(0).toString();
-        qDebug() << "Table:" << tableName;
+        qDebug() << tableName;
     }
 
     db.close();
