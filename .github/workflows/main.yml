@@ -10,7 +10,13 @@ jobs:
         run: sudo apt-get install -y doxygen
       - name: Generate Doxygen documentation
         run: doxygen ./Documentation/Doxyfile
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: '.'
+      - name: Create documentation branch
+        run: git branch documentation
+      - name: Checkout documentation branch
+        run: git checkout documentation
+      - name: Add changes
+        run: git add -A
+      - name: Commit changes
+        run: git commit -m "Updated Doxygen documentation" --author="Actions <actions@email.com>"
+      - name: Push changes
+        run: git push origin documentation
