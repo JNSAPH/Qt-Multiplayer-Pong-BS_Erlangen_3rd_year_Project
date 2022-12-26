@@ -5,7 +5,6 @@
 #include <fstream>
 
 #include "ws/webserver.h"
-#include "utils/mariadb.h"
 
 // Routes
 #include "routes/jsontestroute.h"
@@ -14,31 +13,7 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
-
-    // Database Connection
-    MariaDB db("85.214.124.142", "itpundefined", "RNDoi76fYcYpesKEjPyk", "testITP");
-    if (!db.open()) {
-        qCritical() << "Error opening database:" << db.getM_DB().lastError().text();
-        return 1;
-    } else {
-        std::cout << "Connected to DB" << std::endl;
-    }
-
-    // Test
-    QSqlQuery query = db.exec("SELECT * FROM test_table;");
-    qDebug() << db.getM_DB().lastError().text();
-    while (query.next()) {
-        QString tableName = query.value(0).toString();
-        qDebug() << tableName;
-    }
-
-    db.printDebugTable("test_table");
-
-    db.close();
-
-
-
-
+    
     // Create Server instance
     HttpServer server;
 

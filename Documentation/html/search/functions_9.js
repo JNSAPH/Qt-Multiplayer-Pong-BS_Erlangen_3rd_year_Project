@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['printdebugtable_0',['printDebugTable',['../class_maria_d_b.html#a7d452133672b68de5d598f99f159b8cc',1,'MariaDB']]]
+  ['rollback_0',['rollback',['../class_maria_d_b.html#a33d16ba94e11b79ba4e3da02c754979c',1,'MariaDB']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rollback_0',['rollback',['../class_maria_d_b.html#a33d16ba94e11b79ba4e3da02c754979c',1,'MariaDB']]]
+  ['start_0',['start',['../class_http_server.html#ace9e1de09a040ce49d059b4baf06c471',1,'HttpServer']]]
 ];

@@ -30,6 +30,7 @@ public:
      * @param password The password to use for authentication.
      * @param database The name of the database to connect to.
      * @param port The port number to use for the connection (default: 3306).
+     * @example example_mariadb_usage.cpp
      */
     MariaDB(const QString &hostname, const QString &username, const QString &password, const QString &database, int port = 3306);
 

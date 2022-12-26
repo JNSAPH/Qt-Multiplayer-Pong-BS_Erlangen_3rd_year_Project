@@ -18,7 +18,8 @@
  * This class is a subclass of QTcpServer and handles incoming HTTP requests.
  * It listens for incoming connections on a specified port and invokes a callback function
  * for each request based on the path and method specified in the request.
- * @note This class does not handle multiple requests concurrently. It processes one request at a time.
+ * @note This class does not handle multiple requests concurrently. 
+ * It processes one request at a time.
  */
 class HttpServer : public QTcpServer
 {
@@ -26,6 +27,7 @@ class HttpServer : public QTcpServer
 public:
     /**
      * @brief Constructs an HttpServer object with the given parent.
+     * @example example_http_usage.cpp
      * @param parent The QObject parent.
      */
     HttpServer(QObject *parent = 0);
