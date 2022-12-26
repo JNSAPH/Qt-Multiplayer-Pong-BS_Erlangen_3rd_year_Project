@@ -14,7 +14,7 @@ jobs:
         run: git branch documentation
       - name: Checkout documentation branch
         run: git checkout documentation
-      - name: Configure stuff?
+      - name: Configure stuff
         run: |
         git config --global user.name "Actions"
         git config --global user.email "you@example.com"
