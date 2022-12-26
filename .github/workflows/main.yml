@@ -7,8 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Doxygen
-        run: |
-          apt-get update
-          apt-get install -y doxygen
+        run: apt-get install -y doxygen
       - name: Generate Doxygen documentation
         run: doxygen ../../Documentation/Doxyfile
