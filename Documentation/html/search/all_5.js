@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_0',['Value',['../class_j_s_o_n_utils.html#afddf2de0ba4ca557fb4c1971e7a71074',1,'JSONUtils']]]
+  ['mariadb_0',['MariaDB',['../class_maria_d_b.html',1,'MariaDB'],['../class_maria_d_b.html#aafabd128510fe6bf260389affb183721',1,'MariaDB::MariaDB()']]]
 ];

@@ -28,14 +28,6 @@ public:
      * @brief Generates a JSON string from the given data.
      * @param data A map of key-value pairs to include in the JSON string.
      * @return The generated JSON string.
-     * @example
-     * std::map<std::string, JSONUtils::Value> data{
-        {"code", 200},
-        {"message", "JSON Generator works!"},
-        {"bool test", true}
-       };
-
-        std::string json = JSONUtils::generateJSON(data);
      */
     static std::string generateJSON(const std::map<std::string, Value>& data);
 };

@@ -19,22 +19,6 @@
  * The Qt Company does not provide a pre-built QMYSQL driver for Windows, so you will have to build them yourself or use my prebuilt Dlls.
  * To build them yourself, follow the instructions on the [Qt Wiki](https://doc.qt.io/qt-6/sql-driver.html).
  * To download my prebuilt Dlls, go to the /Source/Dlls/sqldrivers and copy the files inside sqldrivers into **C:\Qt\6.4.1\mingw_64\plugins\sqldrivers**. 
- *
- * @example
- * // Connect to a MariaDB database
- * MariaDB db("localhost", "username", "password", "database_name");
- * db.open();
- *
- * // Execute a SELECT query
- * QSqlQuery query = db.exec("SELECT * FROM users WHERE name = 'John'");
- *
- * // Iterate over the query results
- * while (query.next()) {
- *     std::cout << query.value("id").toInt() << ": " << query.value("name").toString().toStdString() << std::endl;
- * }
- *
- * // Close the database connection
- * db.close();
  */
 class MariaDB
 {
@@ -69,90 +53,30 @@ public:
      * @brief Executes a SQL query on the MariaDB database.
      * @param query The SQL query to execute.
      * @return A QSqlQuery object that can be used to iterate over the query results.
-     *
-     * @example
-     * // Execute a SELECT query
-     * QSqlQuery query = db.exec("SELECT * FROM users WHERE name = 'John'");
-     *
-     * // Iterate over the query results
-     * while (query.next()) {
-     *     std::cout << query.value("id").toInt() << ": " << query.value("name").toString().toStdString() << std::endl;
-     * }
      */
     QSqlQuery exec(const QString &query);
 
     /**
      * @brief Begins a transaction on the MariaDB database.
      * @return true if the transaction was successfully started, false otherwise.
-     *
-     * @example
-     * // Start a transaction
-     * if (db.transaction()) {
-     *     // Execute some queries
-     *     db.exec("INSERT INTO users (name) VALUES ('John')");
-     *     db.exec("INSERT INTO users (name) VALUES ('Jane')");
-     *
-     *     // Commit the transaction
-     *     db.commit();
-     * }
      */
     bool transaction();
 
     /**
      * @brief Commits a transaction on the MariaDB database.
      * @return true if the transaction was successfully committed, false otherwise.
-     *
-     * @example
-     * // Start a transaction
-     * if (db.transaction()) {
-     *     // Execute some queries
-     *     db.exec("INSERT INTO users (name) VALUES ('John')");
-     *     db.exec("INSERT INTO users (name) VALUES ('Jane')");
-     *
-     *     // Commit the transaction
-     *     if (db.commit()) {
-     *         std::cout << "Transaction committed" << std::endl;
-     *     } else {
-     *         std::cerr << "Error committing transaction: " << db.getM_DB().lastError().text().toStdString() << std::endl;
-     *     }
-     * }
      */
     bool commit();
 
     /**
      * @brief Rolls back a transaction on the MariaDB database.
      * @return true if the transaction was successfully rolled back, false otherwise.
-     *
-     * @example
-     * // Start a transaction
-     * if (db.transaction()) {
-     *     // Execute some queries
-     *     db.exec("INSERT INTO users (name) VALUES ('John')");
-     *     db.exec("INSERT INTO users (name) VALUES ('Jane')");
-     *
-     *     // Roll back the transaction
-     *     if (db.rollback()) {
-     *         std::cout << "Transaction rolled back" << std::endl;
-     *     } else {
-     *         std::cerr << "Error rolling back transaction: " << db.getM_DB().lastError().text().toStdString() << std::endl;
-     *     }
-     * }
      */
     bool rollback();
 
     /**
      * @brief Prints the contents of a table to the console in a table-like format.
      * @param tableName The name of the table to print.
-     *
-     * @example
-     * db.printDebugTable("users");
-     * // Output:
-     * // +----+-------+
-     * // | id | name  |
-     * // +----+-------+
-     * // | 1  | John  |
-     * // | 2  | Jane  |
-     * // +----+-------+
      */
     void
     printDebugTable(const QString &tableName);
@@ -160,12 +84,6 @@ public:
     /**
      * @brief Returns the QSqlDatabase object being used by the MariaDB class.
      * @return The QSqlDatabase object.
-     *
-     * @example
-     * // Get the QSqlDatabase object
-     * QSqlDatabase db = mariadb.getM_DB();
-     * // Use the object to execute a query
-     * QSqlQuery query = db.exec("SELECT * FROM users");
      */
     QSqlDatabase getM_DB();
 

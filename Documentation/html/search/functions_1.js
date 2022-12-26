@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jsonutils_0',['JSONUtils',['../class_j_s_o_n_utils.html#a72c83022c0d4569b20fec017b48e6cb5',1,'JSONUtils']]]
+  ['exec_0',['exec',['../class_maria_d_b.html#ae8de8c744a81c5b54bb7223bed559b6d',1,'MariaDB']]]
 ];

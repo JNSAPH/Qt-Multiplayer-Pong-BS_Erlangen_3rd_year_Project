@@ -93,18 +93,18 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    <span class="keywordtype">void</span> <a id="a3" name="a3"></a><a class="code hl_function" href="class_maria_d_b.html#a50880e4db40ad773ce2de97b5cef1031">close</a>();</div>
 <div class="line"> </div>
-<div class="line">    QSqlQuery exec(<span class="keyword">const</span> QString &amp;query);</div>
+<div class="line">    QSqlQuery <a id="a4" name="a4"></a><a class="code hl_function" href="class_maria_d_b.html#ae8de8c744a81c5b54bb7223bed559b6d">exec</a>(<span class="keyword">const</span> QString &amp;query);</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordtype">bool</span> transaction();</div>
+<div class="line">    <span class="keywordtype">bool</span> <a id="a5" name="a5"></a><a class="code hl_function" href="class_maria_d_b.html#aa3b490aa72661b14a97769f322563358">transaction</a>();</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordtype">bool</span> commit();</div>
+<div class="line">    <span class="keywordtype">bool</span> <a id="a6" name="a6"></a><a class="code hl_function" href="class_maria_d_b.html#a59fcf4d01de6fd634d2e2f1e7c28349b">commit</a>();</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordtype">bool</span> rollback();</div>
+<div class="line">    <span class="keywordtype">bool</span> <a id="a7" name="a7"></a><a class="code hl_function" href="class_maria_d_b.html#a33d16ba94e11b79ba4e3da02c754979c">rollback</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordtype">void</span></div>
-<div class="line">    printDebugTable(<span class="keyword">const</span> QString &amp;tableName);</div>
+<div class="line">    <a id="a8" name="a8"></a><a class="code hl_function" href="class_maria_d_b.html#a7d452133672b68de5d598f99f159b8cc">printDebugTable</a>(<span class="keyword">const</span> QString &amp;tableName);</div>
 <div class="line"> </div>
-<div class="line">    QSqlDatabase getM_DB();</div>
+<div class="line">    QSqlDatabase <a id="a9" name="a9"></a><a class="code hl_function" href="class_maria_d_b.html#a0558c4c6bdbec5b7335413a324ec0103">getM_DB</a>();</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">private</span>:</div>
 <div class="line">    QString m_hostname;</div>
@@ -122,9 +122,15 @@ $(function() {
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#endif </span><span class="comment">// MARIADB_H</span></div>
 <div class="ttc" id="aclass_maria_d_b_html"><div class="ttname"><a href="class_maria_d_b.html">MariaDB</a></div><div class="ttdoc">A class for connecting to and interacting with a MariaDB database.</div><div class="ttdef"><b>Definition:</b> mariadb.h:40</div></div>
+<div class="ttc" id="aclass_maria_d_b_html_a0558c4c6bdbec5b7335413a324ec0103"><div class="ttname"><a href="class_maria_d_b.html#a0558c4c6bdbec5b7335413a324ec0103">MariaDB::getM_DB</a></div><div class="ttdeci">QSqlDatabase getM_DB()</div><div class="ttdef"><b>Definition:</b> mariadb.cpp:54</div></div>
 <div class="ttc" id="aclass_maria_d_b_html_a2f0be3b5e21f92343009b561c61db877"><div class="ttname"><a href="class_maria_d_b.html#a2f0be3b5e21f92343009b561c61db877">MariaDB::open</a></div><div class="ttdeci">bool open()</div><div class="ttdoc">Opens a connection to the MariaDB database.</div><div class="ttdef"><b>Definition:</b> mariadb.cpp:18</div></div>
+<div class="ttc" id="aclass_maria_d_b_html_a33d16ba94e11b79ba4e3da02c754979c"><div class="ttname"><a href="class_maria_d_b.html#a33d16ba94e11b79ba4e3da02c754979c">MariaDB::rollback</a></div><div class="ttdeci">bool rollback()</div><div class="ttdef"><b>Definition:</b> mariadb.cpp:49</div></div>
 <div class="ttc" id="aclass_maria_d_b_html_a50880e4db40ad773ce2de97b5cef1031"><div class="ttname"><a href="class_maria_d_b.html#a50880e4db40ad773ce2de97b5cef1031">MariaDB::close</a></div><div class="ttdeci">void close()</div><div class="ttdoc">Closes the connection to the MariaDB database.</div><div class="ttdef"><b>Definition:</b> mariadb.cpp:29</div></div>
+<div class="ttc" id="aclass_maria_d_b_html_a59fcf4d01de6fd634d2e2f1e7c28349b"><div class="ttname"><a href="class_maria_d_b.html#a59fcf4d01de6fd634d2e2f1e7c28349b">MariaDB::commit</a></div><div class="ttdeci">bool commit()</div><div class="ttdef"><b>Definition:</b> mariadb.cpp:44</div></div>
 <div class="ttc" id="aclass_maria_d_b_html_a6ba055e509afe45a77c67f49a00ade16"><div class="ttname"><a href="class_maria_d_b.html#a6ba055e509afe45a77c67f49a00ade16">MariaDB::~MariaDB</a></div><div class="ttdeci">~MariaDB()</div><div class="ttdoc">Destroys the MariaDB object and closes the database connection.</div><div class="ttdef"><b>Definition:</b> mariadb.cpp:13</div></div>
+<div class="ttc" id="aclass_maria_d_b_html_a7d452133672b68de5d598f99f159b8cc"><div class="ttname"><a href="class_maria_d_b.html#a7d452133672b68de5d598f99f159b8cc">MariaDB::printDebugTable</a></div><div class="ttdeci">void printDebugTable(const QString &amp;tableName)</div><div class="ttdef"><b>Definition:</b> mariadb.cpp:58</div></div>
+<div class="ttc" id="aclass_maria_d_b_html_aa3b490aa72661b14a97769f322563358"><div class="ttname"><a href="class_maria_d_b.html#aa3b490aa72661b14a97769f322563358">MariaDB::transaction</a></div><div class="ttdeci">bool transaction()</div><div class="ttdef"><b>Definition:</b> mariadb.cpp:39</div></div>
+<div class="ttc" id="aclass_maria_d_b_html_ae8de8c744a81c5b54bb7223bed559b6d"><div class="ttname"><a href="class_maria_d_b.html#ae8de8c744a81c5b54bb7223bed559b6d">MariaDB::exec</a></div><div class="ttdeci">QSqlQuery exec(const QString &amp;query)</div><div class="ttdef"><b>Definition:</b> mariadb.cpp:34</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
