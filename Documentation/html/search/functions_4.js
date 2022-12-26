@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mariadb_0',['MariaDB',['../class_maria_d_b.html#aafabd128510fe6bf260389affb183721',1,'MariaDB']]]
+  ['httpserver_0',['HttpServer',['../class_http_server.html#ae0da1e1f4a0ce4530e84ffa24804d6e7',1,'HttpServer']]]
 ];

@@ -78,6 +78,11 @@ $(function() {
   <div class="headertitle"><div class="title">HttpServer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A TCP server that handles HTTP requests This class is a subclass of QTcpServer and handles incoming HTTP requests. It listens for incoming connections on a specified port and invokes a callback function for each request based on the path and method specified in the request.  
+ <a href="class_http_server.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="webserver_8h_source.html">webserver.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for HttpServer:</div>
 <div class="dyncontent">
@@ -87,25 +92,189 @@ Inheritance diagram for HttpServer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae0da1e1f4a0ce4530e84ffa24804d6e7"><td class="memItemLeft" align="right" valign="top"><a id="ae0da1e1f4a0ce4530e84ffa24804d6e7" name="ae0da1e1f4a0ce4530e84ffa24804d6e7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>HttpServer</b> (QObject *parent=0)</td></tr>
+<tr class="memitem:ae0da1e1f4a0ce4530e84ffa24804d6e7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_http_server.html#ae0da1e1f4a0ce4530e84ffa24804d6e7">HttpServer</a> (QObject *parent=0)</td></tr>
+<tr class="memdesc:ae0da1e1f4a0ce4530e84ffa24804d6e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an <a class="el" href="class_http_server.html" title="A TCP server that handles HTTP requests This class is a subclass of QTcpServer and handles incoming H...">HttpServer</a> object with the given parent.  <a href="class_http_server.html#ae0da1e1f4a0ce4530e84ffa24804d6e7">More...</a><br /></td></tr>
 <tr class="separator:ae0da1e1f4a0ce4530e84ffa24804d6e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace9e1de09a040ce49d059b4baf06c471"><td class="memItemLeft" align="right" valign="top"><a id="ace9e1de09a040ce49d059b4baf06c471" name="ace9e1de09a040ce49d059b4baf06c471"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> (quint16 port)</td></tr>
+<tr class="memitem:a5e9887bc9a815fc4b2b506a335d916af"><td class="memItemLeft" align="right" valign="top"><a id="a5e9887bc9a815fc4b2b506a335d916af" name="a5e9887bc9a815fc4b2b506a335d916af"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~HttpServer</b> ()</td></tr>
+<tr class="memdesc:a5e9887bc9a815fc4b2b506a335d916af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="class_http_server.html" title="A TCP server that handles HTTP requests This class is a subclass of QTcpServer and handles incoming H...">HttpServer</a> object. <br /></td></tr>
+<tr class="separator:a5e9887bc9a815fc4b2b506a335d916af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace9e1de09a040ce49d059b4baf06c471"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_http_server.html#ace9e1de09a040ce49d059b4baf06c471">start</a> (quint16 port)</td></tr>
+<tr class="memdesc:ace9e1de09a040ce49d059b4baf06c471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts listening for incoming connections on the specified port.  <a href="class_http_server.html#ace9e1de09a040ce49d059b4baf06c471">More...</a><br /></td></tr>
 <tr class="separator:ace9e1de09a040ce49d059b4baf06c471"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabcce95434dd04a301ddf5ca4e9c8a1f"><td class="memItemLeft" align="right" valign="top"><a id="aabcce95434dd04a301ddf5ca4e9c8a1f" name="aabcce95434dd04a301ddf5ca4e9c8a1f"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>errorString</b> () const</td></tr>
+<tr class="memitem:aabcce95434dd04a301ddf5ca4e9c8a1f"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_http_server.html#aabcce95434dd04a301ddf5ca4e9c8a1f">errorString</a> () const</td></tr>
+<tr class="memdesc:aabcce95434dd04a301ddf5ca4e9c8a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a human-readable description of the last error that occurred.  <a href="class_http_server.html#aabcce95434dd04a301ddf5ca4e9c8a1f">More...</a><br /></td></tr>
 <tr class="separator:aabcce95434dd04a301ddf5ca4e9c8a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03e6115e3c889e58392d70f3f79c6013"><td class="memItemLeft" align="right" valign="top"><a id="a03e6115e3c889e58392d70f3f79c6013" name="a03e6115e3c889e58392d70f3f79c6013"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addRoute</b> (const QString &amp;path, const QString &amp;method, std::function&lt; void(QTcpSocket *, const QMap&lt; QString, QString &gt; &amp;)&gt; callback)</td></tr>
+<tr class="memitem:a03e6115e3c889e58392d70f3f79c6013"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_http_server.html#a03e6115e3c889e58392d70f3f79c6013">addRoute</a> (const QString &amp;path, const QString &amp;method, std::function&lt; void(QTcpSocket *, const QMap&lt; QString, QString &gt; &amp;)&gt; callback)</td></tr>
+<tr class="memdesc:a03e6115e3c889e58392d70f3f79c6013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new route to the server.  <a href="class_http_server.html#a03e6115e3c889e58392d70f3f79c6013">More...</a><br /></td></tr>
 <tr class="separator:a03e6115e3c889e58392d70f3f79c6013"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:aa317938629e0e36ee2a2ae30a8416df7"><td class="memItemLeft" align="right" valign="top"><a id="aa317938629e0e36ee2a2ae30a8416df7" name="aa317938629e0e36ee2a2ae30a8416df7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>incomingConnection</b> (qintptr socketDescriptor)</td></tr>
+<tr class="memitem:aa317938629e0e36ee2a2ae30a8416df7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_http_server.html#aa317938629e0e36ee2a2ae30a8416df7">incomingConnection</a> (qintptr socketDescriptor)</td></tr>
+<tr class="memdesc:aa317938629e0e36ee2a2ae30a8416df7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles an incoming connection request.  <a href="class_http_server.html#aa317938629e0e36ee2a2ae30a8416df7">More...</a><br /></td></tr>
 <tr class="separator:aa317938629e0e36ee2a2ae30a8416df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >A TCP server that handles HTTP requests This class is a subclass of QTcpServer and handles incoming HTTP requests. It listens for incoming connections on a specified port and invokes a callback function for each request based on the path and method specified in the request. </p>
+<dl class="section note"><dt>Note</dt><dd>This class does not handle multiple requests concurrently. It processes one request at a time. </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae0da1e1f4a0ce4530e84ffa24804d6e7" name="ae0da1e1f4a0ce4530e84ffa24804d6e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0da1e1f4a0ce4530e84ffa24804d6e7">&#9670;&#160;</a></span>HttpServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HttpServer::HttpServer </td>
+          <td>(</td>
+          <td class="paramtype">QObject *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs an <a class="el" href="class_http_server.html" title="A TCP server that handles HTTP requests This class is a subclass of QTcpServer and handles incoming H...">HttpServer</a> object with the given parent. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>The QObject parent. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a03e6115e3c889e58392d70f3f79c6013" name="a03e6115e3c889e58392d70f3f79c6013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03e6115e3c889e58392d70f3f79c6013">&#9670;&#160;</a></span>addRoute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HttpServer::addRoute </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>method</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void(QTcpSocket *, const QMap&lt; QString, QString &gt; &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>callback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a new route to the server. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path for the route. </td></tr>
+    <tr><td class="paramname">method</td><td>The HTTP method for the route. </td></tr>
+    <tr><td class="paramname">callback</td><td>The callback function to be called when a request for the route is received. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The callback function should take a QTcpSocket and a QMap&lt;QString, QString&gt; as parameters. The QTcpSocket can be used to send a response to the client, and the QMap contains the request headers. </dd></dl>
+
+</div>
+</div>
+<a id="aabcce95434dd04a301ddf5ca4e9c8a1f" name="aabcce95434dd04a301ddf5ca4e9c8a1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabcce95434dd04a301ddf5ca4e9c8a1f">&#9670;&#160;</a></span>errorString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString HttpServer::errorString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a human-readable description of the last error that occurred. </p>
+<dl class="section return"><dt>Returns</dt><dd>A QString containing the error description. </dd></dl>
+
+</div>
+</div>
+<a id="aa317938629e0e36ee2a2ae30a8416df7" name="aa317938629e0e36ee2a2ae30a8416df7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa317938629e0e36ee2a2ae30a8416df7">&#9670;&#160;</a></span>incomingConnection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HttpServer::incomingConnection </td>
+          <td>(</td>
+          <td class="paramtype">qintptr&#160;</td>
+          <td class="paramname"><em>socketDescriptor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Handles an incoming connection request. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">socketDescriptor</td><td>The descriptor for the incoming connection. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This method is called by the operating system when a new connection is requested. </dd></dl>
+
+<p class="reference">References <a class="el" href="class_w_s_utils.html#aadc53e7c82e1ce749951848198e742ae">WSUtils::createJSONResponse()</a>, and <a class="el" href="class_w_s_utils.html#a0735f8a369eee7445d15e5fb7dcc5bf2">WSUtils::isAllowedMethod()</a>.</p>
+
+</div>
+</div>
+<a id="ace9e1de09a040ce49d059b4baf06c471" name="ace9e1de09a040ce49d059b4baf06c471"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace9e1de09a040ce49d059b4baf06c471">&#9670;&#160;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool HttpServer::start </td>
+          <td>(</td>
+          <td class="paramtype">quint16&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts listening for incoming connections on the specified port. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port number to listen on. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the server was successfully started, false otherwise. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/JNSAP/Documents/GitHub/ITP-Project-1/Source/Backend/ITP-Project/ws/<a class="el" href="webserver_8h_source.html">webserver.h</a></li>
 <li>C:/Users/JNSAP/Documents/GitHub/ITP-Project-1/Source/Backend/ITP-Project/ws/webserver.cpp</li>

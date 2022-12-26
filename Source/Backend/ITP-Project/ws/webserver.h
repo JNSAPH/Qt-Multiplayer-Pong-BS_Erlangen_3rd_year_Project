@@ -11,25 +11,78 @@
 #include <string>
 #include "../utils/ws_utils.h"
 
+/**
+ * @class HttpServer
+ * @brief A TCP server that handles HTTP requests
+ * This class is a subclass of QTcpServer and handles incoming HTTP requests.
+ * It listens for incoming connections on a specified port and invokes a callback function
+ * for each request based on the path and method specified in the request.
+ * @note This class does not handle multiple requests concurrently. It processes one request at a time.
+ */
 class HttpServer : public QTcpServer
 {
     Q_OBJECT
 public:
+    /**
+     * @brief Constructs an HttpServer object with the given parent.
+     * @param parent The QObject parent.
+     */
     HttpServer(QObject *parent = 0);
+
+    /**
+     * @brief Destroys the HttpServer object.
+     */
     ~HttpServer();
+
+    /**
+     * @brief Starts listening for incoming connections on the specified port.
+     * @param port The port number to listen on.
+     * @return true if the server was successfully started, false otherwise.
+     */
     bool start(quint16 port);
+
+    /**
+     * @brief Returns a human-readable description of the last error that occurred.
+     * @return A QString containing the error description.
+     */
     QString errorString() const;
+
+    /**
+     * @brief Adds a new route to the server.
+     * @param path The path for the route.
+     * @param method The HTTP method for the route.
+     * @param callback The callback function to be called when a request for the route is received.
+     * @note The callback function should take a QTcpSocket and a QMap<QString, QString> as parameters.
+     * The QTcpSocket can be used to send a response to the client, and the QMap contains the request headers.
+     */
     void addRoute(const QString &path, const QString &method, std::function<void(QTcpSocket *, const QMap<QString, QString> &)> callback);
 
 protected:
+
+    /**
+     * @brief Handles an incoming connection request.
+     * @param socketDescriptor The descriptor for the incoming connection.
+     * @note This method is called by the operating system when a new connection is requested.
+     */
     void incomingConnection(qintptr socketDescriptor);
 
 private:
+    /**
+     * @class Route
+     * @brief A struct representing a route in the HTTP server. A route consists of an HTTP method (e.g. GET, POST) and a callback function that is called when a request matching the method and path of the route is received.
+     * @var Route::method The HTTP method for the route.
+     * @var Route::callback The callback function for the route. It takes in a pointer to a QTcpSocket representing the client and a QMap containing the request parameters as arguments.
+     */
     struct Route
     {
         QString method;
         std::function<void(QTcpSocket *, const QMap<QString, QString> &)> callback;
     };
+
+    /**
+    * @var QMap<QString, Route> m_routes
+    * @brief A map of routes in the HTTP server, indexed by the path of the route.
+    */
     QMap<QString, Route> m_routes;
 };
 

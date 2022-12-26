@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['transaction_0',['transaction',['../class_maria_d_b.html#aa3b490aa72661b14a97769f322563358',1,'MariaDB']]]
+  ['open_0',['open',['../class_maria_d_b.html#a2f0be3b5e21f92343009b561c61db877',1,'MariaDB']]]
 ];

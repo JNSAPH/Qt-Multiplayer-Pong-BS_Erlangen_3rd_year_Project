@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['printdebugtable_0',['printDebugTable',['../class_maria_d_b.html#a7d452133672b68de5d598f99f159b8cc',1,'MariaDB']]]
+  ['mariadb_0',['MariaDB',['../class_maria_d_b.html',1,'MariaDB'],['../class_maria_d_b.html#aafabd128510fe6bf260389affb183721',1,'MariaDB::MariaDB()']]]
 ];

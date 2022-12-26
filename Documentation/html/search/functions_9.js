@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7emariadb_0',['~MariaDB',['../class_maria_d_b.html#a6ba055e509afe45a77c67f49a00ade16',1,'MariaDB']]]
+  ['printdebugtable_0',['printDebugTable',['../class_maria_d_b.html#a7d452133672b68de5d598f99f159b8cc',1,'MariaDB']]]
 ];

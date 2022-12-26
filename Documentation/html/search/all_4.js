@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jsonutils_0',['JSONUtils',['../class_j_s_o_n_utils.html',1,'JSONUtils'],['../class_j_s_o_n_utils.html#a72c83022c0d4569b20fec017b48e6cb5',1,'JSONUtils::JSONUtils()']]]
+  ['httpserver_0',['HttpServer',['../class_http_server.html',1,'HttpServer'],['../class_http_server.html#ae0da1e1f4a0ce4530e84ffa24804d6e7',1,'HttpServer::HttpServer()']]]
 ];
