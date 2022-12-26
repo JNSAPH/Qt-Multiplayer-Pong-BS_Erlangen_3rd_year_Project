@@ -1,0 +1,21 @@
+name: Generate Doxygen documentation
+on: [push]
+
+jobs: 
+  doygen:
+    name: Generate Doxygen Documentation
+    runs-on: ubuntu-last
+    steps:
+      - name: Install dependencies
+        uses: actions/setuo-python@v2
+        with:
+          python-version: 3.7
+      - name: Install Doxygen
+        run: sudo apt-get install doxygen
+      - name: Generate Doxygen documentation
+        run: doxygen Doxyfile
+      - name: Upload documentation
+        uses: actions/upload-artifact@v2
+        with: 
+          name: documentation
+          path: html
