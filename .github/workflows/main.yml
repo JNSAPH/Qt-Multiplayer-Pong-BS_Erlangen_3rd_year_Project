@@ -21,10 +21,6 @@ jobs:
         run: git config --global user.name "Actions"
       - name: Configure Email
         run: git config --global user.email "you@example.com"
-      - name: Create documentation branch
-        run: git branch documentation
-      - name: Checkout documentation branch
-        run: git checkout documentation
       - name: Add changes
         run: git add -A
       - name: Commit changes
