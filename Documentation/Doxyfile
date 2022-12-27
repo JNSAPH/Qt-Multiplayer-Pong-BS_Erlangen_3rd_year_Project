@@ -7,7 +7,6 @@ PROJECT_BRIEF          = My project description
 
 # Output formats
 GENERATE_HTML = YES
-GENERATE_MARKDOWN = YES
 GENERATE_LATEX = NO
 
 # Input
@@ -16,8 +15,7 @@ INPUT = ../Source/Backend/ITP-Project/
 
 # Output directories
 OUTPUT_DIRECTORY = .
-HTML_OUTPUT            = html
-MARKDOWN_OUTPUT        = markdown
+HTML_OUTPUT            = Source
 
 # File patterns
 FILE_PATTERNS          = *.cpp \
