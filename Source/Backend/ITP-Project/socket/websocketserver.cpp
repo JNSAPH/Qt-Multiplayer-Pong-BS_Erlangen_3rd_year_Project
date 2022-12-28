@@ -30,7 +30,11 @@ void WebSocketServer::onNewConnection() {
     m_sockets.append(socket);
 
     // Send a greeting message to the client
-    socket->sendTextMessage(QStringLiteral("Connection established to SocketServer!"));
+    std::map<std::string, JSONUtils::Value> data{
+      {"code", 200},
+      {"message", "Connection established to SocketServer!"}
+    };
+    socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
 }
 
 void WebSocketServer::onTextMessageReceived(QString message) {
@@ -39,7 +43,12 @@ void WebSocketServer::onTextMessageReceived(QString message) {
     // Send a response back to the client
     QWebSocket *senderSocket = qobject_cast<QWebSocket *>(sender());
     if (senderSocket) {
-        senderSocket->sendTextMessage(QStringLiteral("Received Message: ") + message);
+        std::map<std::string, JSONUtils::Value> data{
+          {"code", 201},
+          {"message", "Received Message!"},
+          {"received_message", message.toStdString()}
+        };
+        senderSocket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
     }
 }
 
@@ -49,7 +58,12 @@ void WebSocketServer::onBinaryMessageReceived(QByteArray message) {
     // Send a response back to the client
     QWebSocket *senderSocket = qobject_cast<QWebSocket *>(sender());
     if (senderSocket) {
-        senderSocket->sendBinaryMessage(QByteArrayLiteral("Received Binary Message: ") + message);
+        std::map<std::string, JSONUtils::Value> data{
+          {"code", 202},
+          {"message", "Received Binary Message!"},
+          {"received_message", message.toStdString()}
+        };
+        senderSocket->sendBinaryMessage(QString::fromStdString(JSONUtils::generateJSON(data)).toUtf8());
     }
 }
 

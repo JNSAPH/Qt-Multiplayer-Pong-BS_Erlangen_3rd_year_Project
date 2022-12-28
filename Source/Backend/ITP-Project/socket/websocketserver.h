@@ -7,6 +7,8 @@
 #include <QWebSocket>
 #include <QWebSocketServer>
 
+#include "../utils/jsonutils.h"
+
 /**
  * @class WebSocketServer
  * @brief A class for managing WebSocket connections.
@@ -15,6 +17,10 @@
  * QList of QWebSocket objects. It provides methods for handling incoming
  * messages, establishing new connections, and broadcasting messages to all
  * connected clients.
+ * @note
+ * Code 200 - Connection established
+ * Code 201 - Received Message
+ * Code 202 - Received Binary Message
  * @example example_websocketserver_usage.cpp
  */
 class WebSocketServer : public QObject

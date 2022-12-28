@@ -7,9 +7,9 @@ JSONUtils::JSONUtils()
 
 std::string JSONUtils::generateJSON(const std::map<std::string, Value>& data) {
     std::stringstream json;
-    json << "{" << std::endl;
+    json << "{";
     for (const auto& [key, value] : data) {
-      json << "  \"" << key << "\": ";
+      json << "\"" << key << "\":";
       // Use a switch statement to handle different data types for the value
       switch (value.index()) {
         case 0: // int
@@ -22,10 +22,10 @@ std::string JSONUtils::generateJSON(const std::map<std::string, Value>& data) {
           json << "\"" << std::get<std::string>(value) << "\"";
           break;
       }
-      json << "," << std::endl;
+      json << ", ";
     }
     // Remove the last comma and newline before closing the object
     json.seekp(-2, std::ios_base::end);
-    json << std::endl << "}";
+    json << "}";
     return json.str();
   }
