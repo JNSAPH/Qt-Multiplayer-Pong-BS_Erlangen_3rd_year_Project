@@ -7,6 +7,9 @@
 #include "ws/webserver.h"
 #include "socket/websocketserver.h"
 
+#include <QTimer>
+#include <QThread>
+
 // Routes
 #include "routes/jsontestroute.h"
 #include "routes/httptestroute.h"
@@ -24,10 +27,6 @@ int main(int argc, char *argv[])
     // Routes
     server.addRoute("/json", "GET", new JSONTestRoute());
     server.addRoute("/http", "GET", new HTTPTestRoute());
-
-
-
-
 
 
     // Start the Http server
