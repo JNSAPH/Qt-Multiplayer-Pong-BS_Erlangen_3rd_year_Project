@@ -32,7 +32,7 @@
 *.app
 
 Source/Backend/build-*
-Source/build-*
+Source/Frontend/build-*
 
 .vscode/
 Documentation/*/
