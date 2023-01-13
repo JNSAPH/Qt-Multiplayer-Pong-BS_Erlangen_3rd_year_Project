@@ -4,7 +4,8 @@ HttpRequest* HttpRequest::m_instance = 0;
 
 HttpRequest::HttpRequest()
 {
-
+    m_manager = new QNetworkAccessManager(this);
+    //connect(m_manager, &QNetworkAccessManager::finished, this, &HttpRequest::onResult);
 }
 
 HttpRequest* HttpRequest::instance() {
@@ -21,7 +22,7 @@ void HttpRequest::post(const QString &url,const QByteArray &data,QMap<QByteArray
         request.setRawHeader(key,headers.value(key));
     }
     // Send post request
-    m_manager->post(request,data);
+    m_reply = m_manager->post(request,data);
 }
 
 
@@ -32,7 +33,7 @@ void HttpRequest::get(const QString &url,QMap<QByteArray,QByteArray> headers ){
         request.setRawHeader(key,headers.value(key));
     }
     // Send get request
-    m_manager->get(request);
+    m_reply = m_manager->get(request);
 }
 
 QNetworkReply* HttpRequest::getReply() const {

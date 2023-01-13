@@ -13,6 +13,24 @@ view_multiplayer::view_multiplayer(QWidget *parent) :
     connect(timer, &QTimer::timeout, this, &view_multiplayer::movePlayer);
     timer->start(50); // move the player every 50ms
 
+    // Request Queue
+    QMap<QByteArray,QByteArray> headers;
+    headers.insert("userId","1010");
+    HttpRequest::instance()->post("http://localhost:8080/api/requestQueue", nullptr, headers);
+    connect(HttpRequest::instance()->getReply(), &QNetworkReply::finished, this, &view_multiplayer::onResult);
+}
+
+void view_multiplayer::onResult() {
+    QNetworkReply* reply = HttpRequest::instance()->getReply();
+    if (reply->error() != QNetworkReply::NoError) {
+        // Handle error
+        return;
+    }
+
+    qDebug() << reply->readAll();
+
+    // Delete Reply after finishing
+    reply->deleteLater();
 }
 
 view_multiplayer::~view_multiplayer()

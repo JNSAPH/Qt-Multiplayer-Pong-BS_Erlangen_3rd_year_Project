@@ -9,8 +9,9 @@
 
 
 
-class HttpRequest
+class HttpRequest : public QObject
 {
+    Q_OBJECT
 public:
     static HttpRequest* instance();
     void post(const QString &url,const QByteArray &data,QMap<QByteArray,QByteArray> headers = QMap<QByteArray,QByteArray>());
