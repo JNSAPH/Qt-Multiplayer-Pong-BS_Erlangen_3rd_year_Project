@@ -2,6 +2,7 @@
 #define MENUWINDOW_H
 
 #include <QMainWindow>
+#include "Views/view_multiplayer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MenuWindow; }
@@ -22,5 +23,6 @@ private slots:
 
 private:
     Ui::MenuWindow *ui;
+    view_multiplayer *MultiplayerWindow;
 };
 #endif // MENUWINDOW_H

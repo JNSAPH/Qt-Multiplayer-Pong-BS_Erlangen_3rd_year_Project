@@ -25,5 +25,9 @@ void MenuWindow::on_btnMultiplayer_clicked()
 {
     // Create a new window here in which the game will take place.
     // Maybe add a "waiting room" view before sending both players into the real game
+
+    MultiplayerWindow = new view_multiplayer(this);
+    MultiplayerWindow->show();
+
 }
 

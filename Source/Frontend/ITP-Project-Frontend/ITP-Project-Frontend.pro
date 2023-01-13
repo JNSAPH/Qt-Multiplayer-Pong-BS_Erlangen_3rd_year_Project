@@ -9,13 +9,16 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Views/view_multiplayer.cpp \
     main.cpp \
     menuwindow.cpp
 
 HEADERS += \
+    Views/view_multiplayer.h \
     menuwindow.h
 
 FORMS += \
+    Views/view_multiplayer.ui \
     menuwindow.ui
 
 # Default rules for deployment.
