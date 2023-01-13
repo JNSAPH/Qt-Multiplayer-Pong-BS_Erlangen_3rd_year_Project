@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>839</width>
-    <height>541</height>
+    <width>680</width>
+    <height>540</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,14 +16,27 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>240</y>
+     <x>10</x>
+     <y>10</y>
      <width>111</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>Gaming!!</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="playerChar">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>480</y>
+     <width>80</width>
+     <height>4</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

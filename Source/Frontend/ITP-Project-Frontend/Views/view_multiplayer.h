@@ -2,6 +2,11 @@
 #define VIEW_MULTIPLAYER_H
 
 #include <QDialog>
+#include <QWidget>
+#include <QKeyEvent>
+#include <QPropertyAnimation>
+#include <QTimer>
+
 
 namespace Ui {
 class view_multiplayer;
@@ -15,8 +20,16 @@ public:
     explicit view_multiplayer(QWidget *parent = nullptr);
     ~view_multiplayer();
 
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
+    void keyReleaseEvent(QKeyEvent *event) override;
+
 private:
     Ui::view_multiplayer *ui;
+    bool A_key_pressed;
+    bool D_key_pressed;
+    void movePlayer();
+    void playerShoot();
 };
 
 #endif // VIEW_MULTIPLAYER_H
