@@ -14,6 +14,7 @@ QT += websockets
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        gameManager/gamestate.cpp \
         gameManager/queuemanager.cpp \
         main.cpp \
         routes/httptestroute.cpp \
@@ -31,6 +32,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    gameManager/gamestate.h \
     gameManager/queuemanager.h \
     routes/httptestroute.h \
     routes/iroutehandler.h \

@@ -1,11 +1,6 @@
 #include "websocketserver.h"
 
-// Define the static m_sockets variable outside of the class definition
 QList<QWebSocket *> WebSocketServer::m_sockets;
-
-// Assign an initial value to the m_sockets variable
-
-
 
 WebSocketServer::WebSocketServer(quint16 port, QObject *parent) :
     QObject(parent),
@@ -21,6 +16,8 @@ WebSocketServer::WebSocketServer(quint16 port, QObject *parent) :
 void WebSocketServer::onNewConnection() {
     QWebSocket *socket = m_socketServer.nextPendingConnection();
 
+    // Give every Connection an ID and send that ID to Player
+    // Player will save that ID, it will act as an authentication Token
 
     // Connect to the socket's signals
     connect(socket, &QWebSocket::textMessageReceived, this, &WebSocketServer::onTextMessageReceived);
@@ -41,16 +38,19 @@ void WebSocketServer::onNewConnection() {
 void WebSocketServer::onTextMessageReceived(QString message) {
     qDebug() << "Received message:" << message;
 
-    // Send a response back to the client
-    QWebSocket *senderSocket = qobject_cast<QWebSocket *>(sender());
-    if (senderSocket) {
-        std::map<std::string, JSONUtils::Value> data{
-          {"code", 201},
-          {"message", "Received Message!"},
-          {"received_message", message.toStdString()}
-        };
-        senderSocket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
-    }
+    // AUTHENTICATION METHOD
+
+
+    // MOVEMENT METHOD
+    // Check if GameState: gameStarted == true
+    // If true:
+        // Player 1 said A / D / W:
+            // Send to Player2: Player 1 Position
+        // Player 2 said A / D / W:
+            // Send to Player1: Player 2 Position
+    // If false:
+        // return
+
 }
 
 void WebSocketServer::onBinaryMessageReceived(QByteArray message) {
