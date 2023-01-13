@@ -19,6 +19,10 @@ int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
     
+    // Configure qDebug
+    qputenv("QT_MESSAGE_PATTERN", "%{file}:%{line} %{message}");
+
+
     // Create Http Server instance
     HttpServer server;
 
