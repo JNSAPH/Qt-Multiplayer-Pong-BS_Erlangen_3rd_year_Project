@@ -13,6 +13,7 @@
 // Routes
 #include "routes/jsontestroute.h"
 #include "routes/httptestroute.h"
+#include "routes/requestqueueroute.h"
 
 int main(int argc, char *argv[])
 {
@@ -27,6 +28,7 @@ int main(int argc, char *argv[])
     // Routes
     server.addRoute("/json", "GET", new JSONTestRoute());
     server.addRoute("/http", "GET", new HTTPTestRoute());
+    server.addRoute("/api/requestQueue", "POST", new RequestQueueRoute());
 
 
     // Start the Http server
