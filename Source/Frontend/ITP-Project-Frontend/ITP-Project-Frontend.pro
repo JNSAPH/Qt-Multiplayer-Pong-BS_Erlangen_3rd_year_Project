@@ -1,5 +1,7 @@
 QT       += core gui
 QT += widgets
+QT += network
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -12,11 +14,13 @@ CONFIG += c++17
 SOURCES += \
     Views/view_multiplayer.cpp \
     main.cpp \
-    menuwindow.cpp
+    menuwindow.cpp \
+    utils/HttpRequest.cpp
 
 HEADERS += \
     Views/view_multiplayer.h \
-    menuwindow.h
+    menuwindow.h \
+    utils/HttpRequest.h
 
 FORMS += \
     Views/view_multiplayer.ui \
