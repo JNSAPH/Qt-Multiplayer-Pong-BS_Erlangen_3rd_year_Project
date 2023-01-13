@@ -1,6 +1,9 @@
 #include "view_multiplayer.h"
 #include "ui_view_multiplayer.h"
 
+
+#include "utils/websocketclient.h"
+
 view_multiplayer::view_multiplayer(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::view_multiplayer)
@@ -12,6 +15,9 @@ view_multiplayer::view_multiplayer(QWidget *parent) :
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &view_multiplayer::movePlayer);
     timer->start(50); // move the player every 50ms
+
+    // Websocket
+    WebSocketClient::getInstance().connectToServer(QUrl("ws://localhost:1214"));
 
     // Request Queue
     QMap<QByteArray,QByteArray> headers;

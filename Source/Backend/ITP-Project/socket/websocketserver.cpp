@@ -34,6 +34,7 @@ void WebSocketServer::onNewConnection() {
       {"code", 200},
       {"message", "Connection established to SocketServer!"}
     };
+
     socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
 }
 

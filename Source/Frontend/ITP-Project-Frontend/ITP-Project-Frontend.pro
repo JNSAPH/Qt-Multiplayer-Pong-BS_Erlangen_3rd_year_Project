@@ -1,7 +1,7 @@
 QT       += core gui
 QT += widgets
 QT += network
-
+QT += websockets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,12 +15,16 @@ SOURCES += \
     Views/view_multiplayer.cpp \
     main.cpp \
     menuwindow.cpp \
-    utils/HttpRequest.cpp
+    state/playerstate.cpp \
+    utils/HttpRequest.cpp \
+    utils/websocketclient.cpp
 
 HEADERS += \
     Views/view_multiplayer.h \
     menuwindow.h \
-    utils/HttpRequest.h
+    state/playerstate.h \
+    utils/HttpRequest.h \
+    utils/websocketclient.h
 
 FORMS += \
     Views/view_multiplayer.ui \
