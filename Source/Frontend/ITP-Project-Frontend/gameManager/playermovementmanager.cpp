@@ -18,6 +18,8 @@ void playerMovementManager::onTextMessageReceived(const QString &message)
         qDebug() << "Game is starting";
         // call view to change to game
         break;
+    case 203:
+        qDebug() << "Player " << jsonObject["PlayerNumber"].toInt() << " disconnected.";
     default:
         qDebug() << jsonObject["message"].toString();
         break;

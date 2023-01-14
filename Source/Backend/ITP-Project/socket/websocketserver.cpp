@@ -87,6 +87,17 @@ void WebSocketServer::onSocketDisconnected() {
     // Remove the socket from the list of connected sockets
     m_sockets.removeOne(socket);
 
+    // Notify Players
+    std::map<std::string, JSONUtils::Value> data{
+        {"code", 203},
+        {"message", "One Player disconnected!"}
+    };
+    for (QWebSocket *socket : m_sockets) {
+        socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
+    }
+
+    this->broadcast("One Player disconnected!");
+
     // Reset the Queue
     QueueManager::resetQueue();
 
