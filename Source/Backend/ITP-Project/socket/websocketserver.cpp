@@ -40,6 +40,8 @@ void WebSocketServer::onNewConnection() {
     connect(socket, &QWebSocket::binaryMessageReceived, this, &WebSocketServer::onBinaryMessageReceived);
     connect(socket, &QWebSocket::disconnected, this, &WebSocketServer::onSocketDisconnected);
 
+    m_sockets.append(socket);
+
     // If queue is full
     if (QueueManager::getQueueSize() == 2) {
         // Send the GameID to the Players
@@ -51,8 +53,6 @@ void WebSocketServer::onNewConnection() {
 
         this->broadcast(QString::fromStdString(JSONUtils::generateJSON(data)));
     }
-
-    m_sockets.append(socket);
 }
 
 void WebSocketServer::onTextMessageReceived(QString message) {
