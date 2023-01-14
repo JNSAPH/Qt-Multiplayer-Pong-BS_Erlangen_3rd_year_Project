@@ -8,6 +8,7 @@
 #include <QWebSocketServer>
 
 #include "../utils/jsonutils.h"
+#include "../gameManager/playermovementmanager.h"
 
 /**
  * @class WebSocketServer
@@ -43,6 +44,7 @@ private slots:
     /**
      * @brief Handles an incoming text message.
      * @param message The incoming text message.
+     * @deprecated This Slot is deprecated and has been replaced by the playermovementmanager class.
      */
     void onTextMessageReceived(QString message);
 
@@ -77,6 +79,7 @@ private:
      * It can be accessed by any instance of the WebSocketServer class.
      */
     static QList<QWebSocket *> m_sockets;
+    playerMovementManager *pmm;
 
 };
 

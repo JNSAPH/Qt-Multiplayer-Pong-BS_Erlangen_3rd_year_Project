@@ -1,7 +1,8 @@
 QT -= gui
 
 CONFIG += c++17 console
-QT += network
+QT += network \
+    widgets
 QT += sql
 CONFIG -= app_bundle
 
@@ -15,6 +16,7 @@ QT += websockets
 
 SOURCES += \
         gameManager/gamestate.cpp \
+        gameManager/playermovementmanager.cpp \
         gameManager/queuemanager.cpp \
         main.cpp \
         routes/httptestroute.cpp \
@@ -33,6 +35,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     gameManager/gamestate.h \
+    gameManager/playermovementmanager.h \
     gameManager/queuemanager.h \
     routes/httptestroute.h \
     routes/iroutehandler.h \

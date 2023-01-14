@@ -9,6 +9,9 @@ WebSocketServer::WebSocketServer(quint16 port, QObject *parent) :
     if (!m_socketServer.listen(QHostAddress::LocalHost, port)) {
         qFatal("Failed to open web socket server.");
     }
+
+    pmm = new playerMovementManager();
+
     qDebug() << "WebSocket server listening on port" << m_socketServer.serverPort();
     connect(&m_socketServer, &QWebSocketServer::newConnection, this, &WebSocketServer::onNewConnection);
 }
@@ -20,7 +23,7 @@ void WebSocketServer::onNewConnection() {
     // Player will save that ID, it will act as an authentication Token
 
     // Connect to the socket's signals
-    connect(socket, &QWebSocket::textMessageReceived, this, &WebSocketServer::onTextMessageReceived);
+    connect(socket, &QWebSocket::textMessageReceived, pmm, &playerMovementManager::onTextMessageReceived);
     connect(socket, &QWebSocket::binaryMessageReceived, this, &WebSocketServer::onBinaryMessageReceived);
     connect(socket, &QWebSocket::disconnected, this, &WebSocketServer::onSocketDisconnected);
 
@@ -36,21 +39,7 @@ void WebSocketServer::onNewConnection() {
 }
 
 void WebSocketServer::onTextMessageReceived(QString message) {
-    qDebug() << "Received message:" << message;
-
-    // AUTHENTICATION METHOD
-
-
-    // MOVEMENT METHOD
-    // Check if GameState: gameStarted == true
-    // If true:
-        // Player 1 said A / D / W:
-            // Send to Player2: Player 1 Position
-        // Player 2 said A / D / W:
-            // Send to Player1: Player 2 Position
-    // If false:
-        // return
-
+    // This method has been deprecated.
 }
 
 void WebSocketServer::onBinaryMessageReceived(QByteArray message) {
