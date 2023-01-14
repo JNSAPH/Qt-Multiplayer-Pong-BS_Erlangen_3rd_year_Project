@@ -4,6 +4,7 @@
 #include <QDialog>
 
 #include "../Controller/wsocketcontroller.h"
+#include "../Views/view_multiplayer.h"
 
 namespace Ui {
 class view_waitingInQueue;
