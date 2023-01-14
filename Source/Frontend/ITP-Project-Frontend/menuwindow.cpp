@@ -23,15 +23,19 @@ void MenuWindow::on_btnQuitGame_clicked()
 
 void MenuWindow::on_btnMultiplayer_clicked()
 {
-    // Create a new window here in which the game will take place.
-    // Maybe add a "waiting room" view before sending both players into the real game
-
     // Close current Window
     this->close();
 
     // Create Multiplayer Window
     QueueWindow = new view_waitingInQueue(this);
     QueueWindow->show();
-
 }
 
+void MenuWindow::showMultiplayer() {
+    // Close current Window
+    this->close();
+
+    // Create Multiplayer Window
+    MultiplayerWindow = new view_multiplayer(this);
+    MultiplayerWindow->show();
+}

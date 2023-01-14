@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "Views/view_waitinginqueue.h"
+#include "Views/view_multiplayer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MenuWindow; }
@@ -18,11 +19,14 @@ public:
 
 private slots:
     void on_btnQuitGame_clicked();
-
     void on_btnMultiplayer_clicked();
+
+public slots:
+    void showMultiplayer();
 
 private:
     Ui::MenuWindow *ui;
     view_waitingInQueue *QueueWindow;
+    view_multiplayer *MultiplayerWindow;
 };
 #endif // MENUWINDOW_H

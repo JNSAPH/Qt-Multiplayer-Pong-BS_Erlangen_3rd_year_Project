@@ -16,7 +16,7 @@ void playerMovementManager::onTextMessageReceived(const QString &message)
     case 201:
         // Game is starting
         qDebug() << "Game is starting";
-        // call view to change to game
+        // Open Multiplayer View
         break;
     case 203:
         qDebug() << "Player " << jsonObject["PlayerNumber"].toInt() << " disconnected.";

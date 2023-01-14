@@ -10,8 +10,6 @@
 #include <thread>
 #include <QThread>
 
-#include "../utils/HttpRequest.h"
-
 
 namespace Ui {
 class view_multiplayer;
@@ -35,8 +33,6 @@ private:
     bool D_key_pressed;
     void movePlayer();
     void playerShoot();
-public slots:
-    void onResult();
 };
 
 #endif // VIEW_MULTIPLAYER_H

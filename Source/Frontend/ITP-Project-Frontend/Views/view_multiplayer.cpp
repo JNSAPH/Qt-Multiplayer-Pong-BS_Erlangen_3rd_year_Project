@@ -17,19 +17,6 @@ view_multiplayer::view_multiplayer(QWidget *parent) :
     timer->start(50); // move the player every 50ms
 }
 
-void view_multiplayer::onResult() {
-    QNetworkReply* reply = HttpRequest::instance()->getReply();
-    if (reply->error() != QNetworkReply::NoError) {
-        // Handle error
-        return;
-    }
-
-    qDebug() << reply->readAll();
-
-    // Delete Reply after finishing
-    reply->deleteLater();
-}
-
 view_multiplayer::~view_multiplayer()
 {
     delete ui;
