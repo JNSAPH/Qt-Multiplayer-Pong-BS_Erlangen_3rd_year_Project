@@ -7,7 +7,10 @@
 #include <QWebSocket>
 #include <QWebSocketServer>
 
+#include <QUuid>
+
 #include "../utils/jsonutils.h"
+#include "../gameManager/queuemanager.h"
 #include "../gameManager/playermovementmanager.h"
 
 /**

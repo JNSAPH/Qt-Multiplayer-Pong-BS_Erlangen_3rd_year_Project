@@ -14,15 +14,15 @@ class QueueManager
 {
 public:
     QueueManager();
-    static void addPlayer(int playerId);
-    static int removePlayer(int playerId);
+    static void addPlayer(QString playerId);
+    static int removePlayer(QString playerId);
     static int getQueueSize();
     static QUuid getGameId();
-    static bool joinGame(QUuid gameId, int playerId);
+    static bool joinGame(QUuid gameId, QString playerId);
 
 private:
-    static QQueue<int> queue;
-    static QMap<QUuid,QQueue<int>> games;
+    static QQueue<QString> queue;
+    static QMap<QUuid,QQueue<QString>> games;
     static QUuid gameId;
 };
 

@@ -2,8 +2,8 @@
 
 #include <QDebug>
 
-QQueue<int> QueueManager::queue;
-QMap<QUuid,QQueue<int>> QueueManager::games;
+QQueue<QString> QueueManager::queue;
+QMap<QUuid,QQueue<QString>> QueueManager::games;
 QUuid QueueManager::gameId;
 
 
@@ -13,7 +13,7 @@ const char* QueueFullException::what() const throw() {
 
 QueueManager::QueueManager(){ }
 
-void QueueManager::addPlayer(int playerId)
+void QueueManager::addPlayer(QString playerId)
 {
     if(queue.size()<2)
     {
@@ -35,7 +35,7 @@ void QueueManager::addPlayer(int playerId)
     }
 }
 
-int QueueManager::removePlayer(int playerId)
+int QueueManager::removePlayer(QString playerId)
 {
     if (!queue.isEmpty())
     {
@@ -43,7 +43,7 @@ int QueueManager::removePlayer(int playerId)
         if(index != -1)
         {
             queue.removeAt(index);
-            return playerId;
+            return 0;
         }
         else
         {
@@ -68,7 +68,7 @@ QUuid QueueManager::getGameId()
 }
 
 // don't know if we need this, just in case tho
-bool QueueManager::joinGame(QUuid gameId, int playerId)
+bool QueueManager::joinGame(QUuid gameId, QString playerId)
 {
     if(games.contains(gameId))
     {

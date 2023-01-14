@@ -9,6 +9,7 @@ RequestQueueRoute::RequestQueueRoute() { }
  */
 void RequestQueueRoute::handleRoute(QTcpSocket *socket, const QMap<QString, QString> &parameters)
 {
+    /*
     int playerId = parameters["userId"].toInt();
     std::string response;
 
@@ -46,5 +47,5 @@ void RequestQueueRoute::handleRoute(QTcpSocket *socket, const QMap<QString, QStr
     // Send Response
     socket->write(response.c_str());
     socket->close();
-
+    */
 }

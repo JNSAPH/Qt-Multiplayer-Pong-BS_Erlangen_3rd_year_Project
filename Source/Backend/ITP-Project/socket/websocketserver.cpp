@@ -21,6 +21,19 @@ void WebSocketServer::onNewConnection() {
 
     // Give every Connection an ID and send that ID to Player
     // Player will save that ID, it will act as an authentication Token
+    QString playerId = QUuid::createUuid().toString();
+    try {
+        QueueManager::addPlayer(playerId);
+    } catch (QueueFullException &e) {
+        qDebug() << e.what();
+    }
+    std::map<std::string, JSONUtils::Value> data{
+        {"code", 200},
+        {"UUID", playerId.toStdString()},
+        {"PlayerNumber", QueueManager::getQueueSize()},
+        {"message", "Connection established to SocketServer!"}
+    };
+    socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
 
     // Connect to the socket's signals
     connect(socket, &QWebSocket::textMessageReceived, pmm, &playerMovementManager::onTextMessageReceived);
@@ -29,13 +42,18 @@ void WebSocketServer::onNewConnection() {
 
     m_sockets.append(socket);
 
-    // Send a greeting message to the client
-    std::map<std::string, JSONUtils::Value> data{
-      {"code", 200},
-      {"message", "Connection established to SocketServer!"}
-    };
-
-    socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
+    // If queue is full 
+    if (QueueManager::getQueueSize() == 2) {
+        // Send the GameID to the Players
+        std::map<std::string, JSONUtils::Value> data{
+            {"code", 201},
+            {"message", "GameID sent to Players!"},
+            {"gameId", QueueManager::getGameId().toString().toStdString()}
+        };
+        for (QWebSocket *socket : m_sockets) {
+            socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
+        }
+    }
 }
 
 void WebSocketServer::onTextMessageReceived(QString message) {
