@@ -7,7 +7,6 @@ WebSocketClient::WebSocketClient(QObject *parent) : QObject(parent)
 
     connect(m_webSocket, &QWebSocket::connected, this, &WebSocketClient::onConnected);
     connect(m_webSocket, &QWebSocket::disconnected, this, &WebSocketClient::onDisconnected);
-    //connect(m_webSocket, &QWebSocket::textMessageReceived, this, &WebSocketClient::onTextMessageReceived);
     connect(m_webSocket, &QWebSocket::textMessageReceived, pmm, &playerMovementManager::onTextMessageReceived);
     connect(m_webSocket, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error), this, &WebSocketClient::onError);
 }
@@ -36,12 +35,6 @@ void WebSocketClient::onConnected()
 void WebSocketClient::onDisconnected()
 {
     emit disconnected();
-}
-
-void WebSocketClient::onTextMessageReceived(const QString &message)
-{
-    qDebug() << "";
-    emit messageReceived(message);
 }
 
 void WebSocketClient::onError(QAbstractSocket::SocketError error)

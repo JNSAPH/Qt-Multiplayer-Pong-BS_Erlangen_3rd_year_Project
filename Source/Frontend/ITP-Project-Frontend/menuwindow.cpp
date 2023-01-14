@@ -26,16 +26,9 @@ void MenuWindow::on_btnMultiplayer_clicked()
     // Close current Window
     this->close();
 
+    qDebug() << "Clicked Mutliplayer";
+
     // Create Multiplayer Window
     QueueWindow = new view_waitingInQueue(this);
     QueueWindow->show();
-}
-
-void MenuWindow::showMultiplayer() {
-    // Close current Window
-    this->close();
-
-    // Create Multiplayer Window
-    MultiplayerWindow = new view_multiplayer(this);
-    MultiplayerWindow->show();
 }

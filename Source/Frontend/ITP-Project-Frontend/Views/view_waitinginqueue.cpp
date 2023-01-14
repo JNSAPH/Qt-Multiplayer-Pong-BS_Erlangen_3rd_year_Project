@@ -7,10 +7,14 @@ view_waitingInQueue::view_waitingInQueue(QWidget *parent) : QDialog(parent), ui(
 
     // Connect to Websocket
     wSocketController::getInstance()->connectToServer();
-
 }
 
 view_waitingInQueue::~view_waitingInQueue()
 {
     delete ui;
+}
+
+void view_waitingInQueue::startGame() {
+    qDebug() << "Fucked meta";
+
 }

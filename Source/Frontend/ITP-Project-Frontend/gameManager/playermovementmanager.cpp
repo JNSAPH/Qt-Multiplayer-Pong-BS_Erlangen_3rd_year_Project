@@ -1,6 +1,10 @@
 #include "playermovementmanager.h"
 
-playerMovementManager::playerMovementManager(QObject *parent) : QObject(parent){ }
+#include "../Views/view_waitinginqueue.h"
+
+
+playerMovementManager::playerMovementManager(QObject *parent) : QObject(parent){
+}
 
 
 void playerMovementManager::onTextMessageReceived(const QString &message)
@@ -16,6 +20,9 @@ void playerMovementManager::onTextMessageReceived(const QString &message)
     case 201:
         // Game is starting
         qDebug() << "Game is starting";
+
+        view_waitingInQueue::startGame();
+        break;
         // Open Multiplayer View
         break;
     case 203:

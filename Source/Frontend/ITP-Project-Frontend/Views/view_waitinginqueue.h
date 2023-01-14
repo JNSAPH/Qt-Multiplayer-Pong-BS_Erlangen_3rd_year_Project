@@ -15,6 +15,7 @@ class view_waitingInQueue : public QDialog
 
 public:
     explicit view_waitingInQueue(QWidget *parent = nullptr);
+    static void startGame();
     ~view_waitingInQueue();
 
 private:

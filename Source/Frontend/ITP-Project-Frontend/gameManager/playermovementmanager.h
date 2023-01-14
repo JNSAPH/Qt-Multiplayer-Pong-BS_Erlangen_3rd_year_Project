@@ -6,6 +6,8 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+class view_waitingInQueue;
+
 class playerMovementManager : public QObject
 {
     Q_OBJECT
@@ -15,6 +17,7 @@ public:
 
 public slots:
     void onTextMessageReceived(const QString &message);
+
 };
 
 #endif // PLAYERMOVEMENTMANAGER_H
