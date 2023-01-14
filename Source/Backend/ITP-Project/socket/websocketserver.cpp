@@ -48,9 +48,8 @@ void WebSocketServer::onNewConnection() {
             {"message", "GameID sent to Players!"},
             {"gameId", QueueManager::getGameId().toString().toStdString()}
         };
-        for (QWebSocket *socket : m_sockets) {
-            socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
-        }
+
+        this->broadcast(QString::fromStdString(JSONUtils::generateJSON(data)));
     }
 
     m_sockets.append(socket);
@@ -92,10 +91,6 @@ void WebSocketServer::onSocketDisconnected() {
     for (QWebSocket *socket : m_sockets) {
         socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
     }
-
-    // Broadcast message
-    this->broadcast("One Player disconnected!");
-
     // Disconnected all Users
 
     // Reset the Queue

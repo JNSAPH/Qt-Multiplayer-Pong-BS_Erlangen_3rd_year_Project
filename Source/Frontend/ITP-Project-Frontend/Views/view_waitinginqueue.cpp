@@ -14,7 +14,7 @@ view_waitingInQueue::view_waitingInQueue(QWidget *parent) : QDialog(parent), ui(
 {
     ui->setupUi(this);
     // Connect to Websocket
-    wSocketController::getInstance()->connectToServer();
+    WebSocketClient::getInstance().connectToServer(QUrl("ws://localhost:1214"));
 }
 
 void view_waitingInQueue::startGame() {
@@ -22,7 +22,7 @@ void view_waitingInQueue::startGame() {
     view_multiplayer* MultiplayerWindow = new view_multiplayer();
     MultiplayerWindow->show();
 
-    //this->close();
+    this->close();
 }
 
 view_waitingInQueue::~view_waitingInQueue()

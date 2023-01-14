@@ -3,7 +3,7 @@
 
 #include <QDialog>
 
-#include "../Controller/wsocketcontroller.h"
+#include "../utils/websocketclient.h"
 #include "../Views/view_multiplayer.h"
 
 namespace Ui {
