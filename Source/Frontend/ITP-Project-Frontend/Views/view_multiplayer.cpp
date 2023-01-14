@@ -15,15 +15,6 @@ view_multiplayer::view_multiplayer(QWidget *parent) :
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &view_multiplayer::movePlayer);
     timer->start(50); // move the player every 50ms
-
-    // Websocket
-    WebSocketClient::getInstance().connectToServer(QUrl("ws://localhost:1214"));
-
-    // Request Queue
-    QMap<QByteArray,QByteArray> headers;
-    headers.insert("userId","1010");
-    HttpRequest::instance()->post("http://localhost:8080/api/requestQueue", nullptr, headers);
-    connect(HttpRequest::instance()->getReply(), &QNetworkReply::finished, this, &view_multiplayer::onResult);
 }
 
 void view_multiplayer::onResult() {

@@ -5,6 +5,8 @@
 #include <QAbstractSocket>
 #include <QWebSocket>
 
+#include "../gameManager/playermovementmanager.h"
+
 
 class WebSocketClient : public QObject
 {
@@ -38,6 +40,7 @@ private:
     Q_DISABLE_COPY(WebSocketClient)
 
     QWebSocket *m_webSocket;
+    playerMovementManager *pmm;
 };
 
 

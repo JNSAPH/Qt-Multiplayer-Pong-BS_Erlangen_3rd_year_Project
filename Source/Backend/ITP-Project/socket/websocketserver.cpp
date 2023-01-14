@@ -19,6 +19,22 @@ WebSocketServer::WebSocketServer(quint16 port, QObject *parent) :
 void WebSocketServer::onNewConnection() {
     QWebSocket *socket = m_socketServer.nextPendingConnection();
 
+
+    // If queue is full
+    if (QueueManager::getQueueSize() == 2) {
+        // Send the GameID to the Players
+        std::map<std::string, JSONUtils::Value> data{
+            {"code", 201},
+            {"message", "GameID sent to Players!"},
+            {"gameId", QueueManager::getGameId().toString().toStdString()}
+        };
+        for (QWebSocket *socket : m_sockets) {
+            socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
+        }
+
+        return;
+    }
+
     // Give every Connection an ID and send that ID to Player
     // Player will save that ID, it will act as an authentication Token
     QString playerId = QUuid::createUuid().toString();
@@ -41,19 +57,6 @@ void WebSocketServer::onNewConnection() {
     connect(socket, &QWebSocket::disconnected, this, &WebSocketServer::onSocketDisconnected);
 
     m_sockets.append(socket);
-
-    // If queue is full 
-    if (QueueManager::getQueueSize() == 2) {
-        // Send the GameID to the Players
-        std::map<std::string, JSONUtils::Value> data{
-            {"code", 201},
-            {"message", "GameID sent to Players!"},
-            {"gameId", QueueManager::getGameId().toString().toStdString()}
-        };
-        for (QWebSocket *socket : m_sockets) {
-            socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
-        }
-    }
 }
 
 void WebSocketServer::onTextMessageReceived(QString message) {
@@ -83,6 +86,9 @@ void WebSocketServer::onSocketDisconnected() {
 
     // Remove the socket from the list of connected sockets
     m_sockets.removeOne(socket);
+
+    // Reset the Queue
+    QueueManager::resetQueue();
 
     // Delete the socket
     socket->deleteLater();

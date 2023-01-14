@@ -31,7 +31,6 @@ void QueueManager::addPlayer(QString playerId)
     {
         gameId = QUuid::createUuid();
         games[gameId] = queue;
-        qDebug() << "Creating UUID: " << gameId;
     }
 }
 
@@ -76,4 +75,9 @@ bool QueueManager::joinGame(QUuid gameId, QString playerId)
         return true;
     }
     return false;
+}
+
+void QueueManager::resetQueue()
+{
+    queue.clear();
 }

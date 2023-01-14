@@ -13,21 +13,24 @@ CONFIG += c++17
 
 SOURCES += \
     Views/view_multiplayer.cpp \
+    Views/view_waitinginqueue.cpp \
+    gameManager/playermovementmanager.cpp \
     main.cpp \
     menuwindow.cpp \
-    state/playerstate.cpp \
     utils/HttpRequest.cpp \
     utils/websocketclient.cpp
 
 HEADERS += \
     Views/view_multiplayer.h \
+    Views/view_waitinginqueue.h \
+    gameManager/playermovementmanager.h \
     menuwindow.h \
-    state/playerstate.h \
     utils/HttpRequest.h \
     utils/websocketclient.h
 
 FORMS += \
     Views/view_multiplayer.ui \
+    Views/view_waitinginqueue.ui \
     menuwindow.ui
 
 # Default rules for deployment.

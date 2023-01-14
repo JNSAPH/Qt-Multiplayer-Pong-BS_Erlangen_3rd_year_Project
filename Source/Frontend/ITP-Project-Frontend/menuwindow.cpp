@@ -30,8 +30,8 @@ void MenuWindow::on_btnMultiplayer_clicked()
     this->close();
 
     // Create Multiplayer Window
-    MultiplayerWindow = new view_multiplayer(this);
-    MultiplayerWindow->show();
+    QueueWindow = new view_waitingInQueue(this);
+    QueueWindow->show();
 
 }
 

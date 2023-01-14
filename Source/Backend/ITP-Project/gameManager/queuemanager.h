@@ -19,6 +19,7 @@ public:
     static int getQueueSize();
     static QUuid getGameId();
     static bool joinGame(QUuid gameId, QString playerId);
+    static void resetQueue();
 
 private:
     static QQueue<QString> queue;
