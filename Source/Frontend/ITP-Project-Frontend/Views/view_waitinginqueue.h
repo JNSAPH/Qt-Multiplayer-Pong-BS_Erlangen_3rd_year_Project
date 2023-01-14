@@ -3,7 +3,7 @@
 
 #include <QDialog>
 
-#include "../utils/websocketclient.h"
+#include "../Controller/wsocketcontroller.h"
 
 namespace Ui {
 class view_waitingInQueue;

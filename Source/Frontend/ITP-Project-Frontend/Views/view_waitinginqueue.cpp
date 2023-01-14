@@ -6,7 +6,7 @@ view_waitingInQueue::view_waitingInQueue(QWidget *parent) : QDialog(parent), ui(
     ui->setupUi(this);
 
     // Connect to Websocket
-    WebSocketClient::getInstance().connectToServer(QUrl("ws://localhost:1214"));
+    wSocketController::getInstance()->connectToServer();
 
 }
 
