@@ -19,22 +19,6 @@ WebSocketServer::WebSocketServer(quint16 port, QObject *parent) :
 void WebSocketServer::onNewConnection() {
     QWebSocket *socket = m_socketServer.nextPendingConnection();
 
-
-    // If queue is full
-    if (QueueManager::getQueueSize() == 2) {
-        // Send the GameID to the Players
-        std::map<std::string, JSONUtils::Value> data{
-            {"code", 201},
-            {"message", "GameID sent to Players!"},
-            {"gameId", QueueManager::getGameId().toString().toStdString()}
-        };
-        for (QWebSocket *socket : m_sockets) {
-            socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
-        }
-
-        return;
-    }
-
     // Give every Connection an ID and send that ID to Player
     // Player will save that ID, it will act as an authentication Token
     QString playerId = QUuid::createUuid().toString();
@@ -55,6 +39,19 @@ void WebSocketServer::onNewConnection() {
     connect(socket, &QWebSocket::textMessageReceived, pmm, &playerMovementManager::onTextMessageReceived);
     connect(socket, &QWebSocket::binaryMessageReceived, this, &WebSocketServer::onBinaryMessageReceived);
     connect(socket, &QWebSocket::disconnected, this, &WebSocketServer::onSocketDisconnected);
+
+    // If queue is full
+    if (QueueManager::getQueueSize() == 2) {
+        // Send the GameID to the Players
+        std::map<std::string, JSONUtils::Value> data{
+            {"code", 201},
+            {"message", "GameID sent to Players!"},
+            {"gameId", QueueManager::getGameId().toString().toStdString()}
+        };
+        for (QWebSocket *socket : m_sockets) {
+            socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
+        }
+    }
 
     m_sockets.append(socket);
 }
@@ -96,7 +93,10 @@ void WebSocketServer::onSocketDisconnected() {
         socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
     }
 
+    // Broadcast message
     this->broadcast("One Player disconnected!");
+
+    // Disconnected all Users
 
     // Reset the Queue
     QueueManager::resetQueue();
