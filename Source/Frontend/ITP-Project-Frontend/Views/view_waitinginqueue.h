@@ -14,12 +14,14 @@ class view_waitingInQueue : public QDialog
     Q_OBJECT
 
 public:
-    explicit view_waitingInQueue(QWidget *parent = nullptr);
-    static void startGame();
+    static view_waitingInQueue* getInstance();
+    void startGame();
     ~view_waitingInQueue();
 
 private:
     Ui::view_waitingInQueue *ui;
+    explicit view_waitingInQueue(QWidget *parent = nullptr);
+    static view_waitingInQueue* m_instance;
 };
 
 #endif // VIEW_WAITINGINQUEUE_H

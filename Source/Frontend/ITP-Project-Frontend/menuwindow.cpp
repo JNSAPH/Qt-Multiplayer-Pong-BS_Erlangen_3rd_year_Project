@@ -29,6 +29,6 @@ void MenuWindow::on_btnMultiplayer_clicked()
     qDebug() << "Clicked Mutliplayer";
 
     // Create Multiplayer Window
-    QueueWindow = new view_waitingInQueue(this);
+    view_waitingInQueue* QueueWindow = view_waitingInQueue::getInstance();
     QueueWindow->show();
 }

@@ -20,10 +20,7 @@ void playerMovementManager::onTextMessageReceived(const QString &message)
     case 201:
         // Game is starting
         qDebug() << "Game is starting";
-
-        view_waitingInQueue::startGame();
-        break;
-        // Open Multiplayer View
+        view_waitingInQueue::getInstance()->startGame();
         break;
     case 203:
         qDebug() << "Player " << jsonObject["PlayerNumber"].toInt() << " disconnected.";
