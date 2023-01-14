@@ -7,9 +7,6 @@
 #include <QPropertyAnimation>
 #include <QTimer>
 
-#include <thread>
-#include <QThread>
-
 
 namespace Ui {
 class view_multiplayer;

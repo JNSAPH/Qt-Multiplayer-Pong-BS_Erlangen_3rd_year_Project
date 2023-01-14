@@ -15,7 +15,9 @@ SOURCES += \
     Controller/wsocketcontroller.cpp \
     Views/view_multiplayer.cpp \
     Views/view_waitinginqueue.cpp \
-    gameManager/playermovementmanager.cpp \
+    gameManager/playercommunicationmanager.cpp \
+    gameManager/playermanager.cpp \
+    gameManager/playerstatemanager.cpp \
     main.cpp \
     menuwindow.cpp \
     utils/HttpRequest.cpp \
@@ -25,7 +27,9 @@ HEADERS += \
     Controller/wsocketcontroller.h \
     Views/view_multiplayer.h \
     Views/view_waitinginqueue.h \
-    gameManager/playermovementmanager.h \
+    gameManager/playercommunicationmanager.h \
+    gameManager/playermanager.h \
+    gameManager/playerstatemanager.h \
     menuwindow.h \
     utils/HttpRequest.h \
     utils/websocketclient.h

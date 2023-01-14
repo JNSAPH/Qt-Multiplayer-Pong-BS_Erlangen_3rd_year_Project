@@ -22,7 +22,7 @@ void view_waitingInQueue::startGame() {
     view_multiplayer* MultiplayerWindow = new view_multiplayer();
     MultiplayerWindow->show();
 
-    this->close();
+    //this->close();
 }
 
 view_waitingInQueue::~view_waitingInQueue()
