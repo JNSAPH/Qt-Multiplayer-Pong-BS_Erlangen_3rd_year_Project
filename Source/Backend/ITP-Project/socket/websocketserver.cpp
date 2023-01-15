@@ -10,7 +10,7 @@ WebSocketServer::WebSocketServer(quint16 port, QObject *parent) :
         qFatal("Failed to open web socket server.");
     }
 
-    pmm = new playerMovementManager();
+    pmm = new playerCommunicationManager();
 
     qDebug() << "WebSocket server listening on port" << m_socketServer.serverPort();
     connect(&m_socketServer, &QWebSocketServer::newConnection, this, &WebSocketServer::onNewConnection);
@@ -36,7 +36,7 @@ void WebSocketServer::onNewConnection() {
     socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
 
     // Connect to the socket's signals
-    connect(socket, &QWebSocket::textMessageReceived, pmm, &playerMovementManager::onTextMessageReceived);
+    connect(socket, &QWebSocket::textMessageReceived, pmm, &playerCommunicationManager::onTextMessageReceived);
     connect(socket, &QWebSocket::binaryMessageReceived, this, &WebSocketServer::onBinaryMessageReceived);
     connect(socket, &QWebSocket::disconnected, this, &WebSocketServer::onSocketDisconnected);
 

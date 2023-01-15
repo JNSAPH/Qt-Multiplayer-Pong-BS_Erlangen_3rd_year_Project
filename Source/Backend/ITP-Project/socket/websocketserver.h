@@ -11,7 +11,7 @@
 
 #include "../utils/jsonutils.h"
 #include "../gameManager/queuemanager.h"
-#include "../gameManager/playermovementmanager.h"
+#include "../gameManager/playercommunicationmanager.h"
 
 /**
  * @class WebSocketServer
@@ -82,7 +82,7 @@ private:
      * It can be accessed by any instance of the WebSocketServer class.
      */
     static QList<QWebSocket *> m_sockets;
-    playerMovementManager *pmm;
+    playerCommunicationManager *pmm;
 
 };
 
