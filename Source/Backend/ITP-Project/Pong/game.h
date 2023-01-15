@@ -32,6 +32,12 @@ public:
     int getScore(int player);
     void setScore(int player, int score);
 
+
+private:
+    int m_paddleLeftX = 29;
+    int m_paddleY = 230;
+    int m_paddleRightX = 625;
+
 private:
     Game();
     Game(Game const&) = delete;
@@ -45,6 +51,7 @@ private:
     Paddle m_paddle1;
     Paddle m_paddle2;
     Ball m_ball;
+
 };
 
 #endif // GAME_H

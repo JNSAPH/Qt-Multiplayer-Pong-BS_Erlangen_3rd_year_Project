@@ -5,13 +5,14 @@ Game& Game::getInstance() {
     return instance;
 }
 
+
 Game::Game()
     : m_score1(0),
       m_score2(0),
       m_playingFieldWidth(680),
       m_playingFieldHeight(540),
-      m_paddle1(49, 230, 6, 80),
-      m_paddle2(625, 230, 6, 80),
+      m_paddle1(m_paddleLeftX, m_paddleY, 6, 80),
+      m_paddle2(m_paddleRightX, m_paddleY, 6, 80),
       m_ball(-10, -10, 19)
 {
     m_timer = new QTimer(this);
@@ -72,8 +73,8 @@ void Game::reset()
 {
     // Reset the game
     // you can reset the paddles and ball position, and scores
-    m_paddle1.setPosition(0, 230);
-    m_paddle2.setPosition(625, 230);
+    m_paddle1.setPosition(m_paddleLeftX, m_paddleY);
+    m_paddle2.setPosition(m_paddleRightX, m_paddleY);
     m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getRadius() / 2), m_playingFieldHeight / 2 - (m_ball.getRadius()) / 2);
     m_ball.setVelocity(0, 0);
     m_score1 = 0;

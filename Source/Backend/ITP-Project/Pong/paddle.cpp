@@ -42,5 +42,5 @@ int Paddle::getWidth()
 
 int Paddle::getHeight()
 {
-    return m_width;
+    return m_height;
 }

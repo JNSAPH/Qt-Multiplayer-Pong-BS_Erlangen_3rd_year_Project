@@ -6,13 +6,12 @@
 Ball::Ball(qreal x, qreal y, qreal radius)
     : m_x(x), m_y(y), m_radius(radius), m_xVelocity(0), m_yVelocity(0)
 {
-    while(m_xVelocity == 0 || m_xVelocity < 0.2)
+    while(m_xVelocity == 0)
     {
         m_xVelocity = ((double)QRandomGenerator::global()->generate()/QRandomGenerator::max())*3 - 1.5;
         m_xVelocity = m_xVelocity < 0 ? -ceil(abs(m_xVelocity) * 10) / 10 : ceil(m_xVelocity * 10) / 10;
         if (m_xVelocity == -0) m_xVelocity = 0;
     }
-    
 }
 
 QPointF Ball::getPosition()
@@ -22,18 +21,14 @@ QPointF Ball::getPosition()
 
 void Ball::setVelocity(qreal xVelocity, qreal yVelocity)
 {
-
     m_xVelocity = xVelocity;
     m_yVelocity = yVelocity;
-
     while(m_xVelocity == 0)
     {
         m_xVelocity = ((double)QRandomGenerator::global()->generate()/QRandomGenerator::max())*3 - 1.5;
         m_xVelocity = m_xVelocity < 0 ? -ceil(abs(m_xVelocity) * 10) / 10 : ceil(m_xVelocity * 10) / 10;
         if (m_xVelocity == -0) m_xVelocity = 0;
     }
-
-
 }
 
 QPointF Ball::getVelocity()
