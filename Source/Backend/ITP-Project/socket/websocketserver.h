@@ -12,6 +12,7 @@
 #include "../utils/jsonutils.h"
 #include "../gameManager/queuemanager.h"
 #include "../gameManager/playercommunicationmanager.h"
+#include "../Pong/game.h"
 
 /**
  * @class WebSocketServer

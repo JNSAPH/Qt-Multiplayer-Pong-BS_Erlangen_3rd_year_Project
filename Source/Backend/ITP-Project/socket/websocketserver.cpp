@@ -69,6 +69,8 @@ void WebSocketServer::onNewConnection() {
             {"gameId", QueueManager::getGameId().toString().toStdString()}
         };
 
+        Game::getInstance().start();
+
         this->broadcast(QString::fromStdString(JSONUtils::generateJSON(data)));
     }
 }

@@ -26,7 +26,5 @@ int main(int argc, char *argv[])
     WebSocketServer& wss = WebSocketServer::getInstance(1214);
 
     Game& game = Game::getInstance();
-    game.start();
-
     return app.exec();
 }

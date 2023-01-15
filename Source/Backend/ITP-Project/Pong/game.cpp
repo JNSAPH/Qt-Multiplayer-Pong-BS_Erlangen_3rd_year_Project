@@ -27,9 +27,7 @@ void Game::update()
 void Game::start()
 {
     // Start the game
-    while(m_running) {
-        qDebug() << "Game is running";
-    }
+    qDebug() << "RAN THE START METHOD!!";
     m_running = true;
 }
 
