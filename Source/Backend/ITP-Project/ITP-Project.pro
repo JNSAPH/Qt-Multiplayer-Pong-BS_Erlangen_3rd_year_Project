@@ -16,6 +16,7 @@ QT += websockets
 
 SOURCES += \
         Pong/ball.cpp \
+        Pong/game.cpp \
         Pong/paddle.cpp \
         gameManager/playercommunicationmanager.cpp \
         gameManager/queuemanager.cpp \
@@ -36,6 +37,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     Pong/ball.h \
+    Pong/game.h \
     Pong/paddle.h \
     gameManager/playercommunicationmanager.h \
     gameManager/queuemanager.h \

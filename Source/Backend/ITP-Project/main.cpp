@@ -4,8 +4,8 @@
 #include <iostream> // std::cout
 #include <fstream>
 
-#include "ws/webserver.h"
 #include "socket/websocketserver.h"
+#include "Pong/game.h"
 
 #include <QTimer>
 #include <QThread>
@@ -22,24 +22,11 @@ int main(int argc, char *argv[])
     // Configure qDebug
     qputenv("QT_MESSAGE_PATTERN", "%{file}:%{line} %{message}");
 
-
-    // Create Http Server instance
-    HttpServer server;
-
     // Create WebSocket Server instance
-    WebSocketServer socket(1214);
+    WebSocketServer& wss = WebSocketServer::getInstance(1214);
 
-    // Routes
-    server.addRoute("/json", "GET", new JSONTestRoute());
-    server.addRoute("/http", "GET", new HTTPTestRoute());
-    server.addRoute("/api/requestQueue", "POST", new RequestQueueRoute());
-
-
-    // Start the Http server
-    if (!server.start(8080)) {
-        qCritical() << "Failed to start server:" << server.errorString();
-        return 1;
-    }
+    Game& game = Game::getInstance();
+    game.start();
 
     return app.exec();
 }

@@ -29,6 +29,12 @@ void Ball::updatePosition()
     m_y += m_yVelocity;
 }
 
+void Ball::setPosition(int x, int y)
+{
+    m_x = x;
+    m_y = y;
+}
+
 void Ball::checkCollision(Paddle *paddle)
 {
     // Check if the ball has collided with the paddle

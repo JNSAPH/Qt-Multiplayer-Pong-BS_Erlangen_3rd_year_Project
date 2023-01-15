@@ -10,10 +10,28 @@ WebSocketServer::WebSocketServer(quint16 port, QObject *parent) :
         qFatal("Failed to open web socket server.");
     }
 
+
+
     pmm = new playerCommunicationManager();
+
+    m_instance = this;
 
     qDebug() << "WebSocket server listening on port" << m_socketServer.serverPort();
     connect(&m_socketServer, &QWebSocketServer::newConnection, this, &WebSocketServer::onNewConnection);
+}
+
+WebSocketServer::~WebSocketServer() {
+    m_socketServer.close();
+    qDeleteAll(m_sockets.begin(), m_sockets.end());
+}
+
+WebSocketServer* WebSocketServer::m_instance = nullptr;
+
+WebSocketServer& WebSocketServer::getInstance(quint16 port)
+{
+    if(!m_instance)
+        m_instance = new WebSocketServer(port);
+    return *m_instance;
 }
 
 void WebSocketServer::onNewConnection() {

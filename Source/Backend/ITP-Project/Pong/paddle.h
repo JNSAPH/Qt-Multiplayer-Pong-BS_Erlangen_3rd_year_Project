@@ -11,6 +11,9 @@ public:
     void moveUp();
     void moveDown();
     void setDirection(int direction);
+    int getWidth();
+    int getHeight();
+    void setPosition(int x, int y);
     QPointF getPosition();
 
 private:

@@ -14,6 +14,7 @@ public:
     void setVelocity(qreal xVelocity, qreal yVelocity);
     QPointF getVelocity();
     void updatePosition();
+    void setPosition(int x, int y);
     void checkCollision(Paddle* paddle);
 
 private:

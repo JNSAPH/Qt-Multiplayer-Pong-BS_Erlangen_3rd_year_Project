@@ -37,11 +37,17 @@ public:
      */
     WebSocketServer(quint16 port, QObject *parent = 0);
 
+    // Add Docs
+    ~WebSocketServer();
+
     /**
      * @brief Broadcasts a message to all connected clients.
      * @param message The message to broadcast.
      */
     static void broadcast(const QString &message);
+
+    // Add Docs
+    static WebSocketServer& getInstance(quint16 port = 8080);
 
 private slots:
     /**
@@ -82,6 +88,9 @@ private:
      * It can be accessed by any instance of the WebSocketServer class.
      */
     static QList<QWebSocket *> m_sockets;
+
+    // Add Docs
+    static WebSocketServer* m_instance;
     playerCommunicationManager *pmm;
 
 };

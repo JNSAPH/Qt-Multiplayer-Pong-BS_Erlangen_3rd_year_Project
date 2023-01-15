@@ -24,3 +24,19 @@ QPointF Paddle::getPosition()
 {
     return QPointF(m_x, m_y);
 }
+
+void Paddle::setPosition(int x, int y)
+{
+    m_x = x;
+    m_y = y;
+}
+
+int Paddle::getWidth()
+{
+    return m_width;
+}
+
+int Paddle::getHeight()
+{
+    return m_width;
+}
