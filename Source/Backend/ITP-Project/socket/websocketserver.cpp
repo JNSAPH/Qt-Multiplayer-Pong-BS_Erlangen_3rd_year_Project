@@ -116,13 +116,13 @@ void WebSocketServer::onSocketDisconnected() {
     Game::getInstance().stop();
 
     // Disconnected all Users
-    /*
+
     for (QWebSocket *socket : m_sockets) {
         socket->disconnect();
     }
 
     m_sockets.clear();
-    */
+
 
     // Reset the Queue & Game
     Game::getInstance().reset();

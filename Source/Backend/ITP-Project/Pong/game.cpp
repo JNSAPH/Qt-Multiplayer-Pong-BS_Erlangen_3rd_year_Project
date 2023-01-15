@@ -6,32 +6,57 @@ Game& Game::getInstance() {
 }
 
 Game::Game()
-    : m_paddle1(0, 200, 6, 80),
-      m_paddle2(642-6, 200, 6, 80),
-      m_ball(320, 240, 19),
-      m_score1(0),
-      m_score2(0)
+    : m_score1(0),
+      m_score2(0),
+      m_playingFieldWidth(680),
+      m_playingFieldHeight(540),
+      m_paddle1(49, 230, 6, 80),
+      m_paddle2(625, 230, 6, 80),
+      m_ball(-10, -10, 19)
 {
     m_timer = new QTimer(this);
-    m_timer->setInterval(250); // (4 TPS)
+    m_timer->setInterval(3); // (333 TPS)
     connect(m_timer, &QTimer::timeout, this, &Game::update);
+
+    // set m_ball position to center of the playing field with radius of ball as offset
+    m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getRadius() / 2), m_playingFieldHeight / 2 - (m_ball.getRadius()) / 2);
 }
 
 
+/*
+ * @Todo Score isn't updating because of the reset!!
+ *
+ */
 void Game::update()
 {
-    // Update the positions of the paddles and ball based on the inputs received from the clients
-    // you can use the updatePosition() method of the Paddle and Ball classes,
-    // and the checkCollision() method of the Ball class
-    // to update the positions of the paddles and ball
-    // also you can check if the ball hit the wall and update the score accordingly
+    if (m_ball.getPosition().x() < 0) {
+        m_score2++;
+        qDebug() << "Player 2 scored. Score: " << m_score2;
+        // reset game
+        this->reset();
+    }
+
+    // If ball hits wall on the right, increase score of player 1
+    if (m_ball.getPosition().x() > m_playingFieldWidth) {
+        m_score1++;
+        qDebug() << "Player 1 scored. Score: " << m_score1;
+        this->reset();
+    }
+
+    // Check if ball is out of bounds
+    if (m_ball.getPosition().y() <= 0 || m_ball.getPosition().y() >= m_playingFieldHeight) {
+        m_ball.setVelocity(m_ball.getVelocity().x(), -m_ball.getVelocity().y());
+    }
+
+    m_ball.checkCollision(&m_paddle1);
+    m_ball.checkCollision(&m_paddle2);
+    m_ball.updatePosition();
     this->sendState();
 }
 
 void Game::start()
 {
     // Start the game
-    qDebug() << "RAN THE START METHOD!!";
     m_timer->start();
     m_running = true;
 }
@@ -47,9 +72,10 @@ void Game::reset()
 {
     // Reset the game
     // you can reset the paddles and ball position, and scores
-    m_paddle1.setPosition(0, 0);
-    m_paddle2.setPosition(0, 0);
-    m_ball.setPosition(0, 0);
+    m_paddle1.setPosition(0, 230);
+    m_paddle2.setPosition(625, 230);
+    m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getRadius() / 2), m_playingFieldHeight / 2 - (m_ball.getRadius()) / 2);
+    m_ball.setVelocity(0, 0);
     m_score1 = 0;
     m_score2 = 0;
 }
@@ -58,6 +84,7 @@ void Game::sendState()
 {
     // Serialize the state of the game to json
     QJsonObject json;
+    json["code"] = 204;
     json["paddle1"] = QJsonObject({
                             {"x", m_paddle1.getPosition().x()},
                             {"y", m_paddle1.getPosition().y()}

@@ -11,13 +11,11 @@ void playerCommunicationManager::onTextMessageReceived(const QString &message)
     QString action;
     int player;
 
-    qDebug() << "GOT MESSAGE";
-
     switch (jsonObject["code"].toInt()) {
         case 110:
             // Player Moved
             action = jsonObject["action"].toString();
-            player = jsonObject["PlayerNumber"].toInt();
+            player = jsonObject["player"].toInt();
 
             if(player == 1) {
                 // Player 1 Action
@@ -29,9 +27,9 @@ void playerCommunicationManager::onTextMessageReceived(const QString &message)
             } else if (player == 2) {
                 // Player 2 Action
                 if(action == "up") {
-                    Game::getInstance().movePaddle1Up();
+                    Game::getInstance().movePaddle2Up();
                 } else if(action == "down") {
-                    Game::getInstance().movePaddle1Down();
+                    Game::getInstance().movePaddle2Down();
                 }
             }
             break;

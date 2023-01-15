@@ -1,0 +1,44 @@
+#playing-field {
+    width: 680px;
+    height: 540px;
+    background-color: #0E0E14;
+    position: relative;
+  }
+  .rectangle {
+    width: 6px;
+    height: 80px;
+    position: absolute;
+  }
+  #paddleLeft {
+    top: 0px;
+    left: 49px;
+    background-color: white;
+    border-radius: 100px;
+  }
+  #paddleRight {
+    top: 0px;
+    left: 625px;
+    background-color: white;
+    border-radius: 100px;
+  }
+
+  #midline {
+    position: absolute;
+    top: 0px;
+    left: 340px;
+    height: 100%;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+  }
+
+  #ball {
+    position: absolute;
+    top: 260px;
+    left: 340px;
+    width: 19px;
+    height: 19px;
+    background-color: white;
+    border-radius: 100px;
+    z-index: 2;
+  }

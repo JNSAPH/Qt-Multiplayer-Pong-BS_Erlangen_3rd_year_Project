@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Backend Test</title>
+    <script src="./main.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <button id="btnMoveUp">Move Up</button>
+    <button id="btnMoveDown">Move Down</button>
+
+    <div id="playing-field">
+        <div class="rectangle" id="paddleLeft"></div>
+        <div class="rectangle" id="paddleRight"></div>
+        <div class="circle" id="ball"></div>
+        <div id="midline"></div>
+    </div>
+
+    <h1>Debug</h1>
+    <p>Ball:         <span id="wsDebugLogBall"></span></p>
+    <p>Paddle Left:  <span id="wsDebugLogPaddleL"></span></p>
+    <p>Paddle Right: <span id="wsDebugLogPaddleR"></span></p>
+    <p>PlayerState:  <span id="wsDebugLogPlayeState"></span></p>
+    <p>Score:        <span id="wsDebugLogScore"></span></p>
+</body>
+</html>

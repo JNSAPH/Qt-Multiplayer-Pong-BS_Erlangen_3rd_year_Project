@@ -36,13 +36,15 @@ private:
     Game();
     Game(Game const&) = delete;
     void operator=(Game const&) = delete;
-    Paddle m_paddle1;
-    Paddle m_paddle2;
-    Ball m_ball;
     int m_score1;
     int m_score2;
     bool m_running;
     QTimer *m_timer;
+    int m_playingFieldWidth;
+    int m_playingFieldHeight;
+    Paddle m_paddle1;
+    Paddle m_paddle2;
+    Ball m_ball;
 };
 
 #endif // GAME_H

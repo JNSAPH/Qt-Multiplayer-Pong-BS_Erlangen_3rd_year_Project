@@ -2,6 +2,9 @@
 #define BALL_H
 
 #include <QPointF>
+#include <QRandomGenerator>
+
+#include <cmath>
 
 class Paddle;
 
@@ -16,6 +19,7 @@ public:
     void updatePosition();
     void setPosition(int x, int y);
     void checkCollision(Paddle* paddle);
+    int getRadius();
 
 private:
     qreal m_x;
