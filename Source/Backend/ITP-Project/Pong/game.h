@@ -4,13 +4,18 @@
 #include "Paddle.h"
 #include "Ball.h"
 
+#include <QObject>
+
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QTimer>
+
 #include "../socket/websocketserver.h"
 
 
-class Game
+class Game : public QObject
 {
+    Q_OBJECT
 public:
     static Game& getInstance();
     void update();
@@ -18,6 +23,11 @@ public:
     void stop();
     void reset();
     void sendState();
+
+    void movePaddle1Up();
+    void movePaddle1Down();
+    void movePaddle2Up();
+    void movePaddle2Down();
 
     int getScore(int player);
     void setScore(int player, int score);
@@ -32,6 +42,7 @@ private:
     int m_score1;
     int m_score2;
     bool m_running;
+    QTimer *m_timer;
 };
 
 #endif // GAME_H

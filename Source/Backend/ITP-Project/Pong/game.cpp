@@ -12,6 +12,9 @@ Game::Game()
       m_score1(0),
       m_score2(0)
 {
+    m_timer = new QTimer(this);
+    m_timer->setInterval(250);
+    connect(m_timer, &QTimer::timeout, this, &Game::update);
 }
 
 
@@ -22,19 +25,22 @@ void Game::update()
     // and the checkCollision() method of the Ball class
     // to update the positions of the paddles and ball
     // also you can check if the ball hit the wall and update the score accordingly
+    qDebug() << "Updating";
 }
 
 void Game::start()
 {
     // Start the game
     qDebug() << "RAN THE START METHOD!!";
+    m_timer->start();
     m_running = true;
 }
 
 void Game::stop()
 {
     // Stop the game
-    m_running = false;
+    m_timer->stop();
+    //m_running = false;
 }
 
 void Game::reset()
@@ -86,6 +92,19 @@ int Game::getScore(int player)
     if (player == 2)
         return m_score2;
     return -1;
+}
+
+void Game::movePaddle1Up() {
+    m_paddle1.moveUp();
+}
+void Game::movePaddle1Down() {
+    m_paddle1.moveDown();
+}
+void Game::movePaddle2Up() {
+    m_paddle2.moveUp();
+}
+void Game::movePaddle2Down() {
+    m_paddle2.moveDown();
 }
 
 void Game::setScore(int player, int score)

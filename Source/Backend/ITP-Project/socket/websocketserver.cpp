@@ -111,9 +111,21 @@ void WebSocketServer::onSocketDisconnected() {
     for (QWebSocket *socket : m_sockets) {
         socket->sendTextMessage(QString::fromStdString(JSONUtils::generateJSON(data)));
     }
-    // Disconnected all Users
 
-    // Reset the Queue
+    // Stop Game Loop
+    Game::getInstance().stop();
+
+    // Disconnected all Users
+    /*
+    for (QWebSocket *socket : m_sockets) {
+        socket->disconnect();
+    }
+
+    m_sockets.clear();
+    */
+
+    // Reset the Queue & Game
+    Game::getInstance().reset();
     QueueManager::resetQueue();
 
     // Delete the socket
