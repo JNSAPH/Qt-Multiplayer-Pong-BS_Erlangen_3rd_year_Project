@@ -13,7 +13,7 @@ Game::Game()
       m_score2(0)
 {
     m_timer = new QTimer(this);
-    m_timer->setInterval(250);
+    m_timer->setInterval(250); // (4 TPS)
     connect(m_timer, &QTimer::timeout, this, &Game::update);
 }
 
@@ -25,7 +25,7 @@ void Game::update()
     // and the checkCollision() method of the Ball class
     // to update the positions of the paddles and ball
     // also you can check if the ball hit the wall and update the score accordingly
-    qDebug() << "Updating";
+    this->sendState();
 }
 
 void Game::start()
