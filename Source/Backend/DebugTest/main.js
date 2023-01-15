@@ -30,6 +30,13 @@ function onWSMessage(evt) {
             // Player Joined
             playerdata.PlayerNumber = parsed.PlayerNumber;
             playerdata.UUID = parsed.UUID;
+
+            if(playerdata.PlayerNumber == 1) {
+                document.getElementById("paddleLeft").style.backgroundColor = "#EF1E31";
+            } else {
+                document.getElementById("paddleRight").style.backgroundColor = "#EF1E31";   
+            }
+
             document.getElementById("wsDebugLogPlayeState").innerHTML = JSON.stringify(playerdata);
             break;
         case 201:
