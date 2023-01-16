@@ -62,6 +62,7 @@ function onWSMessage(evt) {
         case 999:
             // Winner is declared
             if(parsed.winner == playerdata.PlayerNumber) {
+                // Update score
                 console.log("You won the game!");
                 alert("You won the game!");
             } else {

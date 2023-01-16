@@ -47,15 +47,15 @@ void Game::update()
     }
 
     // If one Player reaches 5 points, stop the game and broadcast the winner
-    if (m_score1 == 1) {
+    if (m_score1 == m_winningScore) {
         qDebug() << "Player 1 won!";
         m_winnerBroadcast["winner"] = "1";
-    } else if (m_score2 == 1) {
+    } else if (m_score2 == m_winningScore) {
         qDebug() << "Player 2 won!";
         m_winnerBroadcast["winner"] = "2";
     }
 
-    if (m_score1 == 1 || m_score2 == 1) {
+    if (m_score1 == m_winningScore || m_score2 == m_winningScore) {
         QJsonDocument doc(m_winnerBroadcast);
         QByteArray jsonData = doc.toJson();
         WebSocketServer::getInstance().broadcast(jsonData);
@@ -96,7 +96,7 @@ void Game::reset()
     m_paddle1.setPosition(m_paddleLeftX, m_paddleY);
     m_paddle2.setPosition(m_paddleRightX, m_paddleY);
     m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getRadius() / 2), m_playingFieldHeight / 2 - (m_ball.getRadius()) / 2);
-    m_ball.setVelocity(0, 0);
+    m_ball.setVelocity(0.8, 0);
 }
 
 void Game::sendState()

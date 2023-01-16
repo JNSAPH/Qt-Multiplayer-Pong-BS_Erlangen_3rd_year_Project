@@ -37,6 +37,7 @@ private:
     int m_paddleLeftX = 29;
     int m_paddleY = 230;
     int m_paddleRightX = 625;
+    int m_winningScore = 5;
 
 private:
     Game();
