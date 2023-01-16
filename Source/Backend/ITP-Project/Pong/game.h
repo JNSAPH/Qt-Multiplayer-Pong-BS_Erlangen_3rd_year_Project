@@ -51,6 +51,7 @@ private:
     Paddle m_paddle1;
     Paddle m_paddle2;
     Ball m_ball;
+    QJsonObject m_winnerBroadcast;
 
 };
 

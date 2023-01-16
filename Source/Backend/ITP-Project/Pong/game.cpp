@@ -11,8 +11,8 @@ Game::Game()
       m_score2(0),
       m_playingFieldWidth(680),
       m_playingFieldHeight(540),
-      m_paddle1(m_paddleLeftX, m_paddleY, 6, 80),
-      m_paddle2(m_paddleRightX, m_paddleY, 6, 80),
+      m_paddle1(m_paddleLeftX, m_paddleY, 1, 80),
+      m_paddle2(m_paddleRightX, m_paddleY, 1, 80),
       m_ball(-10, -10, 19)
 {
     m_timer = new QTimer(this);
@@ -21,6 +21,8 @@ Game::Game()
 
     // set m_ball position to center of the playing field with radius of ball as offset
     m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getRadius() / 2), m_playingFieldHeight / 2 - (m_ball.getRadius()) / 2);
+
+    m_winnerBroadcast["code"] = 999;
 }
 
 
@@ -44,6 +46,24 @@ void Game::update()
         this->reset();
     }
 
+    // If one Player reaches 5 points, stop the game and broadcast the winner
+    if (m_score1 == 1) {
+        qDebug() << "Player 1 won!";
+        m_winnerBroadcast["winner"] = "1";
+    } else if (m_score2 == 1) {
+        qDebug() << "Player 2 won!";
+        m_winnerBroadcast["winner"] = "2";
+    }
+
+    if (m_score1 == 1 || m_score2 == 1) {
+        QJsonDocument doc(m_winnerBroadcast);
+        QByteArray jsonData = doc.toJson();
+        WebSocketServer::getInstance().broadcast(jsonData);
+        
+        this->stop();
+        return;
+    }
+
     // Check if ball is out of bounds
     if (m_ball.getPosition().y() <= 0 || m_ball.getPosition().y() >= m_playingFieldHeight) {
         m_ball.setVelocity(m_ball.getVelocity().x(), -m_ball.getVelocity().y());
@@ -59,14 +79,14 @@ void Game::start()
 {
     // Start the game
     m_timer->start();
-    m_running = true;
 }
 
 void Game::stop()
 {
     // Stop the game
     m_timer->stop();
-    //m_running = false;
+    m_score1 = 0;
+    m_score2 = 0;
 }
 
 void Game::reset()
@@ -77,8 +97,6 @@ void Game::reset()
     m_paddle2.setPosition(m_paddleRightX, m_paddleY);
     m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getRadius() / 2), m_playingFieldHeight / 2 - (m_ball.getRadius()) / 2);
     m_ball.setVelocity(0, 0);
-    m_score1 = 0;
-    m_score2 = 0;
 }
 
 void Game::sendState()

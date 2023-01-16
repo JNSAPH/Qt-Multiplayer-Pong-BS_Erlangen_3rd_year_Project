@@ -44,6 +44,7 @@ function onWSMessage(evt) {
             break;
         case 203:
             // Player Left
+            alert("Player left the game");
             break;
         case 204:
             // Game state update
@@ -57,7 +58,17 @@ function onWSMessage(evt) {
             document.getElementById("paddleRight").style.top = gameState.paddle2.y + "px";
             document.getElementById("ball").style.top = gameState.ball.y + "px";
             document.getElementById("ball").style.left = gameState.ball.x + "px";
-            
+            break;
+        case 999:
+            // Winner is declared
+            if(parsed.winner == playerdata.PlayerNumber) {
+                console.log("You won the game!");
+                alert("You won the game!");
+            } else {
+                console.log("You lost the game!");
+                alert("You lost the game!");
+            }
+
             break;
         default:
             break;
@@ -80,7 +91,6 @@ function sendWSACtion(action) {
         "player": playerdata.PlayerNumber,
         "action": action,
     });
-    console.log(message);
     ws.send(message);
 }
 
