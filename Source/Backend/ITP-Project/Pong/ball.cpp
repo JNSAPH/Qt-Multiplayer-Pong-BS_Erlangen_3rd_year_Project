@@ -61,8 +61,10 @@ void Ball::checkCollision(Paddle* paddle) {
         m_x - m_radius < paddlePos.x() + paddleWidth &&
         m_y + m_radius > paddlePos.y() &&
         m_y - m_radius < paddlePos.y() + paddleHeight) {
-        // Reverse the x velocity of the ball to make it bounce back
-        m_xVelocity = -m_xVelocity;
+
+        // Reverse x velocity and add a small random value to it aswell as the y velocity in the opposite direction
+        m_xVelocity = -m_xVelocity + ((double)QRandomGenerator::global()->generate()/QRandomGenerator::max())*0.2 - 0.1;
+        m_yVelocity += ((double)QRandomGenerator::global()->generate()/QRandomGenerator::max())*0.2 - 0.1;
     }
 }
 

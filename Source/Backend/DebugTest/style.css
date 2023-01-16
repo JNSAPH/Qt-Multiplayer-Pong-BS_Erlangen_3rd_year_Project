@@ -57,6 +57,9 @@ header {
  margin-right: 10px; /* Add margin between the logo and text */
 }
 
+#wsDebugLogBall {
+  font-size: 12px;
+}
 
 /*********************** PONG GAME ***********************/
 
