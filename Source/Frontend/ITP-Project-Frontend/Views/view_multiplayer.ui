@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>240</y>
+     <y>250</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -26,7 +26,129 @@
     <string>Ball</string>
    </property>
   </widget>
+  <widget class="QLabel" name="bg">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>681</width>
+     <height>541</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../resource.qrc">:/resources/bg/resources/bg/bg_big.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnPaddle1">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>290</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Paddle1</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnPaddle2">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>330</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Paddle2</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="score_p1">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>53</y>
+     <width>51</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Roboto</family>
+     <pointsize>62</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="score_p2">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>53</y>
+     <width>51</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Roboto</family>
+     <pointsize>62</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="center_spacer">
+   <property name="geometry">
+    <rect>
+     <x>335</x>
+     <y>0</y>
+     <width>10</width>
+     <height>540</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../resource.qrc">:/resources/bg/resources/center.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>bg</zorder>
+  <zorder>btnBall</zorder>
+  <zorder>btnPaddle1</zorder>
+  <zorder>btnPaddle2</zorder>
+  <zorder>score_p1</zorder>
+  <zorder>score_p2</zorder>
+  <zorder>center_spacer</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

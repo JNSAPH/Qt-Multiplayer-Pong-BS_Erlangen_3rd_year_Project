@@ -27,6 +27,11 @@ void view_multiplayer::updatePlayingField() {
     qDebug() << "Ball Velocity X: " << m_state->getBall().vx << "Ball Velocity Y: " << m_state->getBall().vy;
 
     ui->btnBall->setGeometry(m_state->getBall().x, m_state->getBall().y, m_state->getBall().radius, m_state->getBall().radius);
+    ui->btnPaddle1->setGeometry(m_state->getPaddle1().x, m_state->getPaddle1().y, m_state->getPaddle1().width, m_state->getPaddle1().height);
+    ui->btnPaddle2->setGeometry(m_state->getPaddle2().x, m_state->getPaddle2().y, m_state->getPaddle2().width, m_state->getPaddle2().height);
+
+    ui->score_p1->setText(QString::number(m_state->getScore1()));
+    ui->score_p2->setText(QString::number(m_state->getScore2()));
 
     // Print Paddle 1
     qDebug() << "Paddle 1 X: " << m_state->getPaddle1().x << "Paddle 1 Y: " << m_state->getPaddle1().y;

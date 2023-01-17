@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/resources/bg">
+        <file>resources/bg/bg_big.png</file>
+        <file>resources/bg/bg_small.png</file>
+        <file>resources/menu_spacer.png</file>
+        <file>resources/center.png</file>
+    </qresource>
+</RCC>
