@@ -24,6 +24,16 @@ Game::Game()
     QStringList data = {"paddle1_x", "paddle1_y", "paddle2_x", "paddle2_y", "ball_x", "ball_y", "ball_vx", "ball_vy", "score1", "score2", "timestamp"};
     logs->appendData(data);
 
+    // Database
+    db = new MariaDB("85.214.124.142", "itpundefined", "RNDoi76fYcYpesKEjPyk", "itp_undefined");
+
+    if (!db->open()) {
+        // If not, print error and exit
+        qCritical() << "Error opening database:" << db->getM_DB().lastError().text();
+    } else {
+        // If yes, print success message (not necessary)
+        std::cout << "Connected to DB" << std::endl;
+    }
 
     // set m_ball position to center of the playing field with radius of ball as offset
     m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getRadius() / 2), m_playingFieldHeight / 2 - (m_ball.getRadius()) / 2);

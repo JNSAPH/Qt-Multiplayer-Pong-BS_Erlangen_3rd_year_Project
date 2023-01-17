@@ -11,6 +11,7 @@
 #include <QTimer>
 
 #include "../socket/websocketserver.h"
+#include "../utils/mariadb.h"
 #include "../utils/logs.h"
 
 
@@ -55,6 +56,7 @@ private:
     Ball m_ball;
     QJsonObject m_winnerBroadcast;
     LogUtils *logs;
+    MariaDB *db;
 
 };
 
