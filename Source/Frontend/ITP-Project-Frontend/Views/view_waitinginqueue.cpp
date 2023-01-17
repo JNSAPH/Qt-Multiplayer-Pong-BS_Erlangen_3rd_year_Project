@@ -13,6 +13,7 @@ view_waitingInQueue* view_waitingInQueue::getInstance() {
 view_waitingInQueue::view_waitingInQueue(QWidget *parent) : QDialog(parent), ui(new Ui::view_waitingInQueue)
 {
     ui->setupUi(this);
+    this->setFixedSize(QSize(363, 117));
     this->setWindowTitle("Waiting for Players - Pong (ITP)");
     // Connect to Websocket
     WebSocketClient::getInstance().connectToServer(QUrl("ws://localhost:1214"));
