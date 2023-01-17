@@ -25,6 +25,7 @@ void playerCommunicationManager::onTextMessageReceived(const QString &message)
         // Game is stating
         qDebug() << "Game is starting";
         view_waitingInQueue::getInstance()->hide();
+        MultiplayerView->setPaddleColor();
         MultiplayerView->show();
 
         break;

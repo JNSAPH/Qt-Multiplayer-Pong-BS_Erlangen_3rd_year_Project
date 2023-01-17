@@ -21,15 +21,19 @@ class view_multiplayer : public QDialog
 public:
     explicit view_multiplayer(QWidget *parent = nullptr);
     void updatePlayingField();
+    void setPaddleColor();
     ~view_multiplayer();
 
 protected:
-
+    void keyPressEvent(QKeyEvent *event) override;
 
 private:
     Ui::view_multiplayer *ui;
     PlayerManager *m_playerManager;
     GameState *m_state;
+    void movePlayer();
+    bool UP_pressed;
+    bool DOWN_pressed;
 
 };
 
