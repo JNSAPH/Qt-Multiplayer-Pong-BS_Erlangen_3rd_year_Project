@@ -1,9 +1,9 @@
 # Doxygen configuration file
 
 # Project information
-PROJECT_NAME           = Space Invaders Backend
+PROJECT_NAME           = Pong Backend Documentation
 PROJECT_NUMBER         = 1.0
-PROJECT_BRIEF          = My project description
+PROJECT_BRIEF          = A Multiplayer Pong Game written in C++ using the QT Framework
 
 # Output formats
 GENERATE_HTML = YES
