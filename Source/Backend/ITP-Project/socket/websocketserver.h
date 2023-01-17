@@ -90,8 +90,16 @@ private:
      */
     static QList<QWebSocket *> m_sockets;
 
-    // Add Docs
+    /**
+     * @brief The WebSocketServer instance
+     * This static member variable represents the WebSocketServer instance.
+    */
     static WebSocketServer* m_instance;
+
+    /**
+     * @brief The PlayerCommunicationManager instance
+     * This member variable represents the PlayerCommunicationManager instance.
+     */
     playerCommunicationManager *pmm;
 
 };
