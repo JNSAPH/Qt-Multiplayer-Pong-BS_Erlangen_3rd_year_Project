@@ -8,6 +8,9 @@
 
 #include "../Views/view_multiplayer.h"
 
+#include "../gameManager/playermanager.h"
+#include "../gameManager/gamestate.h"
+
 class view_waitingInQueue;
 
 class playerCommunicationManager : public QObject
@@ -15,11 +18,13 @@ class playerCommunicationManager : public QObject
     Q_OBJECT
 
 public:
-    explicit playerCommunicationManager(QObject *parent = nullptr);
+    playerCommunicationManager(QObject *parent = nullptr);
 
 public slots:
     void onTextMessageReceived(const QString &message);
-
+private:
+    GameState *gameState;
+    view_multiplayer *MultiplayerView;
 
 };
 

@@ -106,17 +106,22 @@ void Game::sendState()
     json["code"] = 204;
     json["paddle1"] = QJsonObject({
                             {"x", m_paddle1.getPosition().x()},
-                            {"y", m_paddle1.getPosition().y()}
+                            {"y", m_paddle1.getPosition().y()},
+                            {"width", m_paddle1.getWidth()},
+                            {"height", m_paddle1.getHeight()}
                         });
     json["paddle2"] = QJsonObject({
                             {"x", m_paddle2.getPosition().x()},
-                            {"y", m_paddle2.getPosition().y()}
+                            {"y", m_paddle2.getPosition().y()},
+                            {"width", m_paddle2.getWidth()},
+                            {"height", m_paddle2.getHeight()}
                         });
     json["ball"] = QJsonObject({
                             {"x", m_ball.getPosition().x()},
                             {"y", m_ball.getPosition().y()},
                             {"vx", m_ball.getVelocity().x()},
-                            {"vy", m_ball.getVelocity().y()}
+                            {"vy", m_ball.getVelocity().y()},
+                            {"radius", m_ball.getRadius()}
                         });
     json["score1"] = m_score1;
     json["score2"] = m_score2;

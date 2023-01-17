@@ -1,10 +1,12 @@
 #include "playercommunicationmanager.h"
 
 #include "../Views/view_waitinginqueue.h"
+#include "../gameManager/playermanager.h"
 
 
 playerCommunicationManager::playerCommunicationManager(QObject *parent) : QObject(parent){
-
+    gameState = &GameState::getInstance();
+    MultiplayerView = new view_multiplayer();
 }
 
 
@@ -13,26 +15,60 @@ void playerCommunicationManager::onTextMessageReceived(const QString &message)
     QJsonDocument jsonDoc = QJsonDocument::fromJson(message.toUtf8());
     QJsonObject jsonObject = jsonDoc.object();
 
-    qDebug() << "GOT MESSAGE";
-
     switch (jsonObject["code"].toInt()) {
     case 200:
         // Player Joined
-        qDebug() << "Player " << jsonObject["PlayerNumber"].toInt() << " Joined";
-        // Set Player_number to Received player number
+        PlayerManager::getInstance().setPlayerNumber(jsonObject["PlayerNumber"].toInt());
+        PlayerManager::getInstance().setUUID(jsonObject["UUID"].toString());
         break;
     case 201:
-        // Game is starting
+        // Game is stating
         qDebug() << "Game is starting";
-        view_waitingInQueue::getInstance()->startGame();
+        view_waitingInQueue::getInstance()->hide();
+        MultiplayerView->show();
+
         break;
     case 203:
-        // Player Disconnected
-        qDebug() << jsonObject["message"].toString();
-        qDebug() << "Player " << jsonObject["PlayerNumber"].toInt() << " disconnected.";
+        // Player Left
+        qDebug() << "Player left";
         break;
-    default:
-        qDebug() << jsonObject["message"].toString();
+    case 204:
+        // Game state Update
+        gameState->setRunning(jsonObject["running"].toBool());
+        gameState->setScore1(jsonObject["score1"].toInt());
+        gameState->setScore2(jsonObject["score2"].toInt());
+
+        gameState->setPaddle1(
+                jsonObject["paddle1"].toObject()["x"].toDouble(),
+                jsonObject["paddle1"].toObject()["y"].toDouble(),
+                jsonObject["paddle1"].toObject()["width"].toDouble(),
+                jsonObject["paddle1"].toObject()["height"].toDouble()
+            );
+        gameState->setPaddle2(
+                jsonObject["paddle2"].toObject()["x"].toDouble(),
+                jsonObject["paddle2"].toObject()["y"].toDouble(),
+                jsonObject["paddle2"].toObject()["width"].toDouble(),
+                jsonObject["paddle2"].toObject()["height"].toDouble()
+                );
+
+        gameState->setBall(
+                jsonObject["ball"].toObject()["vx"].toDouble(),
+                jsonObject["ball"].toObject()["vy"].toDouble(),
+                jsonObject["ball"].toObject()["x"].toDouble(),
+                jsonObject["ball"].toObject()["y"].toDouble(),
+                jsonObject["ball"].toObject()["radius"].toDouble()
+            );
+
+        // Call Playing field update in view_multiplayer;
+        MultiplayerView->updatePlayingField();
+        break;
+    case 999:
+        // Winner is declared
+        if(jsonObject["winner"].toInt() == PlayerManager::getInstance().getPlayerNumber()){
+            qDebug() << "You won";
+        } else {
+            qDebug() << "You lost";
+        }
         break;
     }
 }

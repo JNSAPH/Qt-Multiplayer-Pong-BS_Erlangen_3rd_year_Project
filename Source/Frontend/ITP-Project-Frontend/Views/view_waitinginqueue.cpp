@@ -20,7 +20,7 @@ view_waitingInQueue::view_waitingInQueue(QWidget *parent) : QDialog(parent), ui(
 void view_waitingInQueue::startGame() {
     // Create Multiplayer Window
     view_multiplayer* MultiplayerWindow = new view_multiplayer();
-    MultiplayerWindow->show();
+    //MultiplayerWindow->show();
 
     this->close();
 }

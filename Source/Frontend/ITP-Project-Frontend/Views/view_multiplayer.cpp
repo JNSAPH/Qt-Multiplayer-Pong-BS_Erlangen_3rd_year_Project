@@ -1,7 +1,6 @@
 #include "view_multiplayer.h"
 #include "ui_view_multiplayer.h"
 
-
 #include "utils/websocketclient.h"
 
 view_multiplayer::view_multiplayer(QWidget *parent) :
@@ -11,10 +10,7 @@ view_multiplayer::view_multiplayer(QWidget *parent) :
     ui->setupUi(this);
     this->setFixedSize(QSize(680, 540));
 
-    // Start Time for movement
-    QTimer *timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &view_multiplayer::movePlayer);
-    timer->start(50); // move the player every 50ms
+    m_playerManager = &PlayerManager::getInstance();
 }
 
 view_multiplayer::~view_multiplayer()
@@ -22,72 +18,24 @@ view_multiplayer::~view_multiplayer()
     delete ui;
 }
 
-void view_multiplayer::movePlayer() {
-    QRect currentGeometry = ui->playerChar->geometry();
+void view_multiplayer::updatePlayingField() {
+    m_state = &GameState::getInstance();
 
-    int MIN_X = 100;
-    int MAX_X = 580;
-    int PX_MOVE = 10;
+    // Print Ball
+    qDebug() << "Ball Radius" << m_state->getBall().radius;
+    qDebug() << "Ball X: " << m_state->getBall().x << "Ball Y: " << m_state->getBall().y;
+    qDebug() << "Ball Velocity X: " << m_state->getBall().vx << "Ball Velocity Y: " << m_state->getBall().vy;
 
-    if(A_key_pressed) {
-        int newX = currentGeometry.x() - PX_MOVE;
-        if (newX >= MIN_X && newX + currentGeometry.width() <= MAX_X) {
-            currentGeometry.moveTo(newX, currentGeometry.y());
-            ui->playerChar->setGeometry(currentGeometry);
-        }
-    }
+    ui->btnBall->setGeometry(m_state->getBall().x, m_state->getBall().y, m_state->getBall().radius, m_state->getBall().radius);
 
-    if(D_key_pressed) {
-        int newX = currentGeometry.x() + PX_MOVE;
-        if (newX >= MIN_X && newX + currentGeometry.width() <= MAX_X) {
-            currentGeometry.moveTo(newX, currentGeometry.y());
-            ui->playerChar->setGeometry(currentGeometry);
-        }
-    }
-}
+    // Print Paddle 1
+    qDebug() << "Paddle 1 X: " << m_state->getPaddle1().x << "Paddle 1 Y: " << m_state->getPaddle1().y;
+    qDebug() << "Paddle 1 Width: " << m_state->getPaddle1().width << "Paddle 1 Height: " << m_state->getPaddle1().height;
 
-void view_multiplayer::playerShoot() {
-    // Create a new QLabel object with the text "o" and add it to the main window
-    QLabel* bullet = new QLabel("o", this);
+    // Print Paddle 2
+    qDebug() << "Paddle 2 X: " << m_state->getPaddle2().x << "Paddle 2 Y: " << m_state->getPaddle2().y;
+    qDebug() << "Paddle 2 Width: " << m_state->getPaddle2().width << "Paddle 2 Height: " << m_state->getPaddle2().height;
 
-    // Set the position of the bullet to be in the center of the playerChar object
-    bullet->setGeometry(ui->playerChar->x() + ui->playerChar->width()/2, ui->playerChar->y(), 10, 10);
-
-    // Show the bullet
-    bullet->show();
-
-    // Create a new QPropertyAnimation object for the bullet
-    QPropertyAnimation* animation = new QPropertyAnimation(bullet, "geometry");
-
-    animation->setDuration(1000); // Set Duration
-
-    // Set the start value of the animation to be the current geometry of the bullet
-    animation->setStartValue(bullet->geometry());
-
-    // Set the end value of the animation to be a new QRect at the top of the screen
-    animation->setEndValue(QRect(bullet->x(), 0, bullet->width(), bullet->height()));
-
-    animation->start(); // Start the animation
-
-    // Connect the finished signal of the animation to a lambda function that deletes the bullet
-    QObject::connect(animation, &QPropertyAnimation::finished, [bullet](){
-        bullet->deleteLater();
-    });
-
-}
-
-void view_multiplayer::keyPressEvent(QKeyEvent *event) {
-    switch(event->key()) {
-        case Qt::Key_A: A_key_pressed = true; break;
-        case Qt::Key_D: D_key_pressed = true; break;
-        case Qt::Key_W: this->playerShoot(); break;
-        case Qt::Key_Escape: QCoreApplication::quit(); break;
-    }
-}
-
-void view_multiplayer::keyReleaseEvent(QKeyEvent * event) {
-    switch(event->key()) {
-        case Qt::Key_A: A_key_pressed = false; break;
-        case Qt::Key_D: D_key_pressed = false; break;
-    }
+    // Print Score
+    qDebug() << "Score 1: " << m_state->getScore1() << "Score 2: " << m_state->getScore2();
 }

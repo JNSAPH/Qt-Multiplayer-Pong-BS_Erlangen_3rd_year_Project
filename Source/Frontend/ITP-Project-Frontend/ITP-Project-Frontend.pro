@@ -12,24 +12,22 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Controller/wsocketcontroller.cpp \
     Views/view_multiplayer.cpp \
     Views/view_waitinginqueue.cpp \
+    gameManager/gamestate.cpp \
     gameManager/playercommunicationmanager.cpp \
     gameManager/playermanager.cpp \
-    gameManager/playerstatemanager.cpp \
     main.cpp \
     menuwindow.cpp \
     utils/HttpRequest.cpp \
     utils/websocketclient.cpp
 
 HEADERS += \
-    Controller/wsocketcontroller.h \
     Views/view_multiplayer.h \
     Views/view_waitinginqueue.h \
+    gameManager/gamestate.h \
     gameManager/playercommunicationmanager.h \
     gameManager/playermanager.h \
-    gameManager/playerstatemanager.h \
     menuwindow.h \
     utils/HttpRequest.h \
     utils/websocketclient.h

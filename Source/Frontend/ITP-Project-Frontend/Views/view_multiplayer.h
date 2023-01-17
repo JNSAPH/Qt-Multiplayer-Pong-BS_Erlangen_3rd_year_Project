@@ -7,6 +7,8 @@
 #include <QPropertyAnimation>
 #include <QTimer>
 
+#include "../gameManager/gamestate.h"
+#include "../gameManager/playermanager.h"
 
 namespace Ui {
 class view_multiplayer;
@@ -18,18 +20,17 @@ class view_multiplayer : public QDialog
 
 public:
     explicit view_multiplayer(QWidget *parent = nullptr);
+    void updatePlayingField();
     ~view_multiplayer();
 
 protected:
-    void keyPressEvent(QKeyEvent *event) override;
-    void keyReleaseEvent(QKeyEvent *event) override;
+
 
 private:
     Ui::view_multiplayer *ui;
-    bool A_key_pressed;
-    bool D_key_pressed;
-    void movePlayer();
-    void playerShoot();
+    PlayerManager *m_playerManager;
+    GameState *m_state;
+
 };
 
 #endif // VIEW_MULTIPLAYER_H

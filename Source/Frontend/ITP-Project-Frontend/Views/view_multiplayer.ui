@@ -13,30 +13,17 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QPushButton" name="btnBall">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>111</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Gaming!!</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="playerChar">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>480</y>
+     <x>290</x>
+     <y>240</y>
      <width>80</width>
-     <height>4</height>
+     <height>24</height>
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>Ball</string>
    </property>
   </widget>
  </widget>

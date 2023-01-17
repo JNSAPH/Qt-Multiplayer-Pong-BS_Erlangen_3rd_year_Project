@@ -25,6 +25,7 @@ function connect() {
 
 function onWSMessage(evt) {
     let parsed = JSON.parse(evt.data);
+    console.log(parsed)
     switch (parsed.code) {
         case 200:
             // Player Joined
