@@ -19,6 +19,12 @@ Game::Game()
     m_timer->setInterval(3); // (333 TPS)
     connect(m_timer, &QTimer::timeout, this, &Game::update);
 
+    // Logs
+    logs = &LogUtils::getInstance();
+    QStringList data = {"paddle1_x", "paddle1_y", "paddle2_x", "paddle2_y", "ball_x", "ball_y", "ball_vx", "ball_vy", "score1", "score2", "timestamp"};
+    logs->appendData(data);
+
+
     // set m_ball position to center of the playing field with radius of ball as offset
     m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getRadius() / 2), m_playingFieldHeight / 2 - (m_ball.getRadius()) / 2);
 
@@ -85,6 +91,9 @@ void Game::stop()
 {
     // Stop the game
     m_timer->stop();
+    // Save the logs to a csv file
+    logs->saveToCSV("data.csv");
+    // Reset the scores
     m_score1 = 0;
     m_score2 = 0;
 }
@@ -130,6 +139,23 @@ void Game::sendState()
     // Send the json object to all connected clients
     QJsonDocument doc(json);
     QByteArray jsonData = doc.toJson();
+
+    // Append all data to the log file with a timestamp
+    QStringList data = {
+    QString::number(m_paddle1.getPosition().x()), // paddle1_x
+    QString::number(m_paddle1.getPosition().y()), // paddle1_y
+    QString::number(m_paddle2.getPosition().x()), // paddle2_x
+    QString::number(m_paddle2.getPosition().y()), // paddle2_y
+    QString::number(m_ball.getPosition().x()), // ball_x
+    QString::number(m_ball.getPosition().y()), // ball_y
+    QString::number(m_ball.getVelocity().x()), // ball_vx
+    QString::number(m_ball.getVelocity().y()), // ball_vy
+    QString::number(m_score1), // score1
+    QString::number(m_score2), // score2
+    QString::number(QDateTime::currentMSecsSinceEpoch()) // timestamp
+    };
+
+    logs->appendData(data);
 
     // Broadcast jsonData
     WebSocketServer::getInstance().broadcast(jsonData);

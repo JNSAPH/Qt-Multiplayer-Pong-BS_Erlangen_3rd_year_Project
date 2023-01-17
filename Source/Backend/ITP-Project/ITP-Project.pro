@@ -26,6 +26,7 @@ SOURCES += \
         routes/requestqueueroute.cpp \
         socket/websocketserver.cpp \
         utils/jsonutils.cpp \
+        utils/logs.cpp \
         utils/mariadb.cpp \
         utils/ws_utils.cpp \
         ws/webserver.cpp
@@ -47,6 +48,7 @@ HEADERS += \
     routes/requestqueueroute.h \
     socket/websocketserver.h \
     utils/jsonutils.h \
+    utils/logs.h \
     utils/mariadb.h \
     utils/ws_utils.h \
     ws/webserver.h

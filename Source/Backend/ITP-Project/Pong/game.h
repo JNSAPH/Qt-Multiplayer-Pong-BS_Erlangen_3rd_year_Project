@@ -11,6 +11,7 @@
 #include <QTimer>
 
 #include "../socket/websocketserver.h"
+#include "../utils/logs.h"
 
 
 class Game : public QObject
@@ -53,6 +54,7 @@ private:
     Paddle m_paddle2;
     Ball m_ball;
     QJsonObject m_winnerBroadcast;
+    LogUtils *logs;
 
 };
 
