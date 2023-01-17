@@ -10,6 +10,8 @@ view_multiplayer::view_multiplayer(QWidget *parent) :
     ui->setupUi(this);
     this->setFixedSize(QSize(680, 540));
 
+    this->setWindowTitle("Multiplayer - Pong (ITP)");
+
     m_playerManager = &PlayerManager::getInstance();
 
     // Start Timer for movement

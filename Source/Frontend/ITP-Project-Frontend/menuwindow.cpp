@@ -7,6 +7,7 @@ MenuWindow::MenuWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setFixedSize(QSize(680, 540));
+    this->setWindowTitle("Menu - Pong (ITP)");
 }
 
 MenuWindow::~MenuWindow()
