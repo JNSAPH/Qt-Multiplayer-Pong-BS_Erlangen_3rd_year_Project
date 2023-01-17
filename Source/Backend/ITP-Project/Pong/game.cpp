@@ -11,8 +11,8 @@ Game::Game()
       m_score2(0),
       m_playingFieldWidth(680),
       m_playingFieldHeight(540),
-      m_paddle1(m_paddleLeftX, m_paddleY, 1, 80),
-      m_paddle2(m_paddleRightX, m_paddleY, 1, 80),
+      m_paddle1(m_paddleLeftX, m_paddleY, 6, 80),
+      m_paddle2(m_paddleRightX, m_paddleY, 6, 80),
       m_ball(-10, -10, 19)
 {
     m_timer = new QTimer(this);

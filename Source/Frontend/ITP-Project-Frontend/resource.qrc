@@ -4,5 +4,8 @@
         <file>resources/bg/bg_small.png</file>
         <file>resources/menu_spacer.png</file>
         <file>resources/center.png</file>
+        <file>resources/paddle.png</file>
+        <file>resources/paddle_player.png</file>
+        <file>resources/ball.png</file>
     </qresource>
 </RCC>

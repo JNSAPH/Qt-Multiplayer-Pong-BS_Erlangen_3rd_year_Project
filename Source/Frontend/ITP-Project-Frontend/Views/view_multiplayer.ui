@@ -13,19 +13,6 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="btnBall">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>250</y>
-     <width>80</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Ball</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="bg">
    <property name="geometry">
     <rect>
@@ -40,32 +27,6 @@
    </property>
    <property name="pixmap">
     <pixmap resource="../resource.qrc">:/resources/bg/resources/bg/bg_big.png</pixmap>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btnPaddle1">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>290</y>
-     <width>80</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Paddle1</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btnPaddle2">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>330</y>
-     <width>80</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Paddle2</string>
    </property>
   </widget>
   <widget class="QLabel" name="score_p1">
@@ -139,13 +100,63 @@
     <bool>true</bool>
    </property>
   </widget>
-  <zorder>bg</zorder>
-  <zorder>btnBall</zorder>
-  <zorder>btnPaddle1</zorder>
-  <zorder>btnPaddle2</zorder>
-  <zorder>score_p1</zorder>
-  <zorder>score_p2</zorder>
-  <zorder>center_spacer</zorder>
+  <widget class="QLabel" name="img_paddle1">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>130</y>
+     <width>6</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../resource.qrc">:/resources/bg/resources/paddle.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="img_paddle2">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>130</y>
+     <width>6</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../resource.qrc">:/resources/bg/resources/paddle.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="img_ball">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>240</y>
+     <width>19</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../resource.qrc">:/resources/bg/resources/ball.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
  </widget>
  <resources>
   <include location="../resource.qrc"/>

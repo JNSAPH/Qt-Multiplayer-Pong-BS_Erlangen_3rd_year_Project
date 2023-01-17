@@ -11,6 +11,14 @@ view_multiplayer::view_multiplayer(QWidget *parent) :
     this->setFixedSize(QSize(680, 540));
 
     m_playerManager = &PlayerManager::getInstance();
+
+    if(m_playerManager->getPlayerNumber() == 1) {
+        // set paddle img_paddle1 to resource paddle_player
+        ui->img_paddle1->setPixmap(QPixmap(":/resources/bg/resources/paddle_player.png"));
+    } else {
+        // set paddle img_paddle2 to resource paddle_player
+        ui->img_paddle2->setPixmap(QPixmap(":/resources/bg/resources/paddle_player.png"));
+    }
 }
 
 view_multiplayer::~view_multiplayer()
@@ -26,9 +34,9 @@ void view_multiplayer::updatePlayingField() {
     qDebug() << "Ball X: " << m_state->getBall().x << "Ball Y: " << m_state->getBall().y;
     qDebug() << "Ball Velocity X: " << m_state->getBall().vx << "Ball Velocity Y: " << m_state->getBall().vy;
 
-    ui->btnBall->setGeometry(m_state->getBall().x, m_state->getBall().y, m_state->getBall().radius, m_state->getBall().radius);
-    ui->btnPaddle1->setGeometry(m_state->getPaddle1().x, m_state->getPaddle1().y, m_state->getPaddle1().width, m_state->getPaddle1().height);
-    ui->btnPaddle2->setGeometry(m_state->getPaddle2().x, m_state->getPaddle2().y, m_state->getPaddle2().width, m_state->getPaddle2().height);
+    ui->img_ball->setGeometry(m_state->getBall().x, m_state->getBall().y, m_state->getBall().radius, m_state->getBall().radius);
+    ui->img_paddle1->setGeometry(m_state->getPaddle1().x, m_state->getPaddle1().y, m_state->getPaddle1().width, m_state->getPaddle1().height);
+    ui->img_paddle2->setGeometry(m_state->getPaddle2().x, m_state->getPaddle2().y, m_state->getPaddle2().width, m_state->getPaddle2().height);
 
     ui->score_p1->setText(QString::number(m_state->getScore1()));
     ui->score_p2->setText(QString::number(m_state->getScore2()));
