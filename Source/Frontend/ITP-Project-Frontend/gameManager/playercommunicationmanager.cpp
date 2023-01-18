@@ -7,6 +7,7 @@
 playerCommunicationManager::playerCommunicationManager(QObject *parent) : QObject(parent){
     gameState = &GameState::getInstance();
     MultiplayerView = new view_multiplayer();
+    FinalScoreView = new view_FinalScore();
 }
 
 
@@ -64,12 +65,9 @@ void playerCommunicationManager::onTextMessageReceived(const QString &message)
         MultiplayerView->updatePlayingField();
         break;
     case 999:
-        // Winner is declared
-        if(jsonObject["winner"].toInt() == PlayerManager::getInstance().getPlayerNumber()){
-            qDebug() << "You won";
-        } else {
-            qDebug() << "You lost";
-        }
+        MultiplayerView->close();
+        FinalScoreView->show();
+        FinalScoreView->finalWinner(jsonObject["winner"].toInt(), PlayerManager::getInstance().getPlayerNumber());
         break;
     }
 }

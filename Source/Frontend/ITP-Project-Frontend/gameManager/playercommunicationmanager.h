@@ -7,6 +7,7 @@
 #include <QJsonObject>
 
 #include "../Views/view_multiplayer.h"
+#include "../Views/view_finalscore.h"
 
 #include "../gameManager/playermanager.h"
 #include "../gameManager/gamestate.h"
@@ -25,6 +26,7 @@ public slots:
 private:
     GameState *gameState;
     view_multiplayer *MultiplayerView;
+    view_FinalScore *FinalScoreView;
 
 };
 

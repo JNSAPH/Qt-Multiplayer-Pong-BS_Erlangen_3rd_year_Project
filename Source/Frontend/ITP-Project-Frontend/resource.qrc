@@ -7,5 +7,6 @@
         <file>resources/paddle.png</file>
         <file>resources/paddle_player.png</file>
         <file>resources/ball.png</file>
+        <file>resources/ya_winning.png</file>
     </qresource>
 </RCC>

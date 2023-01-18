@@ -65,10 +65,10 @@ void Game::update()
     // If one Player reaches 5 points, stop the game and broadcast the winner
     if (m_score1 == m_winningScore) {
         qDebug() << "Player 1 won!";
-        m_winnerBroadcast["winner"] = "1";
+        m_winnerBroadcast["winner"] = 1;
     } else if (m_score2 == m_winningScore) {
         qDebug() << "Player 2 won!";
-        m_winnerBroadcast["winner"] = "2";
+        m_winnerBroadcast["winner"] = 2;
     }
 
     if (m_score1 == m_winningScore || m_score2 == m_winningScore) {
