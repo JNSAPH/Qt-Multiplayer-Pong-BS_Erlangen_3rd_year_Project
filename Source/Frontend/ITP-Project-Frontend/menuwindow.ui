@@ -13,59 +13,14 @@
   <property name="windowTitle">
    <string>MenuWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #0E0E14; color: white</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btnMultiplayer">
-    <property name="geometry">
-     <rect>
-      <x>76</x>
-      <y>243</y>
-      <width>181</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 500 12pt &quot;Roboto Medium&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Multiplayer</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnQuitGame">
-    <property name="geometry">
-     <rect>
-      <x>76</x>
-      <y>281</y>
-      <width>181</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 500 12pt &quot;Roboto Medium&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Quit Game</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="bg">
-    <property name="geometry">
-     <rect>
-      <x>-50</x>
-      <y>-70</y>
-      <width>731</width>
-      <height>611</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="resource.qrc">:/resources/bg/resources/bg/bg_big.png</pixmap>
-    </property>
-   </widget>
    <widget class="QLabel" name="gameName">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>120</x>
       <y>70</y>
       <width>261</width>
       <height>121</height>
@@ -74,59 +29,122 @@
     <property name="font">
      <font>
       <family>Roboto Medium</family>
-      <pointsize>54</pointsize>
+      <pointsize>64</pointsize>
       <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: white</string>
+     <string notr="true">color: #E4E4E4</string>
     </property>
     <property name="text">
      <string>Pong</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="btnSinglePlayer">
     <property name="geometry">
      <rect>
-      <x>76</x>
-      <y>205</y>
+      <x>120</x>
+      <y>190</y>
       <width>181</width>
       <height>34</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 500 12pt &quot;Roboto Medium&quot;;</string>
+     <string notr="true">    color: #E4E4E4;
+    font-size: 22px;
+	font-weight: bold;
+    border: none;
+    background-color: transparent;
+    text-align: left;</string>
     </property>
     <property name="text">
-     <string>Single Player</string>
+     <string>Singe Player</string>
     </property>
    </widget>
-   <widget class="QLabel" name="spacer">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>76</x>
-      <y>179</y>
-      <width>106</width>
-      <height>6</height>
+      <x>30</x>
+      <y>0</y>
+      <width>51</width>
+      <height>541</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resource.qrc">:/resources/bg/resources/menu_spacer.png</pixmap>
+     <pixmap resource="resource.qrc">:/resources/bg/resources/rainbow.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
    </widget>
-   <zorder>bg</zorder>
-   <zorder>btnMultiplayer</zorder>
-   <zorder>btnQuitGame</zorder>
-   <zorder>gameName</zorder>
-   <zorder>btnSinglePlayer</zorder>
-   <zorder>spacer</zorder>
+   <widget class="QPushButton" name="btnMultiplayer">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>230</y>
+      <width>181</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    color: #E4E4E4;
+    font-size: 22px;
+	font-weight: bold;
+    border: none;
+    background-color: transparent;
+    text-align: left;</string>
+    </property>
+    <property name="text">
+     <string>Multiplayer</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnQuitGame">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>270</y>
+      <width>181</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    color: #E4E4E4;
+    font-size: 22px;
+	font-weight: bold;
+    border: none;
+    background-color: transparent;
+    text-align: left;</string>
+    </property>
+    <property name="text">
+     <string>Quit Game</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>450</y>
+      <width>102</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resource.qrc">:/resources/bg/resources/studio_logos.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>

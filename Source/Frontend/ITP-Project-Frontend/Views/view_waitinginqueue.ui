@@ -13,46 +13,54 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #0E0E14</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>50</y>
-     <width>131</width>
-     <height>16</height>
+     <x>0</x>
+     <y>25</y>
+     <width>361</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Roboto</family>
+     <pointsize>13</pointsize>
      <bold>true</bold>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: white</string>
+    <string notr="true">color: #E4E4E4</string>
    </property>
    <property name="text">
     <string>Waiting for Players...</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
-  <widget class="QLabel" name="bg">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>20</x>
      <y>0</y>
-     <width>371</width>
-     <height>121</height>
+     <width>101</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../resource.qrc">:/resources/bg/resources/bg/bg_small.png</pixmap>
+    <pixmap resource="../resource.qrc">:/resources/bg/resources/rainbow_small.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
-  <zorder>bg</zorder>
-  <zorder>label</zorder>
  </widget>
  <resources>
   <include location="../resource.qrc"/>

@@ -10,5 +10,6 @@
         <file>resources/ya_winning.png</file>
         <file>resources/rainbow.png</file>
         <file>resources/rainbow_small.png</file>
+        <file>resources/studio_logos.png</file>
     </qresource>
 </RCC>

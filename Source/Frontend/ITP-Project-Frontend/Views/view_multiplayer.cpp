@@ -68,6 +68,8 @@ void view_multiplayer::keyPressEvent(QKeyEvent *event) {
     switch(event->key()) {
         case Qt::Key_W: UP_pressed = true; break;
         case Qt::Key_S: DOWN_pressed = true; break;
+        case Qt::Key_Up: UP_pressed = true; break;
+        case Qt::Key_Down: DOWN_pressed = true; break;
     }
 }
 
