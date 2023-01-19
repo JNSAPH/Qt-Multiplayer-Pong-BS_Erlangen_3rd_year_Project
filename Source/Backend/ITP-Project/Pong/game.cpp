@@ -102,7 +102,7 @@ void Game::stop()
     // Stop the game
     m_timer->stop();
     // Save the logs to a csv file
-    logs->saveToCSV("data.csv");
+    logs->saveToCSV(QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss") + ".csv");
     // Reset the scores
     m_score1 = 0;
     m_score2 = 0;
