@@ -86,10 +86,10 @@ private:
     qreal m_y;
 
     /**
-    * @var m_radius
+    * @var m_diameter
     * @brief The radius of the ball
     */
-    qreal m_radius;
+    qreal m_diameter;
 
     /**
     * @var m_xVelocity

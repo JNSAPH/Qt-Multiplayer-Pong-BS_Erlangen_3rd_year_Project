@@ -91,13 +91,13 @@ private:
     * @var m_paddleLeftX
     * @brief The x-coordinate of the left paddle
     */
-    int m_paddleLeftX = 29;
+    int m_paddleLeftX = 29; // 29
 
     /**
      * @var m_paddleY
      * @brief The y-coordinate of the paddles
      */
-    int m_paddleY = 230;
+    int m_paddleY = 230; //230
 
     /**
      * @var m_paddleRightX
