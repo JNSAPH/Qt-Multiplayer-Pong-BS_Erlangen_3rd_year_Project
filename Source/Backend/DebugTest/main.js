@@ -57,6 +57,8 @@ function onWSMessage(evt) {
 
             document.getElementById("paddleLeft").style.top = gameState.paddle1.y + "px";
             document.getElementById("paddleRight").style.top = gameState.paddle2.y + "px";
+            document.getElementById("paddleLeft").style.left = gameState.paddle1.x + "px";
+            document.getElementById("paddleRight").style.right = gameState.paddle2.x + "px";
             document.getElementById("ball").style.top = gameState.ball.y + "px";
             document.getElementById("ball").style.left = gameState.ball.x + "px";
             break;

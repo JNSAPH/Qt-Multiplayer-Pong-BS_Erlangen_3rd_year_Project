@@ -3,15 +3,9 @@
 #include "qdebug.h"
 
 Ball::Ball(qreal x, qreal y, qreal radius)
-    : m_x(x), m_y(y), m_radius(radius), m_xVelocity(0), m_yVelocity(0)
+    : m_x(x), m_y(y), m_diameter(radius), m_xVelocity(0), m_yVelocity(0)
 {
-    while (m_xVelocity == 0)
-    {
-        m_xVelocity = ((double)QRandomGenerator::global()->generate() / QRandomGenerator::max()) * 3 - 1.5;
-        m_xVelocity = m_xVelocity < 0 ? -ceil(abs(m_xVelocity) * 10) / 10 : ceil(m_xVelocity * 10) / 10;
-        if (m_xVelocity == -0)
-            m_xVelocity = 0;
-    }
+   setVelocity(m_xVelocity,m_yVelocity);
 }
 
 QPointF Ball::getPosition()
@@ -54,37 +48,83 @@ void Ball::checkCollision(Paddle *paddle)
 {
     // Get the paddle's position and size
     QPointF paddlePos = paddle->getPosition();
-    int paddleWidth = paddle->getWidth();
+    int paddleWidth = paddle->getWidth();       //6
     int paddleHeight = paddle->getHeight();
+    float ballMidX = m_x + m_diameter/2;
+    float ballMidY = m_y + m_diameter/2;
 
     // Check if the ball collides with the paddle
-    if (m_x + m_radius > paddlePos.x() &&
-        m_x - m_radius < paddlePos.x() + paddleWidth &&
-        m_y + m_radius > paddlePos.y() &&
-        m_y - m_radius < paddlePos.y() + paddleHeight)
-    {
 
-        // Reverse x velocity and add a small random value to it aswell as the y velocity in the opposite direction
-        if (m_xVelocity > 0)
-            m_xVelocity = -m_xVelocity + ((double)QRandomGenerator::global()->generate() / QRandomGenerator::max()) * 0.2 - 0.1;
-        else
-            m_xVelocity = -m_xVelocity - ((double)QRandomGenerator::global()->generate() / QRandomGenerator::max()) * 0.2 + 0.1;
 
-        m_yVelocity += ((double)QRandomGenerator::global()->generate() / QRandomGenerator::max()) * 0.2 - 0.1;
+    //Calculate Delta to nearest Side of Paddle
+    float deltaX= (ballMidX - paddlePos.x());
+    deltaX = deltaX > 0 ? (deltaX-paddleWidth) : abs(deltaX);
+
+    //Is Ball in the correct X-Area
+    if (deltaX > m_diameter/2) return;
+
+    float deltaY= (ballMidY - (paddlePos.y()+paddleHeight/2));
+    //Is Ball in the corret Y-Area
+
+    if( abs(deltaY) >= paddleHeight/2 + m_diameter/2 ) return;
+
+    //Paddle Face Hit
+
+    if( abs(deltaY) < paddleHeight/2 - paddleHeight/20){
+        m_xVelocity = -(m_xVelocity * 1.10);
+        m_yVelocity *= 0.95;
+         return;
     }
+
+    if(deltaX <= m_diameter/6)
+    {
+        //HitOnBotDetected
+        if(deltaY > 0 )
+        {
+            m_xVelocity *= (abs(m_xVelocity) <= 0.001)? -0.003/abs(m_xVelocity) : -1.1;
+            m_yVelocity = (abs(m_yVelocity) <= 0.001)? (m_yVelocity  + 0.4) * 1.6 :  m_yVelocity * 1.6;
+            return;
+        }
+        //HitOnTopDetected
+        if(deltaY < 0 )
+        {
+            m_xVelocity *= (abs(m_xVelocity) <= 0.001)? -0.003/abs(m_xVelocity) : -1.1;
+            m_yVelocity = (abs(m_yVelocity) <= 0.001)? (m_yVelocity  - 0.4 )* 1.6 :  m_yVelocity * 1.6;
+            return;
+        }
+    }
+
+
+    //HitOnBotDetected
+    if(deltaY > m_diameter/6 )
+    {
+        m_xVelocity *= (abs(m_xVelocity) <= 0.001)? -0.003/abs(m_xVelocity) : -0.95;
+        m_yVelocity = (abs(m_yVelocity)<= 0.001)? (m_yVelocity  + 0.4) * 1.4 :  m_yVelocity * 1.4;
+        return;
+    }
+    //HitOnTopDetected
+    if(deltaY < -m_diameter/6 )
+    {
+        m_xVelocity *= (abs(m_xVelocity) <= 0.001)? -0.003/abs(m_xVelocity) : -0.95;
+        m_yVelocity = (abs(m_yVelocity)<= 0.001)? (m_yVelocity  - 0.4 )* 1.4 :  m_yVelocity * 1.4;
+
+        return;
+    }
+    else
+    {
+        m_xVelocity *= -2 ;
+        m_yVelocity *= -2 ;
+
+        qDebug()<<"Delta: "<<deltaX;
+        qDebug()<<"BallX: "<<ballMidX;
+        qDebug()<<"PaddleX: "<<paddlePos.x();
+        return;
+    }
+
 }
 
-/*
- *
-    // Check if the ball is colliding with the paddle
-    if (m_x + m_radius >= paddle->getPosition().x() &&
-        m_x - m_radius <= paddle->getPosition().x() + paddle->getWidth())
-    {
-        qDebug() << "Coll 1";
-    }
-*/
 
-int Ball::getRadius()
+int Ball::getRadius() // bruhv
 {
-    return m_radius;
+    return m_diameter;
 }
