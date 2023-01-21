@@ -40,6 +40,10 @@ DISABLE_INDEX          = YES
 GENERATE_TREEVIEW      = YES
 RECURSIVE              = YES
 
+UML_LOOK = YES
+CLASS_GRAPH = YES
+
+
 # Examples
 EXAMPLE_PATH= ../../Source/Backend/ITP-Project/examples/
 

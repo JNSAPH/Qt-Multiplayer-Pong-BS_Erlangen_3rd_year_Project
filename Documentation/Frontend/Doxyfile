@@ -1,7 +1,7 @@
 # Doxygen configuration file
 
 # Project information
-PROJECT_NAME           = Pong Backend Documentation
+PROJECT_NAME           = Pong Frontend Documentation
 PROJECT_NUMBER         = 1.0
 PROJECT_BRIEF          = A Multiplayer Pong Game written in C++ using the QT Framework
 
@@ -11,7 +11,7 @@ GENERATE_LATEX = NO
 
 # Input
 RECURSIVE = YES
-INPUT = ../Source/Backend/ITP-Project/
+INPUT = ../../Source/Frontend/ITP-Project-Frontend/
 
 # Output directories
 OUTPUT_DIRECTORY = .
@@ -29,8 +29,23 @@ EXCLUDE_PATTERNS       = */build/* \
 REFERENCED_BY_RELATION = YES
 REFERENCES_RELATION    = YES
 
+# Graphviz
+HAVE_DOT               = YES
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+DISABLE_INDEX          = YES 
+GENERATE_TREEVIEW      = YES
+RECURSIVE              = YES
+
+UML_LOOK = YES
+CLASS_GRAPH = YES
+
+
 # Examples
-EXAMPLE_PATH= ../Source/Backend/ITP-Project/examples/
+EXAMPLE_PATH= ../../Source/Backend/ITP-Project/examples/
 
 # Markdown options
 MARKDOWN_SUPPORT       = YES
