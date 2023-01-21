@@ -1,8 +1,0 @@
-In diesem Ordner wird alles abgelegt was zur Verwaltung der Datenbank gehört. 
-Um die richtige Reihenfolge der Skripts zu gewährleisten, ist es ratsam, die Skripte durchzunummerieren (01_xxx.sql)
-z.B.
-- Skripts zur Erstellung von Datenbanken (01_CreateDatabase.sql)
-- Skripts zum Erstellung und Verwalten von Bedienern
-- Skripts um Optionen für den Server oder Datenbanken zu setzen
-
-

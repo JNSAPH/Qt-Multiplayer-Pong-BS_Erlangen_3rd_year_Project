@@ -1,2 +1,0 @@
-In diesem Ordner werden alle Trigger abgelegt.
-Es macht Sinn mehrere Trigger für Insert, Update und Delete zu erstellen. 

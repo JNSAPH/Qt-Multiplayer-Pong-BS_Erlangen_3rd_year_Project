@@ -1,3 +1,0 @@
-In diesem Ordner werden alle Init-Skripte abgelegt.
-Um die richtige Reihenfolge der Skripts zu gewährleisten, ist es ratsam, die Skripte durchzunummerieren (01_xxx.sql)
-

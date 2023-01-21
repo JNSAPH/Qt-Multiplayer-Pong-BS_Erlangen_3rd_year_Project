@@ -1,6 +1,0 @@
-In diesem Ordner werden die SQL-Sktipts abgelegt, die nicht direkt zu / aus diesem Projekt stammen.
-Die Sourcen zu solchen Skripts sind zusätzlich im Projektverzeichnis unter ..\F-Beistellungen abzulegen.
-Um die richtige Reihenfolge zu gewährleisten, ist es ratsam, die Skripte durchzunummerieren (01_xxx.sql)
-
-z.B. 
-- All.sql aus einem anderen Projekt (z.B. GWF; Mehrsprachigkeitsmodul)
