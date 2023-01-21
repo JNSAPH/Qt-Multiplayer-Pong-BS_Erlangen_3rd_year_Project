@@ -35,4 +35,5 @@ Source/Backend/build-*
 Source/Frontend/build-*
 
 .vscode/
-Documentation/*/
+Documentation/Backend/Source/*
+Documentation/Frontend/Source/*
