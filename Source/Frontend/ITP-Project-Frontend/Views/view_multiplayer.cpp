@@ -8,7 +8,7 @@ view_multiplayer::view_multiplayer(QWidget *parent) :
     ui(new Ui::view_multiplayer)
 {
     ui->setupUi(this);
-    this->setFixedSize(QSize(680, 540));
+    this->setFixedSize(QSize(680, 559));
 
     this->setWindowTitle("Multiplayer - Pong (ITP)");
 
@@ -38,7 +38,7 @@ void view_multiplayer::setPaddleColor() {
 void view_multiplayer::updatePlayingField() {
     m_state = &GameState::getInstance();
 
-    ui->img_ball->setGeometry(m_state->getBall().x, m_state->getBall().y, m_state->getBall().radius, m_state->getBall().radius);
+    ui->img_ball->setGeometry(m_state->getBall().x, m_state->getBall().y, m_state->getBall().diameter, m_state->getBall().diameter);
     ui->img_paddle1->setGeometry(m_state->getPaddle1().x, m_state->getPaddle1().y, m_state->getPaddle1().width, m_state->getPaddle1().height);
     ui->img_paddle2->setGeometry(m_state->getPaddle2().x, m_state->getPaddle2().y, m_state->getPaddle2().width, m_state->getPaddle2().height);
 

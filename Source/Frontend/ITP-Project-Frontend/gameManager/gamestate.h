@@ -6,7 +6,7 @@ struct Ball {
     double vy;
     double x;
     double y;
-    double radius;
+    double diameter;
 };
 
 struct Paddle {
@@ -35,7 +35,7 @@ public:
     int getScore1() const;
     int getScore2() const;
     bool isRunning() const;
-    void setBall(double vx, double vy, double x, double y, double radius);
+    void setBall(double vx, double vy, double x, double y, double diameter);
     void setPaddle1(double x, double y, double width, double height);
     void setPaddle2(double x, double y, double width, double height);
     void setScore1(int score);

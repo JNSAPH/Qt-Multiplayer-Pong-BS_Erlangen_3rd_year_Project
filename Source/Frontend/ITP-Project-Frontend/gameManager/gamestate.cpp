@@ -35,13 +35,13 @@ bool GameState::isRunning() const
     return m_running;
 }
 
-void GameState::setBall(double vx, double vy, double x, double y, double radius)
+void GameState::setBall(double vx, double vy, double x, double y, double diameter)
 {
     m_ball.vx = vx;
     m_ball.vy = vy;
     m_ball.x = x;
     m_ball.y = y;
-    m_ball.radius = radius;
+    m_ball.diameter = diameter;
 }
 
 void GameState::setPaddle1(double x, double y, double width, double height)

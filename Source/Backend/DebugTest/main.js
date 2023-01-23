@@ -9,7 +9,7 @@ let ws;
 let gameState = new Object();
 
 function connect() {
-    ws = new WebSocket("ws://localhost:1214");
+    ws = new WebSocket("ws://85.214.124.142:1215");
     ws.onopen = function() {
         console.log("Connected to websocket");
     };
