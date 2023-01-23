@@ -1,4 +1,4 @@
-#include "Paddle.h"
+#include "paddle.h"
 
 #include <QDebug>
 

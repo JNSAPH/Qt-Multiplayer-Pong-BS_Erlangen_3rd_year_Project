@@ -67,10 +67,10 @@ public:
     void checkCollision(Paddle* paddle);
 
     /**
-     * @brief Get the radius of the ball
-     * @returns The radius of the ball as an int
+     * @brief Get the diameter of the ball
+     * @returns The diameter of the ball as an int
      */
-    int getRadius();
+    int getDiameter();
 
 private:
     /**

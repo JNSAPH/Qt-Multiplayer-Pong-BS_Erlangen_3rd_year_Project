@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "game.h"
 
 Game& Game::getInstance() {
     static Game instance;
@@ -24,28 +24,12 @@ Game::Game()
     QStringList data = {"paddle1_x", "paddle1_y", "paddle2_x", "paddle2_y", "ball_x", "ball_y", "ball_vx", "ball_vy", "score1", "score2", "timestamp"};
     logs->appendData(data);
 
-    // Database
-    db = new MariaDB("85.214.124.142", "itpundefined", "RNDoi76fYcYpesKEjPyk", "itp_undefined");
-
-    if (!db->open()) {
-        // If not, print error and exit
-        qCritical() << "Error opening database:" << db->getM_DB().lastError().text();
-    } else {
-        // If yes, print success message (not necessary)
-        std::cout << "Connected to DB" << std::endl;
-    }
-
     // set m_ball position to center of the playing field with radius of ball as offset
-    m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getRadius() / 2), m_playingFieldHeight / 2 - (m_ball.getRadius()) / 2);
+    m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getDiameter() / 2), m_playingFieldHeight / 2 - (m_ball.getDiameter()) / 2);
 
     m_winnerBroadcast["code"] = 999;
 }
 
-
-/*
- * @Todo Score isn't updating because of the reset!!
- *
- */
 void Game::update()
 {
     if (m_ball.getPosition().x() < 0) {
@@ -114,7 +98,7 @@ void Game::reset()
     // you can reset the paddles and ball position, and scores
     m_paddle1.setPosition(m_paddleLeftX, m_paddleY);
     m_paddle2.setPosition(m_paddleRightX, m_paddleY);
-    m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getRadius() / 2), m_playingFieldHeight / 2 - (m_ball.getRadius()) / 2);
+    m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getDiameter() / 2), m_playingFieldHeight / 2 - (m_ball.getDiameter()) / 2);
     m_ball.setVelocity(0.8, 0);
 }
 
@@ -140,7 +124,7 @@ void Game::sendState()
                             {"y", m_ball.getPosition().y()},
                             {"vx", m_ball.getVelocity().x()},
                             {"vy", m_ball.getVelocity().y()},
-                            {"radius", m_ball.getRadius()}
+                            {"diameter", m_ball.getDiameter()}
                         });
     json["score1"] = m_score1;
     json["score2"] = m_score2;

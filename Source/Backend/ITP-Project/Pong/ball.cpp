@@ -1,5 +1,5 @@
-#include "Ball.h"
-#include "Paddle.h"
+#include "ball.h"
+#include "paddle.h"
 #include "qdebug.h"
 
 Ball::Ball(qreal x, qreal y, qreal radius)
@@ -114,17 +114,12 @@ void Ball::checkCollision(Paddle *paddle)
     {
         m_xVelocity *= -2 ;
         m_yVelocity *= -2 ;
-
-        qDebug()<<"Delta: "<<deltaX;
-        qDebug()<<"BallX: "<<ballMidX;
-        qDebug()<<"PaddleX: "<<paddlePos.x();
         return;
     }
-
 }
 
 
-int Ball::getRadius() // bruhv
+int Ball::getDiameter()
 {
     return m_diameter;
 }
