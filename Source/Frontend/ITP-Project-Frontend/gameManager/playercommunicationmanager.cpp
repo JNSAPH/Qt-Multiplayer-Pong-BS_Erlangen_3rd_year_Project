@@ -58,7 +58,7 @@ void playerCommunicationManager::onTextMessageReceived(const QString &message)
                 jsonObject["ball"].toObject()["vy"].toDouble(),
                 jsonObject["ball"].toObject()["x"].toDouble(),
                 jsonObject["ball"].toObject()["y"].toDouble(),
-                jsonObject["ball"].toObject()["radius"].toDouble()
+                jsonObject["ball"].toObject()["diameter"].toDouble()
             );
 
         // Call Playing field update in view_multiplayer;
