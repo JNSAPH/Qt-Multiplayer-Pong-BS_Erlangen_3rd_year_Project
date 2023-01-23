@@ -50,6 +50,12 @@ public:
     QPointF getVelocity();
 
     /**
+     * @brief Give the ball a random amount of velocity.
+     * This method should only be called at the start of a round.
+     */
+    void setRandomVelocity();
+
+    /**
      * @brief Update the position of the ball based on its velocity
      */
     void updatePosition();

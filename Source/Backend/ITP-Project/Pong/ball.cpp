@@ -1,11 +1,12 @@
 #include "ball.h"
 #include "paddle.h"
+#include "qdatetime.h"
 #include "qdebug.h"
 
 Ball::Ball(qreal x, qreal y, qreal radius)
     : m_x(x), m_y(y), m_diameter(radius), m_xVelocity(0), m_yVelocity(0)
 {
-   setVelocity(m_xVelocity,m_yVelocity);
+   setRandomVelocity();
 }
 
 QPointF Ball::getPosition()
@@ -25,6 +26,23 @@ void Ball::setVelocity(qreal xVelocity, qreal yVelocity)
             m_xVelocity = 0;
     }
 }
+
+void Ball::setRandomVelocity()
+{
+    double rndXVel;
+    double rndYVel;
+
+    // Generate random velocity between 0.3 and 0.5 for both x and y
+    rndXVel = 0.5;
+    rndYVel = ((double)QRandomGenerator::global()->generate() / QRandomGenerator::max()) * 0.3 + 0.1;
+
+    // Set the velocity to be either positive or negative
+    m_yVelocity = ((double)QRandomGenerator::global()->generate() / QRandomGenerator::max()) > 0.5 ? rndYVel : -rndYVel;
+    m_xVelocity = rndXVel;
+}
+
+
+
 
 QPointF Ball::getVelocity()
 {
