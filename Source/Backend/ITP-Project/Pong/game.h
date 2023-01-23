@@ -1,8 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "Paddle.h"
-#include "Ball.h"
+#include "paddle.h"
+#include "ball.h"
 
 #include <QObject>
 
