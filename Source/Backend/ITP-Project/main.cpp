@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     qputenv("QT_MESSAGE_PATTERN", "%{file}:%{line} %{message}");
 
     // Create WebSocket Server instance
-    WebSocketServer& wss = WebSocketServer::getInstance(1214);
+    WebSocketServer& wss = WebSocketServer::getInstance(1215);
 
     Game& game = Game::getInstance();
     return app.exec();
