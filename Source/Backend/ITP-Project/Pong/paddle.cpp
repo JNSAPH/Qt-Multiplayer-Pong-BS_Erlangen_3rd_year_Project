@@ -4,7 +4,7 @@
 
 Paddle::Paddle(qreal x, qreal y, qreal width, qreal height)
     : m_x(x), m_y(y), m_width(width), m_height(height), m_direction(0)
-    , m_FaceHitX(1.10), m_FaceHitY (0.95), m_EdgeHitX(1), m_EdgeHitY(1), m_SideHitX(1), m_SideHitY(1)
+    , m_FaceHitX(1.10), m_FaceHitY (0.95),  m_EdgeHitX(1.1), m_EdgeHitY(1.6), m_SideHitX(0.95), m_SideHitY(1.4)
 {
 }
 
