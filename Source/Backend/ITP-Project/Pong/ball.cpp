@@ -62,6 +62,16 @@ void Ball::setPosition(int x, int y)
     m_y = y;
 }
 
+
+void Ball::checkOutOfBounds(int maxHeight)
+{
+    // Check if ball is out of bounds
+    if (m_y <= 0 || m_y  >= maxHeight + m_diameter) {
+        m_ball.setVelocity(m_xVelocity, -m_yVelocity);
+    }
+    
+}
+
 void Ball::checkCollision(Paddle *paddle)
 {
     // Get the paddle's position and size
@@ -70,7 +80,6 @@ void Ball::checkCollision(Paddle *paddle)
     int paddleHeight = paddle->getHeight();
     float ballMidX = m_x + m_diameter/2;
     float ballMidY = m_y + m_diameter/2;
-
 
     //Calculate Delta to nearest Side of Paddle
     float deltaX= (ballMidX - paddlePos.x());

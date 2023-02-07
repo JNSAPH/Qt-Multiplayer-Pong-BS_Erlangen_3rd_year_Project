@@ -65,9 +65,7 @@ void Game::update()
     }
 
     // Check if ball is out of bounds
-    if (m_ball.getPosition().y() <= 0 || m_ball.getPosition().y() >= m_playingFieldHeight) {
-        m_ball.setVelocity(m_ball.getVelocity().x(), -m_ball.getVelocity().y());
-    }
+    m_ball.checkOutOfBounds(m_playingFieldHeight);
 
     m_ball.checkCollision(&m_paddle1);
     m_ball.checkCollision(&m_paddle2);

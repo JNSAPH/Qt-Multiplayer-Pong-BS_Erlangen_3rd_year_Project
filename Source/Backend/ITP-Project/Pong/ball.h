@@ -73,6 +73,12 @@ public:
     void checkCollision(Paddle* paddle);
 
     /**
+     * @brief checks if ball is out of bounds
+     * @param maxHeight Is maxHeight of bounds 
+     */
+    void checkOutOfBounds(int maxHeight);
+
+    /**
      * @brief Get the diameter of the ball
      * @returns The diameter of the ball as an int
      */
