@@ -16,7 +16,7 @@ Game::Game()
       m_ball(-10, -10, 19)
 {
     m_timer = new QTimer(this);
-    m_timer->setInterval(3); // (333 TPS)
+    m_timer->setInterval(10); // (100 TPS)
     connect(m_timer, &QTimer::timeout, this, &Game::update);
 
     // Logs

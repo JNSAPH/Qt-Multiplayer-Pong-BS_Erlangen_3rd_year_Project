@@ -62,6 +62,45 @@ public:
     */
     QPointF getPosition();
 
+    /**
+     * @brief returns m_FaceHit X/Y 
+     * @param x decides if return is x or y
+    */
+    double getFace(bool X);
+    
+    /**
+     * @brief returns m_SideHit X/Y 
+     * @param x decides if return is x or y
+    */
+    double getSide(bool X);
+    
+    /**
+     * @brief returns m_EdgeHit X/Y 
+     * @param x decides if return is x or y
+    */
+    double getEdge(bool X);
+
+    /**
+     * @brief sets m_FaceHit X/Y 
+     * @param x decides if set is x or y
+     * @param value is the value
+    */
+    void setFace(bool X, double value);
+    
+    /**
+     * @brief sets m_SideHit X/Y 
+     * @param x decides if set is x or y
+     * @param value is the value
+    */
+    void setSide(bool X, double value);
+    
+    /**
+     * @brief sets m_EdgeHit X/Y 
+     * @param x decides if set is x or y
+     * @param value is the value
+    */
+    void setEdge(bool X, double value);
+
 private:
     /**
      * @brief The x-coordinate of the paddle
@@ -88,6 +127,43 @@ private:
      * @important Not yet implemented
     */
     int m_direction;
+
+    /**
+     * @var m_FaceHitX
+     * @brief Intensity of Rebound in X Direction if Hit on Face
+    */
+    double m_FaceHitX;
+    
+    /**
+     * @var m_FaceHitY
+     * @brief Intensity of Rebound in Y Direction if Hit on Face
+    */
+    double m_FaceHitY;
+    
+    /**
+     * @var m_EdgeHitX
+     * @brief Intensity of Rebound in X Direction if Hit on Edge
+    */
+    double m_EdgeHitX;
+    
+    /**
+     * @var m_EdgeHitY
+     * @brief Intensity of Rebound in Y Direction if Hit on Edge
+    */
+    double m_EdgeHitY;
+    
+    /**
+     * @var m_SideHitX
+     * @brief Intensity of Rebound in X Direction if Hit on Side
+    */
+    double m_SideHitX;
+    
+    /**
+     * @var m_SideHitY
+     * @brief Intensity of Rebound in Y Direction if Hit on Side
+    */
+    double m_SideHitY;
+
 };
 
 #endif // PADDLE_H
