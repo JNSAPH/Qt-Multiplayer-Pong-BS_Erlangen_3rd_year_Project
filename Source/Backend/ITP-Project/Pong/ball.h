@@ -114,6 +114,31 @@ private:
     * @brief The y-velocity of the ball
     */
     qreal m_yVelocity;
+    /**
+     * @var minRndVelX
+     * @brief the min X Value of "SetRandomVelocity" (100 ^= 0.1)
+     * 
+    */
+    int m_minRndVelX;
+    /**
+     * @var maxRndVelX
+     * @brief the max X Value of "SetRandomVelocity" (100 ^= 0.1)
+     * 
+    */
+    int m_maxRndVelX;
+    /**
+     * @var minRndVelY
+     * @brief the min Y Value of "SetRandomVelocity" (100 ^= 0.1)
+     * 
+    */
+    int m_minRndVelY;
+    /**
+     * @var maxRndVelY
+     * @brief the max Y Value of "SetRandomVelocity" (100 ^= 0.1)
+     * 
+    */
+    int m_maxRndVelY;
+
     };
 
 

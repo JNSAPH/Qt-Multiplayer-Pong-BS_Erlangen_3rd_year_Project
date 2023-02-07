@@ -97,6 +97,8 @@ void Game::reset()
     m_paddle1.setPosition(m_paddleLeftX, m_paddleY);
     m_paddle2.setPosition(m_paddleRightX, m_paddleY);
     m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getDiameter() / 2), m_playingFieldHeight / 2 - (m_ball.getDiameter()) / 2);
+
+
     m_ball.setRandomVelocity();
 }
 

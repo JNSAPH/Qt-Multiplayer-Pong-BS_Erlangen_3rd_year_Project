@@ -11,13 +11,13 @@ Paddle::Paddle(qreal x, qreal y, qreal width, qreal height)
 void Paddle::moveUp()
 {
     if (m_y > 0)
-        m_y = m_y - 10;
+        m_y = m_y - 15;
 }
 
 void Paddle::moveDown()
 {
     if (m_y < (540 - m_height))
-        m_y = m_y + 10;
+        m_y = m_y + 15;
 }
 
 void Paddle::setDirection(int direction)
@@ -47,15 +47,39 @@ int Paddle::getHeight()
 }
 
 
-int Paddle::getFace(bool X) => {x? return m_FaceHitX : return m_FaceHitY;} 
+double Paddle::getFace(bool x)
+{
+    if(x) return m_FaceHitX;
+    return m_FaceHitY;
+}
 
-int Paddle::getSide(bool X) => {x? return m_SideHitX : return m_SideHitY;}     
+double Paddle::getSide(bool x)
+{
+    if(x) return m_SideHitX;
+    return m_SideHitY;
+}
 
-int Paddle::getEdge(bool X) => {x? return m_EdgeHitX : return m_EdgeHitY;} 
+double Paddle::getEdge(bool x)
+{
+    if(x) return m_EdgeHitX ;
+    return m_EdgeHitY;
+}
 
 
-int Paddle::setFace(bool X, int value) => {x? return m_FaceHitX = value; : return  m_FaceHitY = value;}
-int Paddle::setSide(bool X, int value) => {x? return m_SideHitX = value; : return  m_SideHitY = value;} 
-int Paddle::setEdge(bool X, int value) => {x? return m_EdgeHitX = value; : return  m_EdgeHitY = value;} 
+void Paddle::setFace(bool x, double value)
+{
+    if(x) m_FaceHitX = value;
+    m_FaceHitY = value;
+}
+void Paddle::setSide(bool x, double value)
+{
+    if(x) m_SideHitX = value;
+    m_SideHitY = value;
+}
+void Paddle::setEdge(bool x, double value)
+{
+    if(x) m_EdgeHitX = value;
+    m_EdgeHitY = value;
+}
     
    
