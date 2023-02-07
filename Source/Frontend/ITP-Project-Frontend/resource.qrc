@@ -11,5 +11,6 @@
         <file>resources/rainbow.png</file>
         <file>resources/rainbow_small.png</file>
         <file>resources/studio_logos.png</file>
+        <file>resources/controls.png</file>
     </qresource>
 </RCC>
