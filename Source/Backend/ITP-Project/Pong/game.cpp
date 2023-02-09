@@ -16,7 +16,7 @@ Game::Game()
       m_ball(-10, -10, 19)
 {
     m_timer = new QTimer(this);
-    m_timer->setInterval(3); // (333 TPS)
+    m_timer->setInterval(10); // (100 TPS)
     connect(m_timer, &QTimer::timeout, this, &Game::update);
 
     // Logs
@@ -65,9 +65,7 @@ void Game::update()
     }
 
     // Check if ball is out of bounds
-    if (m_ball.getPosition().y() <= 0 || m_ball.getPosition().y() >= m_playingFieldHeight) {
-        m_ball.setVelocity(m_ball.getVelocity().x(), -m_ball.getVelocity().y());
-    }
+    m_ball.checkOutOfBounds(m_playingFieldHeight);
 
     m_ball.checkCollision(&m_paddle1);
     m_ball.checkCollision(&m_paddle2);
@@ -99,6 +97,8 @@ void Game::reset()
     m_paddle1.setPosition(m_paddleLeftX, m_paddleY);
     m_paddle2.setPosition(m_paddleRightX, m_paddleY);
     m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getDiameter() / 2), m_playingFieldHeight / 2 - (m_ball.getDiameter()) / 2);
+
+
     m_ball.setRandomVelocity();
 }
 
