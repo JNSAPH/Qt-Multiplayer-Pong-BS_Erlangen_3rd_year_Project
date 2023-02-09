@@ -110,6 +110,11 @@ private:
      * @brief The score required to win the game
      */
     int m_winningScore = 5;
+    /**
+     * @var m_gameTime
+     * @brief InGameTime in Tics
+     */
+    unsigned long long m_gameTime= 0;
 
 
 private:

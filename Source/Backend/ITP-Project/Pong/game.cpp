@@ -21,7 +21,7 @@ Game::Game()
 
     // Logs
     logs = &LogUtils::getInstance();
-    QStringList data = {"paddle1_x", "paddle1_y", "paddle2_x", "paddle2_y", "ball_x", "ball_y", "ball_vx", "ball_vy", "score1", "score2", "timestamp"};
+    QStringList data = {"paddle1_x", "paddle1_y", "paddle2_x", "paddle2_y", "ball_x", "ball_y", "ball_vx", "ball_vy", "score1", "score2","gametime", "timestamp"};
     logs->appendData(data);
 
     // set m_ball position to center of the playing field with radius of ball as offset
@@ -32,6 +32,8 @@ Game::Game()
 
 void Game::update()
 {
+    m_gameTime+=1;
+
     if (m_ball.getPosition().x() < 0) {
         m_score2++;
         qDebug() << "Player 2 scored. Score: " << m_score2;
@@ -104,6 +106,9 @@ void Game::reset()
 void Game::sendState()
 {
     // Serialize the state of the game to json
+
+
+    qint64 int64GameTime = static_cast<qint64>(m_gameTime);
     QJsonObject json;
     json["code"] = 204;
     json["paddle1"] = QJsonObject({
@@ -127,6 +132,7 @@ void Game::sendState()
                         });
     json["score1"] = m_score1;
     json["score2"] = m_score2;
+    json["gametime"] = int64GameTime;
     json["running"] = m_running;
 
     // Send the json object to all connected clients
@@ -145,6 +151,7 @@ void Game::sendState()
     QString::number(m_ball.getVelocity().y()), // ball_vy
     QString::number(m_score1), // score1
     QString::number(m_score2), // score2
+    QString::number(m_gameTime), // InGameTime
     QString::number(QDateTime::currentMSecsSinceEpoch()) // timestamp
     };
 
