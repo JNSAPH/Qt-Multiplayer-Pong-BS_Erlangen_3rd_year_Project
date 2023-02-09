@@ -5,7 +5,7 @@
 
 Ball::Ball(qreal x, qreal y, qreal radius)
     : m_x(x), m_y(y), m_diameter(radius), m_xVelocity(0), m_yVelocity(0),
-      m_minRndVelX(700), m_maxRndVelX(1000), m_minRndVelY(100), m_maxRndVelY(500)
+      m_minRndVelX(1200), m_maxRndVelX(1500), m_minRndVelY(100), m_maxRndVelY(550)
 {
 
    setRandomVelocity();

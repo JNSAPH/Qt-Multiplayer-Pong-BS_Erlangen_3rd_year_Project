@@ -17,7 +17,7 @@ void Paddle::moveUp()
 void Paddle::moveDown()
 {
     if (m_y < (540 - m_height))
-        m_y = m_y + 15;
+        m_y = m_y + 20;
 }
 
 void Paddle::setDirection(int direction)
