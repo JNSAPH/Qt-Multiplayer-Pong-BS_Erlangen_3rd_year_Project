@@ -4,12 +4,9 @@
 #include "qdebug.h"
 
 Ball::Ball(qreal x, qreal y, qreal radius)
-    : m_x(x), m_y(y), m_diameter(radius), m_xVelocity(0), m_yVelocity(0)
+    : m_x(x), m_y(y), m_diameter(radius), m_xVelocity(0), m_yVelocity(0),
+      m_minRndVelX(700), m_maxRndVelX(1000), m_minRndVelY(100), m_maxRndVelY(500)
 {
-    m_minRndVelX = 800;
-    m_maxRndVelX = 1100;
-    m_minRndVelY = 250;
-    m_maxRndVelY = 500;
 
    setRandomVelocity();
 }
@@ -85,22 +82,24 @@ void Ball::checkCollision(Paddle *paddle)
     float ballMidX = m_x + m_diameter/2;
     float ballMidY = m_y + m_diameter/2;
 
-    //Calculate Delta to nearest Side of Paddle
+    //Calculate X-Delta to nearest Side of Paddle
     float deltaX= (ballMidX - paddlePos.x());
     deltaX = deltaX > 0 ? (deltaX-paddleWidth) : abs(deltaX);
 
     //Is Ball in the correct X-Area
     if (deltaX > m_diameter/2) return;
 
+    //Calculate Y-Delta to the Middle of the nearest Paddle
     float deltaY= (ballMidY - (paddlePos.y()+paddleHeight/2));
 
     //Is Ball in the corret Y-Area
     if( abs(deltaY) >= paddleHeight/2 + m_diameter/2 ) return;
 
     //Paddle Face Hit / Ball Front
-    if( abs(deltaY) < paddleHeight/2 - paddleHeight/20){
-        m_xVelocity = -(m_xVelocity * paddle -> getFace(true));
-        m_yVelocity *= paddle -> getFace(false);
+    if( abs(deltaY) < paddleHeight/2 - paddleHeight/20)
+    {
+        m_xVelocity *= -paddle -> getFace(true);
+        m_yVelocity *=  paddle -> getFace(false);
          return;
     }
 
@@ -110,15 +109,15 @@ void Ball::checkCollision(Paddle *paddle)
         //HitOnBotDetected
         if(deltaY > 0 )
         {
-            m_xVelocity *= (abs(m_xVelocity) <= 0.001)? -0.003/abs(m_xVelocity) : -paddle -> getEdge(true);
-            m_yVelocity = (abs(m_yVelocity) <= 0.001)? (m_yVelocity  + 0.4) * paddle -> getEdge(false) :  m_yVelocity * paddle -> getEdge(false);
+            m_xVelocity *= -paddle -> getEdge(true);
+            m_yVelocity = (abs(m_yVelocity) <= 0.001)? (m_yVelocity  + 0.1) * paddle -> getEdge(false) :  m_yVelocity * paddle -> getEdge(false);
             return;
         }
         //HitOnTopDetected
         if(deltaY < 0 )
         {
-            m_xVelocity *= (abs(m_xVelocity) <= 0.001)? -0.003/abs(m_xVelocity) : -paddle -> getEdge(true);
-            m_yVelocity = (abs(m_yVelocity) <= 0.001)? (m_yVelocity  - 0.4 )* paddle -> getEdge(false) :  m_yVelocity * paddle -> getEdge(false);
+            m_xVelocity *=  -paddle -> getEdge(true);
+            m_yVelocity = (abs(m_yVelocity) <= 0.001)? (m_yVelocity  - 0.1 )* paddle -> getEdge(false) :  m_yVelocity * paddle -> getEdge(false);
             return;
         }
     }
@@ -128,15 +127,15 @@ void Ball::checkCollision(Paddle *paddle)
     //HitOnBotDetected
     if(deltaY > m_diameter/6 )
     {
-        m_xVelocity *= (abs(m_xVelocity) <= 0.001)? -0.003/abs(m_xVelocity) : -paddle -> getSide(true);
-        m_yVelocity = (abs(m_yVelocity)<= 0.001)? (m_yVelocity  + 0.4) * paddle -> getSide(false) :  m_yVelocity * paddle -> getSide(false);
+        m_xVelocity *=  -paddle -> getSide(true);
+        m_yVelocity = (abs(m_yVelocity)<= 0.001)? (m_yVelocity  + 0.2) * paddle -> getSide(false) :  m_yVelocity * paddle -> getSide(false);
         return;
     }
     //HitOnTopDetected
     if(deltaY < -m_diameter/6 )
     {
-        m_xVelocity *= (abs(m_xVelocity) <= 0.001)? -0.003/abs(m_xVelocity) : -paddle -> getSide(true);
-        m_yVelocity = (abs(m_yVelocity)<= 0.001)? (m_yVelocity  - 0.4 )* paddle -> getSide(false) :  m_yVelocity * paddle -> getSide(false);
+        m_xVelocity *=  -paddle -> getSide(true);
+        m_yVelocity = (abs(m_yVelocity)<= 0.001)? (m_yVelocity  - 0.2 )* paddle -> getSide(false) :  m_yVelocity * paddle -> getSide(false);
 
         return;
     }
