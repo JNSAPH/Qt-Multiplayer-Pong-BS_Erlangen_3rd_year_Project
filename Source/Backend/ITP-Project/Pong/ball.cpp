@@ -45,8 +45,8 @@ void Ball::setRandomVelocity()
 
 
     // Set the velocity to be either positive or negative
-    m_yVelocity = ((double)QRandomGenerator::global()->generate() % 2 )== 0 ? rndYVel : -rndYVel;
-    m_xVelocity = ((double)QRandomGenerator::global()->generate() % 2 )== 0 ? rndXVel : -rndXVel;
+    m_yVelocity = (QRandomGenerator::global()->generate() % 2 )== 0 ? rndYVel : -rndYVel;
+    m_xVelocity = (QRandomGenerator::global()->generate() % 2 )== 0 ? rndXVel : -rndXVel;
 
 }
 
