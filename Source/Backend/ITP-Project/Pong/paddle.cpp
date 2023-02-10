@@ -4,7 +4,7 @@
 
 Paddle::Paddle(qreal x, qreal y, qreal width, qreal height)
     : m_x(x), m_y(y), m_width(width), m_height(height), m_direction(0)
-    , m_FaceHitX(1.10), m_FaceHitY (0.95),  m_EdgeHitX(1.1), m_EdgeHitY(1.6), m_SideHitX(0.95), m_SideHitY(1.4)
+    , m_FaceHitX(1.12), m_FaceHitY (0.95),  m_EdgeHitX(1.05), m_EdgeHitY(1.6), m_SideHitX(1.01), m_SideHitY(1.4)
 {
 }
 
@@ -17,7 +17,7 @@ void Paddle::moveUp()
 void Paddle::moveDown()
 {
     if (m_y < (540 - m_height))
-        m_y = m_y + 15;
+        m_y = m_y + 20;
 }
 
 void Paddle::setDirection(int direction)
