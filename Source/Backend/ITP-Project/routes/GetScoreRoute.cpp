@@ -11,7 +11,8 @@ void GetScoreRoute::handleRoute(QTcpSocket *socket, const QMap<QString, QString>
     for (const auto& row : data) {
         QJsonObject jsonObject;
         jsonObject["PlayerID"] = row[0];
-        jsonObject["Score"] = row[1];
+        jsonObject["PlayerName"] = row[1];
+        jsonObject["Score"] = row[2];
         jsonArray.append(jsonObject);
         count++;
         if (count >= 5) {

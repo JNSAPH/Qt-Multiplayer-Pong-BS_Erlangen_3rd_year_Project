@@ -22,6 +22,7 @@ SOURCES += \
         gameManager/queuemanager.cpp \
         main.cpp \
         routes/GetScoreRoute.cpp \
+        routes/SetNameRoute.cpp \
         socket/websocketserver.cpp \
         utils/jsonutils.cpp \
         utils/logs.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     gameManager/playercommunicationmanager.h \
     gameManager/queuemanager.h \
     routes/GetScoreRoute.h \
+    routes/SetNameRoute.h \
     routes/iroutehandler.h \
     socket/websocketserver.h \
     utils/jsonutils.h \

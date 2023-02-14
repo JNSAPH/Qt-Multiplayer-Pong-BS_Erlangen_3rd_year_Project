@@ -10,6 +10,7 @@
 #include <QJsonObject>
 
 #include "./utils/HttpRequest.h"
+#include "../gameManager/playermanager.h"
 
 namespace Ui {
 class view_FinalScore;
@@ -29,9 +30,13 @@ private slots:
 
     void on_btnPlayAgain_clicked();
 
+    void on_userBtn_clicked();
+
 private:
     Ui::view_FinalScore *ui;
+    void pingForScores();
     void setTopScores(QByteArray jsonStr);
+    void setUsername();
 };
 
 #endif // VIEW_FINALSCORE_H

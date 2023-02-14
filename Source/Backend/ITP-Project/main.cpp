@@ -4,6 +4,7 @@
 #include <iostream> // std::cout
 #include <fstream>
 
+#include "routes/SetNameRoute.h"
 #include "socket/websocketserver.h"
 #include "Pong/game.h"
 
@@ -34,6 +35,7 @@ int main(int argc, char *argv[])
 
     // Add Route
     server.addRoute("/getScore", "GET", new GetScoreRoute());
+    server.addRoute("/setName", "POST", new SetNameRoute());
 
     // Start server on port 8080
     if (!server.start(1216)) {

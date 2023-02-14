@@ -12,6 +12,7 @@
 class Score {
 public:
     static void addScore(QString playerId, int score);
+    static void updateName(QString playerId, QString playerName);
     static QList<QStringList> getScore();
 };
 
