@@ -72,7 +72,7 @@ private slots:
      * @brief Send To specific Socket
      * @param socket the UUID of the player
      */
-    void sendToSocket(QString UUID, QString message);
+    void sendToSocket(QString UUID, QString &message);
 
     /**
      * @brief Slot called when a socket is disconnected from the server

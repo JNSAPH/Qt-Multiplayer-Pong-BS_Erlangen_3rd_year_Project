@@ -32,8 +32,9 @@ public:
 
     /**
      * @brief Start the game
+     * @param Queue
      */
-    void start();
+    void start(QQueue<QString> p_queue);
 
     /**
      * @brief Stop the game
@@ -110,6 +111,12 @@ private:
      * @brief The score required to win the game
      */
     int m_winningScore = 5;
+
+    /**
+     * @var m_queue;
+     * @brief List of Players currently Playing Pong
+     */
+    QQueue<QString> m_queue;
 
 
 private:

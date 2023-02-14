@@ -11,8 +11,8 @@ Game::Game()
       m_score2(0),
       m_playingFieldWidth(680),
       m_playingFieldHeight(540),
-      m_paddle1(m_paddleLeftX, m_paddleY, 6, 80),
-      m_paddle2(m_paddleRightX, m_paddleY, 6, 80),
+      m_paddle1(m_paddleLeftX, m_paddleY, 6, 80, ""),
+      m_paddle2(m_paddleRightX, m_paddleY, 6, 80, ""),
       m_ball(-10, -10, 19)
 {
     m_timer = new QTimer(this);
@@ -67,14 +67,22 @@ void Game::update()
     // Check if ball is out of bounds
     m_ball.checkOutOfBounds(m_playingFieldHeight);
 
+    // Adapt this to give extra points for hitting the ball, hitting the paddle edge, ...
+    m_paddle1.addScore(1);
+    m_paddle2.addScore(1);
+
     m_ball.checkCollision(&m_paddle1);
     m_ball.checkCollision(&m_paddle2);
     m_ball.updatePosition();
     this->sendState();
 }
 
-void Game::start()
+void Game::start(QQueue<QString> p_queue)
 {
+    m_queue = p_queue;
+    m_paddle1.setId(m_queue[0]);
+    m_paddle2.setId(m_queue[1]);
+
     // Start the game
     m_timer->start();
 }
@@ -85,6 +93,9 @@ void Game::stop()
     m_timer->stop();
     // Save the logs to a csv file
     logs->saveToCSV(QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss") + ".csv");
+
+    // Save Scores with UUID to File
+
     // Reset the scores
     m_score1 = 0;
     m_score2 = 0;
@@ -127,7 +138,9 @@ void Game::sendState()
                             {"diameter", m_ball.getDiameter()}
                         });
     json["score1"] = m_score1;
+    json["points1"] = m_paddle1.getScore();
     json["score2"] = m_score2;
+    json["points2"] = m_paddle2.getScore();
     json["running"] = m_running;
 
     // Send the json object to all connected clients

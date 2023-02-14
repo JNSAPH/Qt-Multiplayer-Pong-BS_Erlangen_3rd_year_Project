@@ -2,9 +2,10 @@
 
 #include <QDebug>
 
-Paddle::Paddle(qreal x, qreal y, qreal width, qreal height)
+Paddle::Paddle(qreal x, qreal y, qreal width, qreal height, QString playerId)
     : m_x(x), m_y(y), m_width(width), m_height(height), m_direction(0)
     , m_FaceHitX(1.10), m_FaceHitY (0.95),  m_EdgeHitX(1.1), m_EdgeHitY(1.6), m_SideHitX(0.95), m_SideHitY(1.4)
+    , m_playerId(playerId)
 {
 }
 
@@ -82,4 +83,18 @@ void Paddle::setEdge(bool x, double value)
     m_EdgeHitY = value;
 }
     
+void Paddle::setId(QString p_Id) {
+    m_playerId = p_Id;
+}
+
+void Paddle::addScore(int score) {
+    m_Score += score;
+}
+
+int Paddle::getScore() {
+    return m_Score;
+}
    
+QString Paddle::getId() {
+    return m_playerId;
+}

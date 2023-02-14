@@ -1,6 +1,7 @@
 #ifndef PADDLE_H
 #define PADDLE_H
 
+#include "QtCore/qstring.h"
 #include <QPointF>
 
 /**
@@ -19,7 +20,7 @@ public:
      * @param width The width of the paddle
      * @param height The height of the paddle
      */
-    Paddle(qreal x, qreal y, qreal width, qreal height);
+    Paddle(qreal x, qreal y, qreal width, qreal height, QString playerId);
 
     /**
      * @brief Move the paddle up
@@ -101,11 +102,40 @@ public:
     */
     void setEdge(bool X, double value);
 
+    /**
+     * @brief Sets PlayerID
+     * @param p_playerId is the Id of the Player
+     */
+    void setId(QString p_playerId);
+
+    /**
+     * @brief addScore
+     * @param score
+     */
+    void addScore(int score);
+
+    /**
+     * @brief getScore
+     * @return
+     */
+    int getScore();
+
+    /**
+     * @brief getId
+     * @returns the Id of the Player Playing the paddle
+     */
+    QString getId();
+
 private:
     /**
      * @brief The x-coordinate of the paddle
     */
     qreal m_x;
+
+    /**
+     * @brief ID of the Player playing this paddle
+     */
+    QString m_playerId;
 
     /**
      * @brief The y-coordinate of the paddle
@@ -163,6 +193,11 @@ private:
      * @brief Intensity of Rebound in Y Direction if Hit on Side
     */
     double m_SideHitY;
+
+    /**
+     * @brief m_Score
+     */
+    int m_Score;
 
 };
 

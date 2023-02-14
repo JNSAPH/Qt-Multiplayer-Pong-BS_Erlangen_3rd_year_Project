@@ -49,6 +49,11 @@ public:
      */
     static int removePlayer(QString playerId);
 
+    /**
+     * @brief Get all current members in Queue
+     * @return All membersin Queue
+     */
+    static QQueue<QString> getQueueMembers();
 
     /**
      * @brief Get the current size of the queue

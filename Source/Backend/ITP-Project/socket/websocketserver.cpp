@@ -66,8 +66,6 @@ void WebSocketServer::onNewConnection() {
 
     m_sockets.append(socket);
 
-
-
     // If queue is full
     if (QueueManager::getQueueSize() == 2) {
         // Send the GameID to the Players
@@ -77,7 +75,7 @@ void WebSocketServer::onNewConnection() {
             {"gameId", QueueManager::getGameId().toString().toStdString()}
         };
 
-        Game::getInstance().start();
+        Game::getInstance().start(QueueManager::getQueueMembers());
 
         this->broadcast(QString::fromStdString(JSONUtils::generateJSON(data)));
     }
@@ -142,7 +140,7 @@ void WebSocketServer::onSocketDisconnected() {
     socket->deleteLater();
 }
 
-void WebSocketServer::sendToSocket(QString UUID, const QString &message) {
+void WebSocketServer::sendToSocket(QString UUID, QString &message) {
     // iterate over the list of connected sockets if uuid matches
     for (auto socket : m_sockets) {
         if (socket->property("UUID").toString() == UUID) {

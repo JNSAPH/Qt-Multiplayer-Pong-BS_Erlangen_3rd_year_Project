@@ -66,6 +66,10 @@ QUuid QueueManager::getGameId()
     return gameId;
 }
 
+QQueue<QString> QueueManager::getQueueMembers() {
+    return queue;
+}
+
 // don't know if we need this, just in case tho
 bool QueueManager::joinGame(QUuid gameId, QString playerId)
 {
