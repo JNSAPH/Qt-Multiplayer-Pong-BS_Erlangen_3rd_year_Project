@@ -5,6 +5,12 @@
 #include <QApplication>
 #include <QProcess>
 
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+
+#include "./utils/HttpRequest.h"
+
 namespace Ui {
 class view_FinalScore;
 }
@@ -25,6 +31,7 @@ private slots:
 
 private:
     Ui::view_FinalScore *ui;
+    void setTopScores(QByteArray jsonStr);
 };
 
 #endif // VIEW_FINALSCORE_H
