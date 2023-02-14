@@ -11,9 +11,8 @@
 #include <QThread>
 
 // Routes
-#include "routes/jsontestroute.h"
-#include "routes/httptestroute.h"
-#include "routes/requestqueueroute.h"
+#include "routes/GetScoreRoute.h"
+#include "ws/webserver.h"
 
 // DB Login
 // Username: itpundefined
@@ -29,5 +28,19 @@ int main(int argc, char *argv[])
     WebSocketServer& wss = WebSocketServer::getInstance(1215);
 
     Game& game = Game::getInstance();
+
+    // Create WebServer instance
+    HttpServer server;
+
+    // Add Route
+    server.addRoute("/getScore", "GET", new GetScoreRoute());
+
+    // Start server on port 8080
+    if (!server.start(1216)) {
+        // If server failed to start, print error and exit
+        qCritical() << "Failed to start server:" << server.errorString();
+        return 1;
+    }
+
     return app.exec();
 }

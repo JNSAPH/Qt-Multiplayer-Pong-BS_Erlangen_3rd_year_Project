@@ -13,7 +13,7 @@
 #include "../socket/websocketserver.h"
 #include "../utils/mariadb.h"
 #include "../utils/logs.h"
-
+#include "../utils/score.h"
 
 class Game : public QObject
 {

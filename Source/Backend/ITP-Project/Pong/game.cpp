@@ -21,7 +21,7 @@ Game::Game()
 
     // Logs
     logs = &LogUtils::getInstance();
-    QStringList data = {"paddle1_x", "paddle1_y", "paddle2_x", "paddle2_y", "ball_x", "ball_y", "ball_vx", "ball_vy", "score1", "score2", "timestamp"};
+    QStringList data = {"paddle1_x", "paddle1_y", "paddle2_x", "paddle2_y", "ball_x", "ball_y", "ball_vx", "ball_vy", "score1", "points1", "score2", "points2", "timestamp"};
     logs->appendData(data);
 
     // set m_ball position to center of the playing field with radius of ball as offset
@@ -87,14 +87,19 @@ void Game::start(QQueue<QString> p_queue)
     m_timer->start();
 }
 
+
+#include <QDebug>
 void Game::stop()
 {
     // Stop the game
     m_timer->stop();
+
     // Save the logs to a csv file
     logs->saveToCSV(QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss") + ".csv");
 
-    // Save Scores with UUID to File
+    // Save Score
+    Score::addScore(m_paddle1.getId(), m_paddle1.getScore());
+    Score::addScore(m_paddle2.getId(), m_paddle2.getScore());
 
     // Reset the scores
     m_score1 = 0;
@@ -158,7 +163,9 @@ void Game::sendState()
     QString::number(m_ball.getVelocity().x()), // ball_vx
     QString::number(m_ball.getVelocity().y()), // ball_vy
     QString::number(m_score1), // score1
+    QString::number(m_paddle1.getScore()), // points1
     QString::number(m_score2), // score2
+    QString::number(m_paddle2.getScore()), // points2
     QString::number(QDateTime::currentMSecsSinceEpoch()) // timestamp
     };
 

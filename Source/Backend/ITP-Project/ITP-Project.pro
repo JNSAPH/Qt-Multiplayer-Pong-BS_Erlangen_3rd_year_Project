@@ -21,13 +21,12 @@ SOURCES += \
         gameManager/playercommunicationmanager.cpp \
         gameManager/queuemanager.cpp \
         main.cpp \
-        routes/httptestroute.cpp \
-        routes/jsontestroute.cpp \
-        routes/requestqueueroute.cpp \
+        routes/GetScoreRoute.cpp \
         socket/websocketserver.cpp \
         utils/jsonutils.cpp \
         utils/logs.cpp \
         utils/mariadb.cpp \
+        utils/score.cpp \
         utils/ws_utils.cpp \
         ws/webserver.cpp
 
@@ -42,13 +41,12 @@ HEADERS += \
     Pong/paddle.h \
     gameManager/playercommunicationmanager.h \
     gameManager/queuemanager.h \
-    routes/httptestroute.h \
+    routes/GetScoreRoute.h \
     routes/iroutehandler.h \
-    routes/jsontestroute.h \
-    routes/requestqueueroute.h \
     socket/websocketserver.h \
     utils/jsonutils.h \
     utils/logs.h \
     utils/mariadb.h \
+    utils/score.h \
     utils/ws_utils.h \
     ws/webserver.h
