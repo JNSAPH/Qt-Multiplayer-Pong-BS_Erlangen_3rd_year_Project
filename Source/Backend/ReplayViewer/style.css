@@ -1,0 +1,123 @@
+body {
+  background-color: #0E0E14;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+#mainContainer {
+  display: grid;
+  place-items: center;
+}
+
+/* make the buttons in buttonContainer take full width and be next to each other*/
+#buttonContainer {
+  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  background-color: #3F51B5;
+  color: white;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #354497;
+}
+
+button:active {
+  background-color: #283593;
+}
+
+header {
+  background-color: #3f51b5; /* Add color */
+  color: #fff; /* Add text color */
+  padding: 20px; /* Add some padding */
+  margin: 10px;
+}
+
+.logo-container {
+ display: flex; /* Use flex layout to align the logo and text next to each other */
+ align-items: center;
+}
+
+.logo-container img {
+ height: 40px; /* Add height and width to the logo */
+ width: 40px;
+ margin-right: 10px; /* Add margin between the logo and text */
+}
+
+#wsDebugLogBall {
+  font-size: 12px;
+}
+
+/*********************** PONG GAME ***********************/
+
+
+#playing-field {
+  width: 680px;
+  height: 540px;
+  background-color: #191922;
+  position: relative;
+}
+
+.rectangle {
+  width: 6px;
+  height: 80px;
+  position: absolute;
+}
+
+#paddleLeft {
+  top: 0px;
+  left: 49px;
+  background-color: white;
+  border-radius: 100px;
+}
+
+#paddleRight {
+  top: 0px;
+  left: 625px;
+  background-color: white;
+  border-radius: 100px;
+}
+
+#verticalMidline {
+  position: absolute;
+  top: 0px;
+  left: 340px;
+  height: 100%;
+  width: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+#ball {
+  position: absolute;
+  top: 0px;
+  left: 332px;
+  width: 19px;
+  height: 19px;
+  background-color: white;
+  border-radius: 100px;
+  z-index: 2;
+}
+
+#horizontalMidline {
+  position: absolute;
+  top: 270px;
+  left: 0px;
+  height: 2px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}

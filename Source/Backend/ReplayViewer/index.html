@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Backend Test</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script src="./main.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <span>Pong Replay Viewer</span>
+        </div>
+    </header>
+
+    <form enctype="multipart/form-data">
+        <input id="upload" type=file accept="text/csv" name="files[]" size=30>
+    </form>
+
+    <div id="mainContainer">
+        <div>
+            <div id="playing-field">
+                <div class="rectangle" id="paddleLeft"></div>
+                <div class="rectangle" id="paddleRight"></div>
+                <div class="circle" id="ball"></div>
+                <div id="verticalMidline"></div>
+                <div id="horizontalMidline"></div>
+            </div>
+
+            <div id="debugInfo">
+                <h1>Debug</h1>
+                <p>PlayerState: <span id="wsDebugLogPlayeState"></span></p>
+                <p>Score: <span id="wsDebugLogScore"></span></p>
+                <p>Paddle Left: <span id="wsDebugLogPaddleL"></span></p>
+                <p>Paddle Right: <span id="wsDebugLogPaddleR"></span></p>
+                <p>Ball: <span id="wsDebugLogBall"></span></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

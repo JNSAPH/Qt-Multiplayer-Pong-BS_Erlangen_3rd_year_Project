@@ -37,9 +37,15 @@ WebSocketServer& WebSocketServer::getInstance(quint16 port)
 void WebSocketServer::onNewConnection() {
     QWebSocket *socket = m_socketServer.nextPendingConnection();
 
+
     // Give every Connection an ID and send that ID to Player
     // Player will save that ID, it will act as an authentication Token
     QString playerId = QUuid::createUuid().toString();
+
+    // Give *socket an ID
+    socket->setProperty("UUID", playerId);
+
+
     try {
         QueueManager::addPlayer(playerId);
     } catch (QueueFullException &e) {
@@ -60,6 +66,8 @@ void WebSocketServer::onNewConnection() {
 
     m_sockets.append(socket);
 
+
+
     // If queue is full
     if (QueueManager::getQueueSize() == 2) {
         // Send the GameID to the Players
@@ -74,6 +82,8 @@ void WebSocketServer::onNewConnection() {
         this->broadcast(QString::fromStdString(JSONUtils::generateJSON(data)));
     }
 }
+
+
 
 void WebSocketServer::onTextMessageReceived(QString message) {
     // This method has been deprecated.
@@ -131,6 +141,16 @@ void WebSocketServer::onSocketDisconnected() {
     // Delete the socket
     socket->deleteLater();
 }
+
+void WebSocketServer::sendToSocket(QString UUID, const QString &message) {
+    // iterate over the list of connected sockets if uuid matches
+    for (auto socket : m_sockets) {
+        if (socket->property("UUID").toString() == UUID) {
+            socket->sendTextMessage(message);
+        }
+    }
+}
+
 
 void WebSocketServer::broadcast(const QString &message) {
     // Iterate over the list of connected sockets

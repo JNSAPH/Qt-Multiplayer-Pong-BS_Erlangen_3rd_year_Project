@@ -69,6 +69,12 @@ private slots:
     void onBinaryMessageReceived(QByteArray message);
 
     /**
+     * @brief Send To specific Socket
+     * @param socket the UUID of the player
+     */
+    void sendToSocket(QString UUID, QString message);
+
+    /**
      * @brief Slot called when a socket is disconnected from the server
      * This method is called when a socket is disconnected from the server.
      * It removes the socket from the list of connected sockets, and deletes the socket object.
