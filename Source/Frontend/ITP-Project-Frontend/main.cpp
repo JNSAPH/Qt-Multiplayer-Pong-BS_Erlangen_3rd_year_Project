@@ -9,8 +9,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    //MenuWindow w;
-    view_FinalScore w;
+    MenuWindow w;
+    //view_FinalScore w;
     WebSocketClient::getInstance();
 
     w.show();
