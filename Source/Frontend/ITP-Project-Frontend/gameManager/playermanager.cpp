@@ -13,6 +13,14 @@ int PlayerManager::getPlayerNumber() {
     return m_PlayerNumber;
 }
 
+int PlayerManager::getScore() {
+    return m_score;
+}
+
+void PlayerManager::setScore(int score) {
+    m_score = score;
+}
+
 void PlayerManager::setUUID(QString p_UUID) {
     m_UUID = p_UUID;
 }

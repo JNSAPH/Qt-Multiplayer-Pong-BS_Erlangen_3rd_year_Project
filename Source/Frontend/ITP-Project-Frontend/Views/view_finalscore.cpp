@@ -8,15 +8,8 @@ view_FinalScore::view_FinalScore(QWidget *parent) :
     ui->setupUi(this);
 
     this->setFixedSize(QSize(680, 540));
-    ui->imgWinner->hide();
 
     pingForScores();
-
-    ui->score1->hide();
-    ui->score2->hide();
-    ui->score3->hide();
-    ui->score4->hide();
-    ui->score5->hide();
 
     this->setWindowTitle("Multiplayer - Pong (ITP)");
 }
@@ -27,11 +20,16 @@ view_FinalScore::~view_FinalScore()
 }
 
 void view_FinalScore::finalWinner(int winnerPlayerNumber, int clientPlayerNumber) {
-    qDebug() << winnerPlayerNumber;
-    qDebug() << clientPlayerNumber;
+    ui->score1->hide();
+    ui->score2->hide();
+    ui->score3->hide();
+    ui->score4->hide();
+    ui->score5->hide();
+
+    ui->userScore->setText(QString::number(PlayerManager::getInstance().getScore()));
+
     if(winnerPlayerNumber == clientPlayerNumber) {
         // Client won
-        ui->imgWinner->show();
         ui->labelDisplayWinner->setText("You won!");
     } else {
         // Enemy won

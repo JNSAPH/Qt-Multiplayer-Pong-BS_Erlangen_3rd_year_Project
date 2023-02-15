@@ -18,6 +18,10 @@ public:
 
     void setPlayerNumber(int p_PlayerNumber);
     int getPlayerNumber();
+
+    int getScore();
+    void setScore(int score);
+
     void setUUID(QString p_UUID);
     void setPoints(int score);
     QString getUUID();
@@ -26,6 +30,7 @@ private:
     PlayerManager();
     int m_PlayerNumber;
     QString m_UUID = "";
+    int m_score;
 };
 
 #endif // PLAYERMANAGER_H

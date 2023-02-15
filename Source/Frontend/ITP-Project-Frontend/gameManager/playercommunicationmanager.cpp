@@ -61,6 +61,12 @@ void playerCommunicationManager::onTextMessageReceived(const QString &message)
                 jsonObject["ball"].toObject()["diameter"].toDouble()
             );
 
+        if (PlayerManager::getInstance().getPlayerNumber() == 1){
+            PlayerManager::getInstance().setScore(jsonObject["points1"].toInt());
+        } else {
+            PlayerManager::getInstance().setScore(jsonObject["points2"].toInt());
+        }
+
         // Call Playing field update in view_multiplayer;
         MultiplayerView->updatePlayingField();
         break;
