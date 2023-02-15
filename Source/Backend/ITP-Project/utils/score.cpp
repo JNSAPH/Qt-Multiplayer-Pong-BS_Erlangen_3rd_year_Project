@@ -30,11 +30,8 @@ void Score::addScore(QString playerId, int score) {
 
         // PlayerID is already present in the file
         // Update the existing score
-
-        // Split the file contents into lines
         if (index != -1) {
-            // PlayerID is already present in the file
-            // Update the existing score
+            // Split the file contents into lines
             QStringList lines = fileContents.split('\n');
 
             // Iterate over the lines, skipping the header row and the last empty line
@@ -55,24 +52,22 @@ void Score::addScore(QString playerId, int score) {
 
             // Join the lines back together into a single QString
             fileContents = lines.join('\n') + '\n';
-
-            // Set the file position to the beginning and overwrite the contents of the file with the updated contents
-            file.seek(0);
-            stream << fileContents;
-
-            // Truncate the file to the current position of the file pointer
-            file.resize(file.pos());
         } else {
             // PlayerID is not present in the file
+            // Append a new line with the player ID and a score of 0
+            fileContents += QString("%1,%2,%3,%4\n").arg(playerId).arg("Guest").arg(0).arg(timestamp);
+
             // Append the new score to the end of the file
-
-            // Set the file position to the beginning and append the new score string to the file
-            stream.seek(0);
-            stream << fileContents << scoreStr;
-
-            // Truncate the file to the current position of the file pointer
-            file.resize(file.pos());
+            fileContents += scoreStr;
         }
+
+        // Set the file position to the beginning and overwrite the contents of the file with the updated contents
+        file.seek(0);
+        stream << fileContents;
+
+        // Truncate the file to the current position of the file pointer
+        file.resize(file.pos());
+
         // Close the file
         file.close();
     } else {
@@ -80,6 +75,7 @@ void Score::addScore(QString playerId, int score) {
         qWarning() << "Failed to open Score.csv";
     }
 }
+
 
 
 QList<QStringList> Score::getScore() {
