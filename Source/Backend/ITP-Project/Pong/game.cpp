@@ -174,9 +174,6 @@ void Game::sendState()
 
     logs->appendData(data);
 
-    qDebug() << "Score 1: " << m_paddle1.getScore();
-    qDebug() << "Score 2: " << m_paddle2.getScore();
-
     // Broadcast jsonData
     WebSocketServer::getInstance().broadcast(jsonData);
 }

@@ -67,8 +67,6 @@ void playerCommunicationManager::onTextMessageReceived(const QString &message)
             PlayerManager::getInstance().setScore(jsonObject["points2"].toInt());
         }
 
-        qDebug() << PlayerManager::getInstance().getScore();
-
         // Call Playing field update in view_multiplayer;
         MultiplayerView->updatePlayingField();
         break;

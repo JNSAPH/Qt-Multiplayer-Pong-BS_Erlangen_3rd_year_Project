@@ -225,7 +225,7 @@ font: 700 26pt &quot;Roboto&quot;;</string>
   <widget class="QTextEdit" name="userInput">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>190</x>
      <y>330</y>
      <width>181</width>
      <height>31</height>
@@ -239,8 +239,8 @@ border: 1px solid white;</string>
   <widget class="QPushButton" name="userBtn">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>370</y>
+     <x>380</x>
+     <y>330</y>
      <width>100</width>
      <height>32</height>
     </rect>
@@ -250,7 +250,7 @@ border: 1px solid white;</string>
 border: 1px solid white;</string>
    </property>
    <property name="text">
-    <string>Set Name</string>
+    <string>Submit Name</string>
    </property>
   </widget>
   <widget class="QLabel" name="score1_3">
@@ -297,7 +297,7 @@ border: 1px solid white;</string>
     <string notr="true">color: white</string>
    </property>
    <property name="text">
-    <string>69420</string>
+    <string>Waiting for Score...</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
