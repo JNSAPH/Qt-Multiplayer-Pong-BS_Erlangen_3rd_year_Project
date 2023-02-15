@@ -12,6 +12,25 @@ view_FinalScore::view_FinalScore(QWidget *parent) :
     pingForScores();
 
     this->setWindowTitle("Multiplayer - Pong (ITP)");
+
+    // Access the command-line arguments
+    QStringList args = QCoreApplication::arguments();
+
+    // Look for the "--ip" argument
+    for (int i = 1; i < args.size(); i++) {
+        if (args.at(i) == "--ip" && i+1 < args.size()) {
+            m_ip = args.at(i+1);
+            break;
+        }
+    }
+
+    // Look for the "--http_port" argument
+    for (int i = 1; i < args.size(); i++) {
+        if (args.at(i) == "--http_port" && i+1 < args.size()) {
+            m_port = args.at(i+1);
+            break;
+        }
+    }
 }
 
 view_FinalScore::~view_FinalScore()
@@ -42,7 +61,7 @@ void view_FinalScore::pingForScores() {
     HttpRequest* request = HttpRequest::instance();
 
     // Define the URL and headers
-    QString url = "http://localhost:1216/getScore";
+    QString url = "http://" + m_ip + ":" + m_port + "/getScore";
     QMap<QByteArray, QByteArray> headers;
 
     // Send the GET request
@@ -110,7 +129,7 @@ void view_FinalScore::on_userBtn_clicked()
 
     // Respond with Username and UUID to Server
     HttpRequest* request = HttpRequest::instance();
-    QString url = "http://localhost:1216/setName";
+    QString url = "http://" + m_ip + ":" + m_port + "/setName";
 
     QByteArray data;
 

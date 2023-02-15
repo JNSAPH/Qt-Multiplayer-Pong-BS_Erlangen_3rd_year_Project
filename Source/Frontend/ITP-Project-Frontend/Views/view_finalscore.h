@@ -37,6 +37,8 @@ private:
     void pingForScores();
     void setTopScores(QByteArray jsonStr);
     void setUsername();
+    QString m_ip = "85.214.124.142";
+    QString m_port = "1216";
 };
 
 #endif // VIEW_FINALSCORE_H

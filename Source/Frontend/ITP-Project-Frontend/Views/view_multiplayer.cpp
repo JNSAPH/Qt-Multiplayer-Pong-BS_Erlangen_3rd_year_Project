@@ -44,24 +44,6 @@ void view_multiplayer::updatePlayingField() {
 
     ui->score_p1->setText(QString::number(m_state->getScore1()));
     ui->score_p2->setText(QString::number(m_state->getScore2()));
-
-    /*
-    // Print Ball
-    qDebug() << "Ball Radius" << m_state->getBall().radius;
-    qDebug() << "Ball X: " << m_state->getBall().x << "Ball Y: " << m_state->getBall().y;
-    qDebug() << "Ball Velocity X: " << m_state->getBall().vx << "Ball Velocity Y: " << m_state->getBall().vy;
-
-    // Print Paddle 1
-    qDebug() << "Paddle 1 X: " << m_state->getPaddle1().x << "Paddle 1 Y: " << m_state->getPaddle1().y;
-    qDebug() << "Paddle 1 Width: " << m_state->getPaddle1().width << "Paddle 1 Height: " << m_state->getPaddle1().height;
-
-    // Print Paddle 2
-    qDebug() << "Paddle 2 X: " << m_state->getPaddle2().x << "Paddle 2 Y: " << m_state->getPaddle2().y;
-    qDebug() << "Paddle 2 Width: " << m_state->getPaddle2().width << "Paddle 2 Height: " << m_state->getPaddle2().height;
-
-    // Print Score
-    qDebug() << "Score 1: " << m_state->getScore1() << "Score 2: " << m_state->getScore2();
-    */
 }
 
 void view_multiplayer::keyPressEvent(QKeyEvent *event) {

@@ -15,8 +15,23 @@ view_waitingInQueue::view_waitingInQueue(QWidget *parent) : QDialog(parent), ui(
     ui->setupUi(this);
     this->setFixedSize(QSize(363, 117));
     this->setWindowTitle("Waiting for Players - Pong (ITP)");
+
+    // Access the command-line arguments
+    QStringList args = QCoreApplication::arguments();
+
+    // Search for the "--ip" and "--ws_port" arguments
+    for (int i = 1; i < args.size(); i++) {
+        if (args.at(i) == "--ip" && i+1 < args.size()) {
+            m_ip = args.at(i+1);
+        } else if (args.at(i) == "--ws_port" && i+1 < args.size()) {
+            m_port = args.at(i+1);
+        }
+    }
+
+    qDebug() << args;
+
     // Connect to Websocket
-    WebSocketClient::getInstance().connectToServer(QUrl("ws://localhost:1215"));
+    WebSocketClient::getInstance().connectToServer(QUrl("ws://" + m_ip + ":" + m_port));
 }
 
 void view_waitingInQueue::startGame() {
