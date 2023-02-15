@@ -97,6 +97,10 @@ void Ball::checkCollision(Paddle *paddle)
     //Is Ball in the corret Y-Area
     if( abs(deltaY) >= paddleHeight/2 + m_diameter/2 ) return;
 
+    // Ball Hit Paddle Zone
+    qDebug() << paddle->getId();
+    Score::addScore(paddle->getId(), 50);
+
     //Paddle Face Hit / Ball Front
     if( abs(deltaY) < paddleHeight/2 - paddleHeight/20){
         m_xVelocity = -(m_xVelocity * paddle -> getFace(true));
@@ -112,6 +116,10 @@ void Ball::checkCollision(Paddle *paddle)
         {
             m_xVelocity *= (abs(m_xVelocity) <= 0.001)? -0.003/abs(m_xVelocity) : -paddle -> getEdge(true);
             m_yVelocity = (abs(m_yVelocity) <= 0.001)? (m_yVelocity  + 0.4) * paddle -> getEdge(false) :  m_yVelocity * paddle -> getEdge(false);
+
+            qDebug() << paddle->getId();
+            Score::addScore(paddle->getId(), 150);
+
             return;
         }
         //HitOnTopDetected
@@ -119,6 +127,10 @@ void Ball::checkCollision(Paddle *paddle)
         {
             m_xVelocity *= (abs(m_xVelocity) <= 0.001)? -0.003/abs(m_xVelocity) : -paddle -> getEdge(true);
             m_yVelocity = (abs(m_yVelocity) <= 0.001)? (m_yVelocity  - 0.4 )* paddle -> getEdge(false) :  m_yVelocity * paddle -> getEdge(false);
+
+            qDebug() << paddle->getId();
+            Score::addScore(paddle->getId(), 150);
+
             return;
         }
     }

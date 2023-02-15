@@ -3,6 +3,7 @@
 
 #include <QPointF>
 #include <QRandomGenerator>
+#include "../utils/score.h""
 
 #include <cmath>
 
