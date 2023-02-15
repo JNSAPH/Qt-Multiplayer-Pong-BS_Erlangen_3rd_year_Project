@@ -99,6 +99,9 @@ font: 700 26pt &quot;Roboto&quot;;</string>
      <height>20</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
+   </property>
    <property name="text">
     <string>Waiting for Score...</string>
    </property>
@@ -117,6 +120,9 @@ font: 700 26pt &quot;Roboto&quot;;</string>
      <width>411</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
    </property>
    <property name="text">
     <string>Waiting for Score...</string>
@@ -137,6 +143,9 @@ font: 700 26pt &quot;Roboto&quot;;</string>
      <height>20</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
+   </property>
    <property name="text">
     <string>Waiting for Score...</string>
    </property>
@@ -156,6 +165,9 @@ font: 700 26pt &quot;Roboto&quot;;</string>
      <height>20</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
+   </property>
    <property name="text">
     <string>Waiting for Score...</string>
    </property>
@@ -174,6 +186,9 @@ font: 700 26pt &quot;Roboto&quot;;</string>
      <width>411</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
    </property>
    <property name="text">
     <string>Waiting for Score...</string>
@@ -197,6 +212,9 @@ font: 700 26pt &quot;Roboto&quot;;</string>
      <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
+   </property>
    <property name="text">
     <string>Highscore</string>
    </property>
@@ -208,9 +226,9 @@ font: 700 26pt &quot;Roboto&quot;;</string>
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>340</y>
+     <y>330</y>
      <width>181</width>
-     <height>21</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -250,6 +268,9 @@ border: 1px solid white;</string>
      <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
+   </property>
    <property name="text">
     <string>Your Score:</string>
    </property>
@@ -271,6 +292,9 @@ border: 1px solid white;</string>
      <pointsize>14</pointsize>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
    </property>
    <property name="text">
     <string>69420</string>

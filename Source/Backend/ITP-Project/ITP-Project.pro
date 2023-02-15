@@ -7,6 +7,7 @@ QT += sql
 CONFIG -= app_bundle
 
 QT += websockets
+QT += core5compat
 
 
 

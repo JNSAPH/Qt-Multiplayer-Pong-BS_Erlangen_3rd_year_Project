@@ -101,6 +101,10 @@ void Game::stop()
     Score::addScore(m_paddle1.getId(), m_paddle1.getScore());
     Score::addScore(m_paddle2.getId(), m_paddle2.getScore());
 
+    // Reset the Paddle Score
+    m_paddle1.resetScore();
+    m_paddle2.resetScore();
+
     // Reset the scores
     m_score1 = 0;
     m_score2 = 0;
@@ -113,7 +117,6 @@ void Game::reset()
     m_paddle1.setPosition(m_paddleLeftX, m_paddleY);
     m_paddle2.setPosition(m_paddleRightX, m_paddleY);
     m_ball.setPosition(m_playingFieldWidth / 2 - (m_ball.getDiameter() / 2), m_playingFieldHeight / 2 - (m_ball.getDiameter()) / 2);
-
 
     m_ball.setRandomVelocity();
 }
@@ -170,6 +173,9 @@ void Game::sendState()
     };
 
     logs->appendData(data);
+
+    qDebug() << "Score 1: " << m_paddle1.getScore();
+    qDebug() << "Score 2: " << m_paddle2.getScore();
 
     // Broadcast jsonData
     WebSocketServer::getInstance().broadcast(jsonData);

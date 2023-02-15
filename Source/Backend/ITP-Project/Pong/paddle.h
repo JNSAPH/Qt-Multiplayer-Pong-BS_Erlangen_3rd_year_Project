@@ -126,6 +126,11 @@ public:
      */
     QString getId();
 
+    /**
+     * @brief Resets the internal Score of the Paddle
+     */
+    void resetScore();
+
 private:
     /**
      * @brief The x-coordinate of the paddle

@@ -91,6 +91,10 @@ void Paddle::addScore(int score) {
     m_Score += score;
 }
 
+void Paddle::resetScore() {
+    m_Score = 0;
+}
+
 int Paddle::getScore() {
     return m_Score;
 }

@@ -7,6 +7,8 @@
 #include <QtCore/QDebug>
 #include <QtCore/QFile>
 #include <QtCore/QTextStream>
+#include <QRegularExpression>
+#include <QRegExp>
 #include <algorithm>
 
 class Score {
