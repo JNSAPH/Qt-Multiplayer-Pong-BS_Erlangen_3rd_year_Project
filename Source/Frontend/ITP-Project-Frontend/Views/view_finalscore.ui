@@ -39,14 +39,38 @@ font: 700 26pt &quot;Roboto&quot;;</string>
   <widget class="QPushButton" name="btnPlayAgain">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>130</y>
-     <width>80</width>
-     <height>24</height>
+     <x>160</x>
+     <y>120</y>
+     <width>161</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: #E4E4E4</string>
+    <string notr="true">QPushButton {
+  background-color: #4CAF50;
+  border: none;
+  color: #FFF;
+  padding: 10px 20px;
+  font-family: sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+QPushButton:hover {
+  background-color: #3E8E41;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px #888;
+  color: #FFF;
+}
+
+QPushButton:pressed {
+  background-color: #1B5E20;
+  box-shadow: none;
+  color: #fff;
+}
+</string>
    </property>
    <property name="text">
     <string>Play Again</string>
@@ -55,17 +79,40 @@ font: 700 26pt &quot;Roboto&quot;;</string>
   <widget class="QPushButton" name="btnQuit">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>130</y>
-     <width>80</width>
-     <height>24</height>
+     <x>360</x>
+     <y>120</y>
+     <width>161</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: #E4E4E4</string>
+    <string notr="true">QPushButton {
+  background-color: #e53935;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-family: sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+QPushButton:hover {
+  background-color: #c62828;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px #888;
+  color: #fff;
+}
+
+QPushButton:pressed {
+  background-color: #b71c1c;
+  box-shadow: none;
+  color: #fff;
+}</string>
    </property>
    <property name="text">
-    <string>Quit</string>
+    <string>Quit Game</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">

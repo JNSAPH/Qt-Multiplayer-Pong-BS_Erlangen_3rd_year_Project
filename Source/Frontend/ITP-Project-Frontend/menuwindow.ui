@@ -73,12 +73,23 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">    color: #E4E4E4;
+     <string notr="true">QPushButton {
+    color: #E4E4E4;
     font-size: 22px;
 	font-weight: bold;
     border: none;
     background-color: transparent;
-    text-align: left;</string>
+    text-align: left;
+}
+
+QPushButton:hover {
+	color: #FFC371;
+}
+
+QPushButton:pressed {
+	color: #E58225;
+}
+</string>
     </property>
     <property name="text">
      <string>Multiplayer</string>
@@ -94,12 +105,23 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">    color: #E4E4E4;
+     <string notr="true">QPushButton {
+    color: #E4E4E4;
     font-size: 22px;
 	font-weight: bold;
     border: none;
     background-color: transparent;
-    text-align: left;</string>
+    text-align: left;
+}
+
+QPushButton:hover {
+	color: #FFC371;
+}
+
+QPushButton:pressed {
+	color: #E58225;
+}
+</string>
     </property>
     <property name="text">
      <string>Quit Game</string>
