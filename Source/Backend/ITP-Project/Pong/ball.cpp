@@ -118,7 +118,7 @@ void Ball::checkCollision(Paddle *paddle)
             m_yVelocity = (abs(m_yVelocity) <= 0.001)? (m_yVelocity  + 0.4) * paddle -> getEdge(false) :  m_yVelocity * paddle -> getEdge(false);
 
             qDebug() << paddle->getId();
-            Score::addScore(paddle->getId(), 150);
+            Score::addScore(paddle->getId(), 100);
 
             return;
         }
@@ -129,7 +129,7 @@ void Ball::checkCollision(Paddle *paddle)
             m_yVelocity = (abs(m_yVelocity) <= 0.001)? (m_yVelocity  - 0.4 )* paddle -> getEdge(false) :  m_yVelocity * paddle -> getEdge(false);
 
             qDebug() << paddle->getId();
-            Score::addScore(paddle->getId(), 150);
+            Score::addScore(paddle->getId(), 100);
 
             return;
         }
@@ -142,6 +142,10 @@ void Ball::checkCollision(Paddle *paddle)
     {
         m_xVelocity *= (abs(m_xVelocity) <= 0.001)? -0.003/abs(m_xVelocity) : -paddle -> getSide(true);
         m_yVelocity = (abs(m_yVelocity)<= 0.001)? (m_yVelocity  + 0.4) * paddle -> getSide(false) :  m_yVelocity * paddle -> getSide(false);
+       
+        qDebug() << paddle->getId();
+        Score::addScore(paddle->getId(), 75);
+       
         return;
     }
     //HitOnTopDetected
@@ -149,13 +153,21 @@ void Ball::checkCollision(Paddle *paddle)
     {
         m_xVelocity *= (abs(m_xVelocity) <= 0.001)? -0.003/abs(m_xVelocity) : -paddle -> getSide(true);
         m_yVelocity = (abs(m_yVelocity)<= 0.001)? (m_yVelocity  - 0.4 )* paddle -> getSide(false) :  m_yVelocity * paddle -> getSide(false);
-
+       
+        qDebug() << paddle->getId();
+        Score::addScore(paddle->getId(), 75);
+       
         return;
     }
     else    //Ball Center Hit
     {
         m_xVelocity *= - 2 * paddle -> getFace(true)  ;
         m_yVelocity *= - 2 * paddle -> getFace(false) ;
+       
+        /*
+        Hier keinen score adden, weil das der funny glitch part ist :) oder 10 per hit?
+        */
+       
         return;
     }
 }
