@@ -204,6 +204,7 @@ private:
     /**
      * @var db
      * @brief A pointer to the MariaDB class to handle database operations
+     * @deprecated
      */
     MariaDB *db;
 
