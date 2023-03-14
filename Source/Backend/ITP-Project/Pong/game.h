@@ -15,6 +15,7 @@
 #include "../utils/logs.h"
 #include "../utils/score.h"
 
+
 class Game : public QObject
 {
     Q_OBJECT
