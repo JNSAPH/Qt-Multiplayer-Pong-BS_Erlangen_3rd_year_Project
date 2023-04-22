@@ -1,6 +1,6 @@
 # Qt-Multiplayer-Pong-BS_Erlangen_3rd_year_Projec
 ## ARCHIVED PROJECT - DO NOT USE
-This project was created during vocational training as an application developer in collaboration with my group member, Daniel Baburin. The task was to program a multiplayer game using the Qt Framework within a time frame of two weeks.
+This project was created during vocational training as an application developer in collaboration with my group member, [Daniel Baburin](https://github.com/Perrrte). The task was to program a multiplayer game using the Qt Framework within a time frame of two weeks.
 
 We decided to implement Pong, a classic game that has been around for decades. However, due to the time constraints, the code quality is not up to my usual standards. The project was completed solely for the purpose of fulfilling the requirements of our Vocational School.
 
