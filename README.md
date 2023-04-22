@@ -1,18 +1,17 @@
-# ITP-Project-1
+# Qt-Multiplayer-Pong-BS_Erlangen_3rd_year_Projec
+## ARCHIVED PROJECT - DO NOT USE
+This project was created during vocational training as an application developer in collaboration with my group member, Daniel Baburin. The task was to program a multiplayer game using the Qt Framework within a time frame of two weeks.
 
-## Get Windows Executable
-1. Generate a Release Build
-    * Through QT
-    * Building with QMake and mingw
-    ```
-    > cd .\Source\Frontend\ITP-Project-Frontend
-    > qmake ITP-Project-Frontend.pro
-    > mingw32-make
-    > cd release
-    ```
-2. Run deployForWin.bat in /Frontend
+We decided to implement Pong, a classic game that has been around for decades. However, due to the time constraints, the code quality is not up to my usual standards. The project was completed solely for the purpose of fulfilling the requirements of our Vocational School.
 
-**OR**
+As a result, this project is being archived, and I do not recommend using it as a reference or for any other purpose. The code is poorly written and does not meet the industry standards. Moreover, since this project will not be maintained, it may not be compatible with the latest versions of the Qt Framework.
 
-2. Run **qtenv2.bat** inside C:\Qt\6.4.2\mingw_64\bin
-3. Run windeployqt.exe --compiler-runtime <Build.exe>
+Although the code is not suitable for reuse, there are still some good parts in it that I may want to use later on or reference if others have to do the same thing again.
+
+Therefore, I have decided not to delete this project entirely. Instead, I am archiving it and adding a warning to not use the code as a reference or for any other purpose.
+
+I also want to mention that I do not recommend using Qt to make games. This project was a challenging experience because I had practically zero knowledge of Qt and had to learn everything from scratch in a very limited time frame. While Qt is a powerful framework, it may not be the best choice for game development, especially if you are working with a tight deadline.
+
+If you are interested in creating games, I suggest looking into other game development frameworks or engines that are specifically designed for that purpose.
+
+Thank you for your understanding.
